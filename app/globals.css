@@ -7,6 +7,7 @@
   --foreground: #171717;
   --primary: #129ace;
   --secondary: #ed1b7b;
+  --footer:#151A4D;
 }
 
 @theme inline {
@@ -14,6 +15,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-footer: var(--footer);
   --font-playfair: var(--font-playfair);
   --font-poppins: var(--font-poppins);
 }

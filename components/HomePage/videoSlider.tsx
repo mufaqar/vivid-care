@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import React, { useRef, useState } from "react";
 import SearchForm from "./searchForm";
 import Image from "next/image";
+import { ReactTyped } from "react-typed";
 
 interface Slide {
   video: string;
@@ -43,7 +44,7 @@ export default function VideoSlider() {
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     fade: true,
     arrows: false,
     afterChange: (index: number) => setCurrent(index),
@@ -70,10 +71,16 @@ export default function VideoSlider() {
             {/* Content */}
             <div className="container mx-auto px-4 relative z-20 flex flex-col justify-center h-full">
               <div className="max-w-[706px] space-y-4">
-                <h2 className="md:text-[86.41px] text-4xl leading-none font-bold text-white font-playfair mb-8 max-w-[660px]">
-                  {slide.title}
+                <h2 className="md:text-[86.41px] text-4xl leading-none font-bold tracking-[-0.6] text-white font-playfair mb-8 max-w-[679px]">
+                  <ReactTyped
+                    strings={[slide.title]}
+                    typeSpeed={100}
+                    backSpeed={100}
+                    backDelay={1000}
+                    loop={true} // ✅ only types once per slide
+                  />
                 </h2>
-                <p className="md:text-[21.05px] text-lg font-normal text-white mb-9 max-w-[540px]">
+                <p className="md:text-[21.05px] text-lg font-normal text-white font-poppins mb-9 max-w-[540px]">
                   {slide.description}
                 </p>
                 <SearchForm />
