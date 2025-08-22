@@ -1,5 +1,8 @@
+import Faqs from "@/components/HomePage/faqs";
 import GetInTouch from "@/components/HomePage/getInTouch";
+import OurFocus from "@/components/HomePage/ourFocus";
 import Partners from "@/components/HomePage/partners";
+import Testimonials from "@/components/HomePage/testimonials";
 import VideoSlider from "@/components/HomePage/videoSlider";
 import ServiceBox from "@/components/Services/serviceBox";
 import { services } from "@/data/servicesData";
@@ -25,6 +28,9 @@ export default function Home() {
         </div>
       </section>
       <GetInTouch />
+      <OurFocus />
+      <Testimonials />
+      <Faqs />
     </main>
   );
 }
