@@ -19,15 +19,15 @@ const Faqs = () => {
                     Frequently Asked Questions <FaChevronDown onClick={() => { setOpen(!open) }} className='text-primary cursor-pointer' />
                 </h2>
             </div>
-            <div className={`${open ? "block" : "hidden"} container mx-auto md:px-0 px-4 mt-10`}>
+            <div className={`${open ? "block" : "hidden"} container mx-auto md:px-0 px-4 mt-10 space-y-[20px]`}>
                 {faqs.map((faq, idx) => (
-                    <div key={idx} className=" py-4">
+                    <div key={idx} className="py-4 max-w-[700px] mx-auto">
                         {/* Question row */}
                         <div
-                            className="flex justify-between items-center cursor-pointer"
+                            className="flex justify-between items-center cursor-pointer "
                             onClick={() => toggleFaq(idx)}
                         >
-                            <h3 className="text-xl font-semibold text-black">{faq.question}</h3>
+                            <h3 className="text-xl font-poppins font-semibold mb-4 text-black">{faq.question}</h3>
                             <FaChevronDown
                                 className={`text-primary transform transition-transform duration-300 ${openIndex === idx ? "rotate-180" : ""
                                     }`}
@@ -36,7 +36,7 @@ const Faqs = () => {
 
                         {/* Answer */}
                         {openIndex === idx && (
-                            <p className="mt-2 text-black transition-all duration-300 ease-in-out">
+                            <p className="mt-2 font-poppins text-black transition-all duration-300 ease-in-out">
                                 {faq.answer}
                             </p>
                         )}
