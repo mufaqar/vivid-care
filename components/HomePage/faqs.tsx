@@ -33,7 +33,6 @@ const Faqs = () => {
                                     }`}
                             />
                         </div>
-
                         {/* Answer */}
                         {openIndex === idx && (
                             <p className="mt-2 font-poppins text-black transition-all duration-300 ease-in-out">
