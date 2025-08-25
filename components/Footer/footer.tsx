@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
         <div className='flex gap-2.5 items-start md:w-[27%] w-full'>
           <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-            <CircleRotating bgColor="#151a4d" />
+            <CircleRotating bgColor="#151a4d" border="5px" />
             <RiContactsBook3Line className='relative z-10' />
           </div>
           <div>
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
         <div className='flex gap-2.5 items-start md:w-[25%] w-full'>
           <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-            <CircleRotating bgColor="#151a4d" />
+            <CircleRotating bgColor="#151a4d" border="5px" />
             <FaMapMarkerAlt className='relative z-10' />
           </div>
           <div>
@@ -104,7 +104,7 @@ const Footer = () => {
         </div>
         <div className='flex gap-2.5 items-start md:w-1/5 w-full'>
           <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-            <CircleRotating bgColor="#151a4d" />
+            <CircleRotating bgColor="#151a4d" border="5px" />
             <FaClock className='relative z-10' />
           </div>
           <div >

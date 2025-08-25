@@ -5,6 +5,8 @@ import React, { useRef, useState } from "react";
 import SearchForm from "./searchForm";
 import Image from "next/image";
 import { ReactTyped } from "react-typed";
+import CircleRotating from "../circleRotating";
+import AnimateOnScroll, { useAutoDelay } from "../animation";
 
 interface Slide {
   video: string;
@@ -35,6 +37,7 @@ const slides: Slide[] = [
 ];
 
 export default function VideoSlider() {
+  const getDelay = useAutoDelay();
   const [current, setCurrent] = useState(0);
   const sliderRef = useRef<Slider | null>(null);
 
@@ -71,19 +74,25 @@ export default function VideoSlider() {
             {/* Content */}
             <div className="container mx-auto px-4 relative z-20 flex flex-col justify-end h-full md:pb-24 pb-16">
               <div className="max-w-[706px] space-y-4">
-                <h2 className="md:text-[86.41px] text-4xl leading-none font-bold tracking-[-0.6] text-white font-playfair mb-8 max-w-[679px] md:h-[175px] h-[72px]">
-                  <ReactTyped
-                    strings={[slide.title]}
-                    typeSpeed={100}
-                    backSpeed={100}
-                    backDelay={1000}
-                    loop={true} // ✅ only types once per slide
-                  />
-                </h2>
+                <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                  <h2 className="md:text-[86.41px] text-4xl leading-none font-bold tracking-[-0.6] text-white font-playfair mb-8 max-w-[679px] md:h-[175px] h-[72px]">
+                    <ReactTyped
+                      strings={[slide.title]}
+                      typeSpeed={100}
+                      backSpeed={100}
+                      backDelay={1000}
+                      loop={true} // ✅ only types once per slide
+                    />
+                  </h2>
+                </AnimateOnScroll>
+                 <AnimateOnScroll type="fade-up" delay={getDelay()}>
                 <p className="md:text-[21.05px] text-lg font-normal text-white font-poppins mb-9 max-w-[540px]">
                   {slide.description}
                 </p>
+                </AnimateOnScroll>
+                 <AnimateOnScroll type="fade-up" delay={getDelay()}>
                 <SearchForm />
+                </AnimateOnScroll>
               </div>
 
             </div>
@@ -111,8 +120,9 @@ export default function VideoSlider() {
           </button>
         ))}
       </div>
-      <div className="bg-secondary border-[10px] border-white md:w-[135px] md:h-[135px] w-[120px] h-[120px] rounded-full absolute -bottom-16 md:right-24 right-10 z-30 flex items-center justify-center">
-        <Image src="/images/handicon.png" alt="handicon" width={83} height={93} />
+      <div className="bg-secondary border-[10px] border-white md:w-[135px] md:h-[135px] w-[120px] h-[120px] rounded-full absolute -bottom-16 md:right-24 right-10 z-30 flex items-center justify-center group">
+        <CircleRotating bgColor="#ed1b7b" border="10px" />
+        <Image src="/images/handicon.png" alt="handicon" width={83} height={93} className="relative z-20" />
       </div>
     </div>
   );

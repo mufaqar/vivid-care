@@ -65,7 +65,7 @@ const Header = () => {
             onClick={() => setMblMenu(!mblMenu)}
             className='md:hidden inline-flex bg-background md:text-[32px] text-2xl md:w-[60px] md:h-[60px] w-[40px] h-[40px] rounded-full items-center justify-center text-secondary transition-all duration-300 relative z-50 border-2 border-secondary group'
           >
-            <CircleRotating bgColor="#fef1f7" />
+            <CircleRotating bgColor="#fef1f7" border="5px" />
             {!mblMenu ? <FaBars className='relative z-10' /> : <IoClose className='relative z-10' />}
           </button>
 
@@ -74,7 +74,7 @@ const Header = () => {
             href="#"
             className='inline-flex bg-background md:text-[32px] text-2xl md:w-[60px] md:h-[60px] w-[40px] h-[40px] rounded-full items-center justify-center text-secondary transition-all duration-300 relative z-50 border-2 border-secondary group'
           >
-            <CircleRotating bgColor="#fef1f7" />
+            <CircleRotating bgColor="#fef1f7" border="5px" />
             <FaPhone className='relative z-10' />
           </Link>
         </nav>
