@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { FaChevronRight, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaChevronRight, FaClock, FaFacebookF, FaInstagram, FaMapMarkerAlt, FaYoutube } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { FiExternalLink } from 'react-icons/fi'
+import { RiContactsBook3Line } from 'react-icons/ri'
+import CircleRotating from '../circleRotating'
 
 const Footer = () => {
   return (
@@ -30,8 +32,11 @@ const Footer = () => {
           </div>
         </div>
         <div className='flex gap-2.5 items-start md:w-[27%] w-full'>
-          <Image src="/images/cont-icon.png" alt='cont-icon' width={40} height={40} />
-          <div >
+          <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+            <CircleRotating bgColor="#151a4d" />
+            <RiContactsBook3Line className='relative z-10' />
+          </div>
+          <div>
             <h6 className='md:text-[26px] md:leading-none text-xl font-bold text-white font-playfair tracking-[-0.6] mb-3'>
               Contact Us Now
             </h6>
@@ -55,7 +60,10 @@ const Footer = () => {
           </div>
         </div>
         <div className='flex gap-2.5 items-start md:w-[25%] w-full'>
-          <Image src="/images/map-icon.png" alt='map-icon' width={40} height={40} />
+          <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+            <CircleRotating bgColor="#151a4d" />
+            <FaMapMarkerAlt className='relative z-10' />
+          </div>
           <div>
             <h6 className='md:text-[26px] md:leading-none text-xl font-bold text-white font-playfair tracking-[-0.6] mb-3'>
               Head Office Address
@@ -95,7 +103,10 @@ const Footer = () => {
 
         </div>
         <div className='flex gap-2.5 items-start md:w-1/5 w-full'>
-          <Image src="/images/cont-icon.png" alt='cont-icon' width={40} height={40} />
+          <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+            <CircleRotating bgColor="#151a4d" />
+            <FaClock className='relative z-10' />
+          </div>
           <div >
             <h6 className='md:text-[26px] md:leading-none text-xl font-bold text-white font-playfair tracking-[-0.6] mb-3'>
               Opening Hours
@@ -156,10 +167,10 @@ const Footer = () => {
         </div>
       </div>
       <div className='container mx-auto md:px-0 px-4 pt-7 pb-16'>
-         <p className='md:text-base font-normal text-white font-poppins text-center'>
-           <Link href="privacy-policy" className='hover:text-secondary'>
-              Privacy Policy</Link>  | <Link href="terms-and-conditions" className='hover:text-secondary'>Terms and Conditions </Link>   | <Link href="carbon-footprint" className='hover:text-secondary'> Carbon Footprint</Link>
-          </p>
+        <p className='md:text-base font-normal text-white font-poppins text-center'>
+          <Link href="privacy-policy" className='hover:text-secondary'>
+            Privacy Policy</Link>  | <Link href="terms-and-conditions" className='hover:text-secondary'>Terms and Conditions </Link>   | <Link href="carbon-footprint" className='hover:text-secondary'> Carbon Footprint</Link>
+        </p>
       </div>
     </footer>
   )

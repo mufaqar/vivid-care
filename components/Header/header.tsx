@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { FaPhone } from 'react-icons/fa6'
 import { IoClose } from 'react-icons/io5'
+import CircleRotating from '../circleRotating'
+
 
 const Header = () => {
   const [mblMenu, setMblMenu] = useState(false)
@@ -26,9 +28,8 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full px-5 z-50 transition-all duration-500 ease-in-out ${
-        isScrolled ? 'py-2' : 'py-[18px]'
-      }`}
+      className={`fixed w-full px-5 z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'py-2' : 'py-[18px]'
+        }`}
     >
       <div className='mx-auto md:px-[2%] px-4 flex md:flex-row flex-row gap-6 items-center justify-between'>
         {/* Logo */}
@@ -42,11 +43,10 @@ const Header = () => {
         {/* Nav */}
         <nav className='flex items-center gap-2.5'>
           <ul
-            className={`bg-white shadow py-[18px] px-10 md:rounded-[107.06px] rounded-b-4xl md:flex md:flex-row flex-col gap-5 md:static justify-center ${
-              mblMenu
+            className={`bg-white shadow py-[18px] px-10 md:rounded-[107.06px] rounded-b-4xl md:flex md:flex-row flex-col gap-5 md:static justify-center ${mblMenu
                 ? 'absolute left-0 right-0 top-0 md:h-auto h-[350px] flex'
                 : 'hidden'
-            }`}
+              }`}
           >
             {navMenu?.map((item: any, idx: number) => (
               <li key={idx}>
@@ -63,17 +63,19 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMblMenu(!mblMenu)}
-            className='md:hidden inline-flex bg-background md:text-[32px] text-2xl md:w-[60px] md:h-[60px] w-[40px] h-[40px] rounded-full items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all duration-300 relative z-50'
+            className='md:hidden inline-flex bg-background md:text-[32px] text-2xl md:w-[60px] md:h-[60px] w-[40px] h-[40px] rounded-full items-center justify-center text-secondary transition-all duration-300 relative z-50 border-2 border-secondary group'
           >
-            {!mblMenu ? <FaBars /> : <IoClose />}
+            <CircleRotating bgColor="#fef1f7" />
+            {!mblMenu ? <FaBars className='relative z-10' /> : <IoClose className='relative z-10' />}
           </button>
 
           {/* Phone Button */}
           <Link
             href="#"
-            className='inline-flex bg-background md:text-[32px] text-2xl md:w-[60px] md:h-[60px] w-[40px] h-[40px] rounded-full items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all duration-300 relative z-50'
+            className='inline-flex bg-background md:text-[32px] text-2xl md:w-[60px] md:h-[60px] w-[40px] h-[40px] rounded-full items-center justify-center text-secondary transition-all duration-300 relative z-50 border-2 border-secondary group'
           >
-            <FaPhone />
+            <CircleRotating bgColor="#fef1f7" />
+            <FaPhone className='relative z-10' />
           </Link>
         </nav>
       </div>

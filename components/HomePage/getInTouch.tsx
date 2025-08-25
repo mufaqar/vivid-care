@@ -3,6 +3,7 @@ import React from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 import { FaRegEnvelope } from 'react-icons/fa6'
 import { GrPhone } from 'react-icons/gr'
+import CircleRotating from '../circleRotating'
 
 const GetInTouch = () => {
     return (
@@ -18,8 +19,9 @@ const GetInTouch = () => {
                             before:content-[" "] before:absolute before:w-[14px] before:h-[14px] before:bg-white before:rotate-140 before:mb-[-34px] before:z-0'>
                                 Call Us
                             </span>
-                            <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full'>
-                                <GrPhone />
+                            <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+                                <CircleRotating bgColor="#fef1f7" />
+                                <GrPhone className='relative z-10' />
                             </Link>
                         </li>
                         <li className='flex flex-col justify-center items-center group md:px-10 px-8 relative'>
@@ -27,8 +29,9 @@ const GetInTouch = () => {
                             before:content-[" "] before:absolute before:w-[14px] before:h-[14px] before:bg-white before:rotate-140 before:mb-[-34px] before:z-0'>
                                 Mail Us
                             </span>
-                            <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full'>
-                                <FaRegEnvelope />
+                            <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+                                <CircleRotating bgColor="#fef1f7" />
+                                <FaRegEnvelope className='relative z-10' />
                             </Link>
                         </li>
                         <li className='flex flex-col justify-center items-center group md:px-10 px-8 relative'>
@@ -36,8 +39,9 @@ const GetInTouch = () => {
                             before:content-[" "] before:absolute before:w-[14px] before:h-[14px] before:bg-white before:rotate-140 before:mb-[-34px] before:z-0'>
                                 WhatsApp Us
                             </span>
-                            <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full'>
-                                <FaWhatsapp />
+                            <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+                                <CircleRotating bgColor="#fef1f7" />
+                                <FaWhatsapp className='relative z-10' />
                             </Link>
                         </li>
                     </ul>

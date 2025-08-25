@@ -18,4 +18,15 @@
   --color-footer: var(--footer);
   --font-playfair: var(--font-playfair);
   --font-poppins: var(--font-poppins);
+  --animate-spin-slow: spin 3s linear infinite;
 }
+
+/* .circle{
+  @apply before:content-[''] before:absolute before:rounded-full
+        before:top-0 before:left-0
+        before:w-[calc(100%)] before:h-[calc(100%)]
+        before:bg-[conic-gradient(white_0deg,white_30deg,transparent_30deg,transparent_180deg,white_180deg,white_210deg,transparent_210deg,transparent_360deg)]
+        before:opacity-0 group-hover:before:opacity-100 before:border-y-2 before:border-white
+        group-hover:before:animate-spin-slow
+        z-10;
+} */
