@@ -69,9 +69,9 @@ export default function VideoSlider() {
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-black/90 to-transparent z-10 rounded-b-[37.3px]" />
 
             {/* Content */}
-            <div className="container mx-auto px-4 relative z-20 flex flex-col justify-center h-full">
+            <div className="container mx-auto px-4 relative z-20 flex flex-col justify-end h-full md:pb-24 pb-16">
               <div className="max-w-[706px] space-y-4">
-                <h2 className="md:text-[86.41px] text-4xl leading-none font-bold tracking-[-0.6] text-white font-playfair mb-8 max-w-[679px]">
+                <h2 className="md:text-[86.41px] text-4xl leading-none font-bold tracking-[-0.6] text-white font-playfair mb-8 max-w-[679px] md:h-[175px] h-[72px]">
                   <ReactTyped
                     strings={[slide.title]}
                     typeSpeed={100}

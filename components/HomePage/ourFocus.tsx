@@ -8,7 +8,7 @@ const OurFocus = () => {
                 <div className='md:w-fit w-full'>
                     <Image src="/images/our-focus.png" alt="our-focus" width={543} height={509} />
                 </div>
-                <div className='md:w-[55%] w-full grid md:grid-cols-2 grid-cols-1 gap-5'>
+                <div className='md:w-[55%] w-full grid md:grid-cols-2 grid-cols-1 gap-12'>
                     <div>
                         <Image src="/images/independance.png" alt="independance" width={62} height={62} />
                         <h3 className='md:text-[28px] md:leading-none text-2xl font-semibold text-black font-playfair tracking-[-0.6] mb-3.5 mt-5'>

@@ -4,22 +4,22 @@ import { AiOutlineSearch } from 'react-icons/ai'
 const SearchForm = () => {
     return (
         <div className=''>
-            <form className='flex md:flex-row flex-col items-center md:gap-9 gap-4 bg-white rounded-[50px] md:pl-10 pl-2 pr-2 py-2.5'>
-                <div className='flex md:flex-row flex-col items-center md:divide-x md:divide-y-0 divide-y divide-black/20 md:w-2/3 w-full'>
+            <form className='flex md:flex-row flex-col items-center md:gap-9 gap-4 bg-white md:rounded-[50px] rounded-3xl md:pl-5 pl-2 pr-2 py-2.5'>
+                <div className='flex md:flex-row flex-row items-center md:divide-x md:divide-y-0 divide-x divide-black/20 md:w-2/3 w-full'>
                     <div>
                         <label htmlFor='postcode' className='hidden'>
-                            Enter your postcode
+                            Enter postcode
                         </label>
-                        <input placeholder='Enter your postcode'
+                        <input placeholder='Enter postcode'
                             name='postcode'
                             id='postcode'
-                            className='text-lg font-medium font-poppins text-black/80 placeholder:text-black/80 w-full bg-transparent border-none focus:border-b focus:border-primary focus:outline-0 px-3.5 py-3.5' />
+                            className='text-base font-medium font-poppins text-black/80 placeholder:text-black/80 w-full bg-transparent border-none focus:border-b focus:border-primary focus:outline-0 px-3.5 py-3.5 rounded-3xl' />
                     </div>
                     <div>
                         <label htmlFor='service' className='hidden'>
                             How can we help?
                         </label>
-                        <select className='text-lg font-medium font-poppins text-black/80 placeholder:text-black/80 w-full bg-transparent border-none focus:border-b focus:border-primary focus:outline-0 px-3.5 py-3.5'>
+                        <select className='text-base font-medium font-poppins text-black/80 placeholder:text-black/80 w-full bg-transparent border-none focus:border-b focus:border-primary focus:outline-0 px-3.5 py-3.5 rounded-3xl'>
                             <option defaultValue={`canwehelp`}>How can we help?</option>
                             <option value="water">Water Care Services</option>
                             <option value="Compass">Compass Care Services</option>
