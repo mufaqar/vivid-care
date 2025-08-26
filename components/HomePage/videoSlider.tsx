@@ -85,13 +85,13 @@ export default function VideoSlider() {
                     />
                   </h2>
                 </AnimateOnScroll>
-                 <AnimateOnScroll type="fade-up" delay={getDelay()}>
-                <p className="md:text-[21.05px] text-lg font-normal text-white font-poppins mb-9 max-w-[540px]">
-                  {slide.description}
-                </p>
+                <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                  <p className="md:text-[21.05px] text-lg font-normal text-white font-poppins mb-9 max-w-[540px]">
+                    {slide.description}
+                  </p>
                 </AnimateOnScroll>
-                 <AnimateOnScroll type="fade-up" delay={getDelay()}>
-                <SearchForm />
+                <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                  <SearchForm />
                 </AnimateOnScroll>
               </div>
 
@@ -121,7 +121,7 @@ export default function VideoSlider() {
         ))}
       </div>
       <div className="bg-secondary border-[10px] border-white md:w-[135px] md:h-[135px] w-[120px] h-[120px] rounded-full absolute -bottom-16 md:right-24 right-10 z-30 flex items-center justify-center group">
-        <CircleRotating bgColor="#ed1b7b" border="10px" />
+        <CircleRotating bgColor="#ed1b7b" size="h-[calc(100%+20px)] w-[calc(100%+20px)]" />
         <Image src="/images/handicon.png" alt="handicon" width={83} height={93} className="relative z-20" />
       </div>
     </div>

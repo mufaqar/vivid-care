@@ -20,7 +20,6 @@ const GetInTouch = () => {
                 </AnimateOnScroll>
                 <div>
                     <ul className='flex items-center divide-x divide-secondary'>
-
                         <AnimateOnScroll type="fade-up" delay={getDelay()}>
                             <li className='flex flex-col justify-center items-center group md:px-10 px-8 relative'>
                                 <span className='transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100 text-xs font-semibold text-black text-center font-poppins inline-flex justify-center items-center w-fit rounded-lg bg-white shadow-[0_4px_6px_-2px_rgba(16,24,40,0.0784)] py-2 px-3 absolute top-[-50] 
@@ -28,7 +27,7 @@ const GetInTouch = () => {
                                     Call Us
                                 </span>
                                 <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-                                    <CircleRotating bgColor="#fef1f7" border="5px" />
+                                    <CircleRotating bgColor="#fef1f7" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
                                     <GrPhone className='relative z-10' />
                                 </Link>
                             </li>
@@ -40,7 +39,7 @@ const GetInTouch = () => {
                                     Mail Us
                                 </span>
                                 <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-                                    <CircleRotating bgColor="#fef1f7" border="5px" />
+                                    <CircleRotating bgColor="#fef1f7" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
                                     <FaRegEnvelope className='relative z-10' />
                                 </Link>
                             </li>
@@ -52,7 +51,7 @@ const GetInTouch = () => {
                                     WhatsApp Us
                                 </span>
                                 <Link href="#" className='md:text-3xl text-xl flex md:w-[50px] md:h-[50px] w-[32px] h-[32px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-                                    <CircleRotating bgColor="#fef1f7" border="5px" />
+                                    <CircleRotating bgColor="#fef1f7" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
                                     <FaWhatsapp className='relative z-10' />
                                 </Link>
                             </li>
