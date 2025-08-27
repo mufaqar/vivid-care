@@ -1,9 +1,5 @@
 export const navMenu = [
-    {
-        name: "Home",
-        link: "/",
-    },
-    {
+       {
         name: "Supported Living",
         link: "#",
     },

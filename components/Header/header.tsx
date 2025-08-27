@@ -28,31 +28,31 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full px-5 z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'py-2' : 'py-[18px]'
+      className={`fixed w-full px-5 z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'py-2 bg-primary' : 'py-[18px]'
         }`}
     >
       <div className='mx-auto md:px-[2%] px-4 flex md:flex-row flex-row gap-6 items-center justify-between'>
         {/* Logo */}
         <div>
-          <Link href="/" className='inline-flex w-fit'>
-            <Image src="/images/white_logo.png" alt='logo' width={230} height={55} className='hidden' />
-            <Image src="/images/logo.png" alt='logo' width={230} height={55} className='block' />
+          <Link href="/" className='inline-flex w-fit group'>
+            <Image src="/images/white_logo.png" alt='logo' width={230} height={55} className='transition-all duration-500 ease-in-out group-hover:hidden block' />
+            <Image src="/images/logo.png" alt='logo' width={230} height={55} className='transition-all duration-500 ease-in-out group-hover:block hidden' />
           </Link>
         </div>
 
         {/* Nav */}
         <nav className='flex items-center gap-2.5'>
           <ul
-            className={`bg-white shadow py-[18px] px-10 md:rounded-[107.06px] rounded-b-4xl md:flex md:flex-row flex-col gap-5 md:static justify-center ${mblMenu
-                ? 'absolute left-0 right-0 top-0 md:h-auto h-[350px] flex'
-                : 'hidden'
+            className={`${isScrolled ? 'bg-transparent' : 'bg-white shadow'}   py-[18px] px-10 md:rounded-[107.06px] rounded-b-4xl md:flex md:flex-row flex-col gap-5 md:static justify-center ${mblMenu
+              ? 'absolute left-0 right-0 top-0 md:h-auto h-[350px] flex bg-white'
+              : 'hidden'
               }`}
           >
             {navMenu?.map((item: any, idx: number) => (
               <li key={idx}>
                 <Link
                   href={item?.link}
-                  className='text-base text-black font-normal hover:text-primary font-poppins'
+                  className={`${isScrolled ? 'md:text-white hover:text-secondary' : 'text-black hover:text-primary'} text-base  font-normal font-poppins`}
                 >
                   {item?.name}
                 </Link>
