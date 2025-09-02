@@ -35,8 +35,7 @@ const Header = () => {
         {/* Logo */}
         <div>
           <Link href="/" className='inline-flex w-fit group'>
-            <Image src="/images/white_logo.png" alt='logo' width={230} height={55} className='transition-all duration-500 ease-in-out group-hover:hidden block' />
-            <Image src="/images/logo.png" alt='logo' width={230} height={55} className='transition-all duration-500 ease-in-out group-hover:block hidden' />
+            <Image src="/images/white_logo.png" alt='logo' width={230} height={55} className='inline-block' />
           </Link>
         </div>
 
