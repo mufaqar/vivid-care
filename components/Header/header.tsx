@@ -8,10 +8,10 @@ import { FaPhone } from 'react-icons/fa6'
 import { IoClose } from 'react-icons/io5'
 import CircleRotating from '../circleRotating'
 
-
 const Header = () => {
   const [mblMenu, setMblMenu] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isLogoHovered, setIsLogoHovered] = useState(false)
 
   // Listen for scroll to toggle bg
   useEffect(() => {
@@ -34,8 +34,19 @@ const Header = () => {
       <div className='mx-auto md:px-[2%] px-4 flex md:flex-row flex-row gap-6 items-center justify-between'>
         {/* Logo */}
         <div>
-          <Link href="/" className='inline-flex w-fit group'>
-            <Image src="/images/white_logo.png" alt='logo' width={230} height={55} className='inline-block' />
+          <Link 
+            href="/" 
+            className='inline-flex w-fit group'
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
+          >
+            <Image 
+              src={isLogoHovered ? "/images/logo.png" : "/images/white_logo.png"} 
+              alt='logo' 
+              width={230} 
+              height={55} 
+              className='inline-block transition-opacity duration-300' 
+            />
           </Link>
         </div>
 
