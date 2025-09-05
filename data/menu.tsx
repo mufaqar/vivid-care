@@ -1,14 +1,14 @@
 export const navMenu = [
        {
         name: "Supported Living",
-        link: "/domcare",
+        link: "/supportedliving",
     },
     {
         name: "Domiciliary Care",
-        link: "#",
+        link: "/domcare",
     },
     {
         name: "Careers",
-        link: "/supportedliving",
+        link: "#",
     },
 ]
