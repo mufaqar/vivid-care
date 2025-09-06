@@ -9,6 +9,6 @@ export const navMenu = [
     },
     {
         name: "Careers",
-        link: "#",
+        link: "#/careers",
     },
 ]

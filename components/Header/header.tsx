@@ -63,7 +63,6 @@ const Header = () => {
             />
           </Link>
         </div>
-
         {/* Nav */}
         <nav className="flex items-center gap-2.5">
           <ul
