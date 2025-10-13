@@ -20,7 +20,7 @@ export const services: Service[] = [
   },
   {
     id: 2,
-    title: "Water House",
+    title: "Compass Care",
     category: "Compass Care Services",
     description: "Compassionate and reliable care for your loved ones.",
     image: "/images/service2.png",
@@ -29,7 +29,7 @@ export const services: Service[] = [
   },
   {
     id: 3,
-    title: "Water House",
+    title: "Bridgeway Care",
     category: "Bridgeway Care Services",
     description: "Providing comfort, accessibility, and a sense of community.",
     image: "/images/service3.png",
@@ -38,7 +38,7 @@ export const services: Service[] = [
   },
   {
     id: 4,
-    title: "Water House",
+    title: "Norman Care",
     category: "Norman Care Services",
     description: "Supporting families with quality home care assistance.",
     image: "/images/service4.png",
@@ -47,7 +47,7 @@ export const services: Service[] = [
   },
   {
     id: 5,
-    title: "Water House",
+    title: "Princess Care",
     category: "Princess Care Services",
     description: "Trusted care solutions tailored to your needs.",
     image: "/images/service5.png",
@@ -56,7 +56,7 @@ export const services: Service[] = [
   },
   {
     id: 6,
-    title: "Water House",
+    title: "Limekin Care",
     category: "Limekin Care Services",
     description: "Dedicated to enhancing quality of life with expert care.",
     image: "/images/service6.png",
