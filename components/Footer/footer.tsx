@@ -12,7 +12,7 @@ import AnimateOnScroll, { useAutoDelay } from '../animation'
 const Footer = () => {
   const getDelay = useAutoDelay();
   return (
-    <footer className='md:pt-[130px] pt-16 bg-footer'>
+    <footer className='md:pt-[130px] pt-16 bg-footer overflow-hidden'>
       <div className='container mx-auto md:px-0 px-4 flex md:flex-row flex-col md:gap-8 gap-5 justify-between'>
         <div className='bg-[#1E2461] py-7 px-5 rounded-lg md:w-[19%] w-full'>
           <AnimateOnScroll type="fade-up" delay={getDelay()}>

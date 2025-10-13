@@ -7,7 +7,9 @@
   --foreground: #171717;
   --primary: #129ace;
   --secondary: #ed1b7b;
-  --footer:#151A4D;
+  --footer: #151A4D;
+  --title: #072335;
+  --desc: #545A64;
 }
 
 @theme inline {
@@ -16,6 +18,8 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-footer: var(--footer);
+  --color-title: var(--title);
+  --color-desc: var(--desc);
   --font-playfair: var(--font-playfair);
   --font-poppins: var(--font-poppins);
   --animate-spin-slow: spin 3s linear infinite;
