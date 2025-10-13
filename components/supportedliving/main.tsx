@@ -7,8 +7,9 @@ import { MdPhoneInTalk } from 'react-icons/md'
 
 function Main() {
     return (
-        <section className="min-h-screen md:py-20 py-16 bg-gradient-to-r from-background to-transparent flex items-center justify-center">
-            <div className="container mx-auto md:px-0 px-4 flex md:flex-row flex-col gap-10 items-center justify-between mt-20">
+        <section className="min-h-screen md:py-20 py-16 flex items-center justify-center bg-right bg-contain bg-no-repeat relative" style={{ backgroundImage: "url('/images/support-main.png')" }}>
+            <div className='bg-gradient-to-r from-background to-transparent absolute h-full w-full top-0'></div>
+            <div className="container mx-auto md:px-0 px-4 flex md:flex-row flex-col gap-10 items-center justify-between mt-20 relative z-10">
                 {/* Left Content */}
                 <div className='max-w-[653px]'>
                     <h1 className="text-4xl md:text-6xl font-semibold text-title mb-6 font-playfair">

@@ -80,8 +80,8 @@ const AboutValue = () => {
                 {/* RIGHT SECTION */}
                 <div className="md:w-1/2 w-full">
                     <Image
-                        src="/images/our-focus.png"
-                        alt="our-focus"
+                        src="/images/support.png"
+                        alt="support"
                         width={655}
                         height={608}
                         className="w-full h-auto object-cover"
