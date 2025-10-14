@@ -49,7 +49,7 @@ const AboutValue = () => {
                         {items.map((item, index) => (
                             <div
                                 key={item.id}
-                                className="relative bg-white rounded-[10px] shadow-[0px_10px_10px_10px_rgba(1,72,112,0.1)] md:px-9 px-5 py-4 transition-all duration-300"
+                                className="relative bg-white rounded-[10px] shadow-[0px_10px_10px_10px_rgba(1,72,112,0.1)] md:px-9 px-5 py-4 transition-all duration-300 ease-in-out"
                             >
                                 <div className="absolute left-0 top-1/2 -translate-y-1/2 h-[85%] w-[6px] bg-primary rounded-r-lg rounded-br-lg"></div>
 

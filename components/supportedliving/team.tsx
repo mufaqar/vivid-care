@@ -35,13 +35,13 @@ const Team = () => {
                 </div>
                 <div className='md:w-1/2 w-full flex items-center justify-end gap-5'>
                     <button
-                        onClick={() => sliderRef.current && sliderRef.current.slickPrev()}
+                        onClick={() => sliderRef.current?.slickPrev()}
                         className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
                     >
                         <FaArrowLeftLong />
                     </button>
                     <button
-                        onClick={() => sliderRef.current && sliderRef.current.slickNext()}
+                        onClick={() => sliderRef.current?.slickNext()}
                         className="w-10 h-10 flex items-center justify-center rounded-full bg-pink-500 text-white hover:bg-pink-600 transition"
                     >
                         <FaArrowRightLong />
