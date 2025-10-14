@@ -24,3 +24,23 @@
   --font-poppins: var(--font-poppins);
   --animate-spin-slow: spin 3s linear infinite;
 }
+
+.tabs .slick-next:before, .tabs .slick-prev:before{
+  display: none;
+}
+.tabs button{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabs button::before{
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: var(--primary);
+  rotate: 45deg;
+  position: absolute;
+  bottom: -7px;
+}
