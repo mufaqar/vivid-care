@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import Link from "next/link";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import Image from "next/image";
+import ModalStepper from "./modalStepper";
 
 interface TabItem {
   id: number;
@@ -14,6 +15,7 @@ interface TabItem {
 
 const TabsSlider = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [open, setOpen] = useState(true);
 
   const tabs: TabItem[] = [
     {
@@ -121,39 +123,42 @@ const TabsSlider = () => {
   };
 
   return (
-    <section className="md:py-20 py-16 bg-white tabs">
-      <div className="container mx-auto px-4">
-        <Link href="#" className='bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary mx-auto md:mb-20 mb-10'>
-          Find Carers  <FaArrowRightLong />
-        </Link>
-        {/* Slider Tabs */}
-        <div>
-          <Slider {...settings}>
-            {tabs.map((tab) => (
-              <div key={tab.id} className="pb-5 px-2 w-fit">
-                <button
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`w-full border rounded-full py-4 text-xs md:text-base font-semibold transition-all duration-300  ${activeTab === tab.id
-                    ? "bg-primary text-white before:flex"
-                    : "bg-white text-desc border-gray-300 hover:bg-primary before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 hover:text-white"
-                    }`}
-                >
-                  {tab.title}
-                </button>
-              </div>
-            ))}
-          </Slider>
-        </div>
+    <>
+      <section className="md:py-20 py-16 bg-white ">
+        <div className="container mx-auto px-4">
+          <button onClick={() => setOpen(true)} className='bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary mx-auto md:mb-20 mb-10'>
+            Find Carers  <FaArrowRightLong />
+          </button>
+          {/* Slider Tabs */}
+          <div className="tabs">
+            <Slider {...settings}>
+              {tabs.map((tab) => (
+                <div key={tab.id} className="pb-5 px-2 w-fit">
+                  <button
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`w-full border rounded-full py-4 text-xs md:text-base font-semibold transition-all duration-300  ${activeTab === tab.id
+                      ? "bg-primary text-white before:flex"
+                      : "bg-white text-desc border-gray-300 hover:bg-primary before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 hover:text-white"
+                      }`}
+                  >
+                    {tab.title}
+                  </button>
+                </div>
+              ))}
+            </Slider>
+          </div>
 
-        {/* Tab Content */}
-        <div className="mt-10">
-          <h2 className="md:text-5xl text-3xl font-semibold text-title mb-4">
-            We Offer Efficient {tabs[activeTab].title} Services
-          </h2>
-          <div className="text-lg leading-relaxed">{tabs[activeTab].content}</div>
+          {/* Tab Content */}
+          <div className="mt-10">
+            <h2 className="md:text-5xl text-3xl font-semibold text-title mb-4">
+              We Offer Efficient {tabs[activeTab].title} Services
+            </h2>
+            <div className="text-lg leading-relaxed">{tabs[activeTab].content}</div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <ModalStepper open={open} onClose={() => setOpen(false)} />
+    </>
   );
 };
 
