@@ -6,7 +6,7 @@ import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import Slider from 'react-slick'
 
 const Team = () => {
-    const sliderRef = useRef(null);
+    const sliderRef = useRef<Slider | null>(null);
     const settings = {
         dots: false,
         infinite: true,
