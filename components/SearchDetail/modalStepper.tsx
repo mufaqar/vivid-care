@@ -138,10 +138,10 @@ export default function ModalStepper({
               and phone number.
             </p>
             <Link
-              href="#"
+              href="/"
               className="bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-full mt-10"
             >
-              Request a Call Back <FaArrowRightLong />
+              Back To Home <FaArrowRightLong />
             </Link>
           </div>
         );
@@ -197,8 +197,8 @@ export default function ModalStepper({
     step <= 4
       ? Boolean(answers[step])
       : step === 6
-      ? formData.name && formData.email && formData.phone
-      : true;
+        ? formData.name && formData.email && formData.phone
+        : true;
 
   return (
     <div
@@ -232,11 +232,10 @@ export default function ModalStepper({
                 <div key={n} className="flex items-center">
                   <div className="flex items-center md:gap-3 gap-1.5">
                     <div
-                      className={`md:text-2xl text-lg font-medium flex md:h-[64px] h-[36px] md:w-[64px] w-[36px] items-center justify-center rounded-full border ${
-                        answers[n]
+                      className={`md:text-2xl text-lg font-medium flex md:h-[64px] h-[36px] md:w-[64px] w-[36px] items-center justify-center rounded-full border ${answers[n]
                           ? "bg-[#4DCEF7] border-[#4DCEF7] text-white"
                           : "bg-white border-[#D8E1FC] text-desc"
-                      }`}
+                        }`}
                     >
                       {String(n).padStart(2, "0")}
                     </div>
@@ -244,9 +243,8 @@ export default function ModalStepper({
                     {n < 4 && (
                       <div
                         aria-hidden
-                        className={`border-t-2 border-dashed w-[36px] md:w-[84px] ${
-                          step > n ? "border-[#4DCEF7]" : "border-[#D8E1FC]"
-                        }`}
+                        className={`border-t-2 border-dashed w-[36px] md:w-[84px] ${step > n ? "border-[#4DCEF7]" : "border-[#D8E1FC]"
+                          }`}
                       />
                     )}
                   </div>
@@ -274,18 +272,16 @@ export default function ModalStepper({
                       radiosRef.current[i] = el;
                     }} // ✅ fixed
                     onClick={() => handleSelect(o.id)}
-                    className={`relative flex w-full items-center gap-4 rounded-[8.2px] border p-4 text-left transition-all duration-300 ${
-                      active
+                    className={`relative flex w-full items-center gap-4 rounded-[8.2px] border p-4 text-left transition-all duration-300 ${active
                         ? "border-[#4DCEF7] bg-[#E7F9FF]"
                         : "border-[#D8E1FC] bg-white"
-                    }`}
+                      }`}
                   >
                     <span
-                      className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${
-                        active
+                      className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${active
                           ? "bg-[#4DCEF7] border-[#4DCEF7]"
                           : "bg-white border-desc"
-                      }`}
+                        }`}
                     >
                       {active && (
                         <svg
@@ -355,9 +351,8 @@ export default function ModalStepper({
               <button
                 onClick={goNext}
                 disabled={!canContinue}
-                className={`bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 inline-flex items-center gap-2 justify-center rounded-[50px] w-full ${
-                  !canContinue && "opacity-40 cursor-not-allowed"
-                }`}
+                className={`bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 inline-flex items-center gap-2 justify-center rounded-[50px] w-full ${!canContinue && "opacity-40 cursor-not-allowed"
+                  }`}
               >
                 Submit Request
                 <FaArrowRightLong />
@@ -372,9 +367,8 @@ export default function ModalStepper({
             <button
               onClick={goBack}
               disabled={step === 1}
-              className={`bg-transparent md:text-lg text-sm font-semibold font-poppins text-title md:py-5 py-3 md:px-7 px-5 inline-flex items-center gap-2 justify-center rounded-[50px] max-w-[184px] w-full border border-[#D8E1FC] ${
-                step === 1 && "opacity-40 cursor-not-allowed"
-              }`}
+              className={`bg-transparent md:text-lg text-sm font-semibold font-poppins text-title md:py-5 py-3 md:px-7 px-5 inline-flex items-center gap-2 justify-center rounded-[50px] max-w-[184px] w-full border border-[#D8E1FC] ${step === 1 && "opacity-40 cursor-not-allowed"
+                }`}
             >
               Back
             </button>
@@ -382,9 +376,8 @@ export default function ModalStepper({
             <button
               onClick={goNext}
               disabled={!canContinue}
-              className={`bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 inline-flex items-center gap-2 justify-center rounded-[50px] max-w-[184px] w-full ${
-                !canContinue && "opacity-40 cursor-not-allowed"
-              }`}
+              className={`bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 inline-flex items-center gap-2 justify-center rounded-[50px] max-w-[184px] w-full ${!canContinue && "opacity-40 cursor-not-allowed"
+                }`}
             >
               Continue <FaArrowRightLong />
             </button>

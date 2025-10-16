@@ -15,7 +15,7 @@ interface TabItem {
 
 const TabsSlider = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const tabs: TabItem[] = [
     {
