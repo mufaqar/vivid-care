@@ -1,14 +1,20 @@
-import Banner from '@/components/SearchPage/banner'
-import ServiceAbout from '@/components/SearchPage/serviceAbout'
-import TabsSlider from '@/components/SearchPage/tabsSlider'
-import React from 'react'
+import Partners from "@/components/HomePage/partners";
+import AboutValue from "@/components/Search/aboutValue";
+import Main from "@/components/Search/main";
+import PopulationMap from "@/components/Search/populationMap";
+import Team from "@/components/Search/team";
+import Testimonials from "@/components/Search/testimonials";
 
-export default function SearchPage() {
-  return (
-    <main>
-      <Banner />
-      <TabsSlider />
-      <ServiceAbout />
-    </main>
-  )
+
+export default function Home() {
+    return (
+        <main>
+            <Main />
+            <Partners />
+            <PopulationMap />
+            <Testimonials />
+            <AboutValue />
+            <Team />
+        </main>
+    );
 }
