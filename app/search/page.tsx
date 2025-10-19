@@ -11,7 +11,7 @@ export default function Home() {
         <main>
             <Main />
             <Partners />
-            <PopulationMap />
+            <PopulationMap  />
             <Testimonials />
             <AboutValue />
             <Team />

@@ -7,7 +7,7 @@ export default function SearchPage() {
   return (
     <main>
       <Banner />
-      <TabsSlider />
+      {/* <TabsSlider /> */}
       <ServiceAbout />
     </main>
   )
