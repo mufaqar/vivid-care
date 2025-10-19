@@ -4,6 +4,8 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import { Playfair_Display, Poppins } from "next/font/google";
 
+import 'leaflet/dist/leaflet.css';
+
 // Load Playfair with CSS variable
 const playfair = Playfair_Display({
   subsets: ["latin"],

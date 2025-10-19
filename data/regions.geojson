@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "banks-region", "name": "Banks" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-2.92, 53.68],
+            [-2.86, 53.68],
+            [-2.86, 53.64],
+            [-2.92, 53.64],
+            [-2.92, 53.68]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "bretherton-region", "name": "Bretherton" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-2.82, 53.65],
+            [-2.77, 53.65],
+            [-2.77, 53.62],
+            [-2.82, 53.62],
+            [-2.82, 53.65]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "chorley-region", "name": "Chorley" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-2.7, 53.68],
+            [-2.6, 53.68],
+            [-2.6, 53.63],
+            [-2.7, 53.63],
+            [-2.7, 53.68]
+          ]
+        ]
+      }
+    }
+  ]
+}
