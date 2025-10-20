@@ -61,21 +61,21 @@ const sampleGeoJSON = {
 // ✅ sample cities list with zipcodes
 const sampleCities = [
   {
-    id: "manchester",
-    name: "Manchester",
+    id: "Service One",
+    name: "Service One",
     image: "/images/service1.png",
     regionId: "manchester",
     zipcodes: ["M1", "M2", "M3", "M4"],
   },
   {
-    id: "warrington",
+    id: "Service Two",
     name: "Warrington",
     image: "/images/service2.png",
     regionId: "warrington",
     zipcodes: ["WA1", "WA2", "WA3"],
   },
   {
-    id: "warwickshire",
+    id: "Service Three",
     name: "Warwickshire",
     image: "/images/service3.png",
     regionId: "warwickshire",
@@ -130,7 +130,8 @@ export default function InteractiveMapExample() {
     mapRef.current = map;
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
+      attribution:
+        '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a>',
     }).addTo(map);
 
     const onEachFeature = (feature: any, layer: any) => {
@@ -216,7 +217,9 @@ export default function InteractiveMapExample() {
               onMouseLeave={handleLeave}
               onClick={() => handleClick(city.regionId)}
               className={`flex items-center gap-3 w-full text-left rounded-lg border border-gray-200 p-3 transition ${
-                highlighted === city.regionId ? "bg-blue-50 border-blue-300" : "hover:bg-gray-50"
+                highlighted === city.regionId
+                  ? "bg-blue-50 border-blue-300"
+                  : "hover:bg-gray-50"
               }`}
             >
               <div className="w-16 h-12 rounded-md overflow-hidden bg-gray-100">
