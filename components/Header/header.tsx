@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-500 ease-in-out ${
+      className={`fixed w-full z-[999] transition-all duration-500 ease-in-out ${
         isScrolled ? 'py-2 bg-primary' : 'py-[18px]'
       } ${mblMenu && 'bg-primary'}`}
     >

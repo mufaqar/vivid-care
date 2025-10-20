@@ -205,7 +205,7 @@ export default function InteractiveMapExample() {
     const L = LRef.current;
     const map = L.map(mapRef.current, {
       center: [53.4, -2.3],
-      zoom: 8,
+      zoom: 6,
       zoomControl: true,
     });
     mapRef.current = map;
@@ -223,7 +223,7 @@ export default function InteractiveMapExample() {
         mouseout: () => applyHighlight(null),
         click: () => {
           const bounds = layer.getBounds?.();
-          if (bounds) map.fitBounds(bounds, { padding: [20, 20] });
+          if (bounds) map.fitBounds(bounds, { padding: [20, 20], maxzoom: 3 });
         },
       });
     };
@@ -256,11 +256,18 @@ export default function InteractiveMapExample() {
 
   const handleHover = (regionId: string) => applyHighlight(regionId);
   const handleLeave = () => applyHighlight(null);
-  const handleClick = (regionId: string) => {
-    const layer = layerIndex.current.get(regionId);
-    const b = layer?.getBounds?.();
-    b && mapRef.current && mapRef.current.fitBounds(b, { padding: [20, 20] });
-  };
+ const handleClick = (regionId: string) => {
+  const map = mapRef.current;
+  const layer = layerIndex.current.get(regionId);
+  const bounds = layer?.getBounds?.();
+
+  if (map && bounds) {
+    map.flyToBounds(bounds, { padding: [20, 20] });
+    setTimeout(() => {
+      map.setZoom(map.getZoom() - 1);
+    }, 700);
+  }
+};
 
   // ✅ Automatically highlight from postcode param
   useEffect(() => {
@@ -303,16 +310,16 @@ export default function InteractiveMapExample() {
               onMouseEnter={() => handleHover(city.regionId)}
               onMouseLeave={handleLeave}
               onClick={() => handleClick(city.regionId)}
-              className={`flex md:flex-row flex-row items-center gap-3 bg-white py-2 px-5 rounded-[10px] border shadow-[10px_10px_60px_0_rgba(0,0,0,0.04)]
+              className={`flex md:flex-row flex-row items-center gap-3 bg-white py-2 px-5 rounded-[10px] w-full border shadow-[10px_10px_60px_0_rgba(0,0,0,0.04)]
                ${highlighted === city.regionId
                   ? "border-primary"
                   : "border-[#ECF1FF]"
                 }`}>
-              <div className="w-1/4">
-                <Image src={city?.image} alt={city?.image} width={128} height={112} className="w-full rounded-lg" />
+              <div className="w-1/6">
+                <Image src={city?.image} alt={city?.image} width={90} height={60} className="w-full rounded-lg" />
               </div>
-              <div className="w-3/4">
-                <h3 className="md:text-2xl text-xl font-semibold text-title text-left md:mb-3.5 mb-2">{city.name}</h3>
+              <div className="w-5/6">
+                <h3 className="md:text-2xl text-xl font-semibold text-title text-left mb-2">{city.name}</h3>
                 <p className="md:text-lg text-sm font-normal text-desc text-left">{city.content}</p>
               </div>
             </button>
