@@ -2,8 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
+import Image from "next/image";
 
-// ✅ sample GeoJSON for 3 UK towns (simplified rectangles)
+// ✅ Updated sample GeoJSON for 6 UK regions (simplified rectangular polygons)
 const sampleGeoJSON = {
   type: "FeatureCollection",
   features: [
@@ -55,33 +58,111 @@ const sampleGeoJSON = {
         ],
       },
     },
+    {
+      type: "Feature",
+      properties: { id: "birmingham", name: "Birmingham", value: 90 },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-1.98, 52.55],
+            [-1.75, 52.55],
+            [-1.75, 52.35],
+            [-1.98, 52.35],
+            [-1.98, 52.55],
+          ],
+        ],
+      },
+    },
+    {
+      type: "Feature",
+      properties: { id: "london", name: "London", value: 120 },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-0.3, 51.6],
+            [0.1, 51.6],
+            [0.1, 51.4],
+            [-0.3, 51.4],
+            [-0.3, 51.6],
+          ],
+        ],
+      },
+    },
+    {
+      type: "Feature",
+      properties: { id: "oxfordshire", name: "Oxfordshire", value: 70 },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [-1.4, 51.9],
+            [-1.0, 51.9],
+            [-1.0, 51.6],
+            [-1.4, 51.6],
+            [-1.4, 51.9],
+          ],
+        ],
+      },
+    },
   ],
 };
 
-// ✅ sample cities list with zipcodes
+
+
+// ✅ Updated sample cities list with zipcodes (matching above regions)
 const sampleCities = [
   {
-    id: "Service One",
-    name: "Service One",
+    id: "waterhouse",
+    name: "Water House",
+    content: "Home Care Services, Whatever Your Family Needs, We're Here To Help",
     image: "/images/service1.png",
     regionId: "manchester",
     zipcodes: ["M1", "M2", "M3", "M4"],
   },
   {
-    id: "Service Two",
-    name: "Warrington",
+    id: "salfordhouse",
+    name: "Salford House",
+    content: "Home Care Services, Whatever Your Family Needs, We're Here To Help",
     image: "/images/service2.png",
     regionId: "warrington",
     zipcodes: ["WA1", "WA2", "WA3"],
   },
   {
-    id: "Service Three",
-    name: "Warwickshire",
+    id: "bridgeway",
+    name: "Bridgeway",
+    content: "Home Care Services, Whatever Your Family Needs, We're Here To Help",
     image: "/images/service3.png",
     regionId: "warwickshire",
     zipcodes: ["CV31", "CV32", "CV33"],
   },
+  {
+    id: "princess",
+    name: "Princess",
+    content: "Reliable and friendly home care for families in Birmingham.",
+    image: "/images/service4.png",
+    regionId: "birmingham",
+    zipcodes: ["B1", "B2", "B3", "B4"],
+  },
+  {
+    id: "normanhouse",
+    name: "Norman House",
+    content: "Comprehensive care support across London and surrounding areas.",
+    image: "/images/service5.png",
+    regionId: "london",
+    zipcodes: ["E1", "E2", "E3", "E4"],
+  },
+  {
+    id: "limekinhouse",
+    name: "Limekin House",
+    content: "Personalised care services for Oxfordshire residents.",
+    image: "/images/service6.png",
+    regionId: "oxfordshire",
+    zipcodes: ["OX1", "OX2", "OX3", "OX4"],
+  },
 ];
+
 
 export default function InteractiveMapExample() {
   const mapRef = useRef<any>(null);
@@ -200,47 +281,45 @@ export default function InteractiveMapExample() {
 
   return (
     <section className="py-10">
-      <div className="container mx-auto grid md:grid-cols-2 grid-cols-1 gap-8 items-start">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row gap-10 mb-14">
         {/* Left: Cities List */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold mb-4">
-            We provide our premium homecare services to the following areas
+        <div className="md:w-1/2 w-full space-y-4">
+          <h2 className="md:text-5xl text-3xl font-semibold text-title ">
+            Delivering Quality Care in Your Area
           </h2>
-          <p className="text-gray-600 mb-4">
-            Postcode from URL: <strong>{postcode || "—"}</strong>
-          </p>
-
+        </div>
+        <div className="md:w-1/2 w-full flex flex-col md:items-end items-center justify-center">
+          <Link href="#" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit'>
+            Enquire Now <FaArrowRightLong />
+          </Link>
+        </div>
+      </div>
+      <div className="container mx-auto px-4 flex flex-col md:flex-row gap-10">
+        {/* Left: Cities List */}
+        <div className="md:w-1/2 w-full space-y-4">
           {sampleCities.map((city) => (
             <button
               key={city.id}
               onMouseEnter={() => handleHover(city.regionId)}
               onMouseLeave={handleLeave}
               onClick={() => handleClick(city.regionId)}
-              className={`flex items-center gap-3 w-full text-left rounded-lg border border-gray-200 p-3 transition ${
-                highlighted === city.regionId
-                  ? "bg-blue-50 border-blue-300"
-                  : "hover:bg-gray-50"
-              }`}
-            >
-              <div className="w-16 h-12 rounded-md overflow-hidden bg-gray-100">
-                <img
-                  src={city.image}
-                  alt={city.name}
-                  className="object-cover w-full h-full"
-                />
+              className={`flex md:flex-row flex-row items-center gap-3 bg-white py-2 px-5 rounded-[10px] border shadow-[10px_10px_60px_0_rgba(0,0,0,0.04)]
+               ${highlighted === city.regionId
+                  ? "border-primary"
+                  : "border-[#ECF1FF]"
+                }`}>
+              <div className="w-1/4">
+                <Image src={city?.image} alt={city?.image} width={128} height={112} className="w-full rounded-lg" />
               </div>
-              <div>
-                <h3 className="text-lg font-semibold">{city.name}</h3>
-                <p className="text-sm text-gray-500">
-                  Hover, tap, or use postcode to highlight
-                </p>
+              <div className="w-3/4">
+                <h3 className="md:text-2xl text-xl font-semibold text-title text-left md:mb-3.5 mb-2">{city.name}</h3>
+                <p className="md:text-lg text-sm font-normal text-desc text-left">{city.content}</p>
               </div>
             </button>
           ))}
         </div>
-
         {/* Right: Map */}
-        <div className="w-full h-[500px] rounded-xl overflow-hidden border border-gray-200">
+        <div className="md:w-1/2 w-full rounded-[20px] overflow-hidden">
           <div ref={mapRef} className="w-full h-full" />
         </div>
       </div>
