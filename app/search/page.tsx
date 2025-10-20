@@ -1,10 +1,10 @@
 import Partners from "@/components/HomePage/partners";
 import AboutValue from "@/components/Search/aboutValue";
 import Main from "@/components/Search/main";
-import PopulationMap from "@/components/Search/populationMap";
 import InteractiveChoropleth from "@/components/Search/InteractiveChoropleth";
 import Team from "@/components/Search/team";
 import Testimonials from "@/components/Search/testimonials";
+import { Suspense } from "react";
 
 
 export default function Home() {
@@ -12,8 +12,9 @@ export default function Home() {
         <main>
             <Main />
             <Partners />
-            {/* <PopulationMap  /> */}
+            <Suspense fallback={<div>Loading search...</div>}>
             <InteractiveChoropleth />
+            </Suspense>
             <Testimonials />
             <AboutValue />
             <Team />
