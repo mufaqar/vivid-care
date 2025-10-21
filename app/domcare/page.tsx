@@ -9,23 +9,30 @@ import GetInTouch from "@/components/HomePage/getInTouch";
 import Partners from "@/components/HomePage/partners";
 import ServicesSection from "@/components/HomePage/servicesSection";
 import Testimonials from "@/components/HomePage/testimonials";
+import {
+  getHomeData,
+  getReviewsData,
+  getServicesData,
+} from "@/lib/api/getHomeData";
 
-export default function Home() {
-    return (
-        <main>
-            <Main />
-            <Partners />
-            <Domesticsection />
-            <CareForSection />
-            <GetInTouch />
-            <StatsSection />
-            <EmpowermentGrid />
-            <Testimonials />
-           <SupportSection />
-           <ServicesSection />
-           <BlogSection />
+export default async function DomeCare() {
+  const ServiceSection = await getHomeData();
+  const servcies = await getServicesData();
+  const Reviews = await getReviewsData();
 
-
-        </main>
-    );
+  return (
+    <main>
+      <Main />
+      <Partners />
+      <Domesticsection />
+      <CareForSection />
+      <GetInTouch />
+      <StatsSection />
+      <EmpowermentGrid />
+      <Testimonials data={Reviews} />
+      <SupportSection />
+      <ServicesSection content={ServiceSection} data={servcies} />
+      <BlogSection />
+    </main>
+  );
 }
