@@ -5,9 +5,15 @@ import Partners from "@/components/HomePage/partners";
 import ServicesSection from "@/components/HomePage/servicesSection";
 import Testimonials from "@/components/HomePage/testimonials";
 import VideoSlider from "@/components/HomePage/videoSlider";
+import { getFaqData, getServicesData } from "@/lib/api/getHomeData";
 
 
-export default function Home() {
+export default async function Home() {
+  const faqs = await getFaqData("home");
+  const servcies = await getServicesData();
+
+
+
   return (
     <main>
       <VideoSlider />
@@ -16,7 +22,7 @@ export default function Home() {
       <GetInTouch />
       <OurFocus />
       <Testimonials />
-      <Faqs />
+      <Faqs  data={faqs}/>
     </main>
   );
 }
