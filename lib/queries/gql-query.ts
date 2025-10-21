@@ -4,8 +4,24 @@ export const GET_SERVICES = gql`
   query GetServices {
     services {
       nodes {
+      id
+        slug
         title
+        excerpt
         content
+        featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
+        serviceInfo {
+        logo {
+          node {
+            mediaItemUrl
+          }
+        }
+      }
       }
     }
   }
@@ -87,4 +103,17 @@ export const GET_FAQ_BY_CAT = gql`
   }
 `;
 
+export const GET_REVIEWS = gql`
+  query GetReviews {
+    reviews {
+      nodes {
+        title
+        content
+        reviewInfo {
+        rating
+      }
+      }
+    }
+  }
+`;
 

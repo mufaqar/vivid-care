@@ -1,16 +1,12 @@
-// lib/api/getHomeData.ts
 import client from "@/lib/apollo-client";
 import { GET_HOME } from "../queries/GetFrontPage";
-import { Faq, GetFaqByCatQuery, GetHomeQuery, GetPostsQuery, Post, Service, ServicesTypes } from "../gql-types";
-import { GET_POSTS } from "../queries/getPosts";
-import { GET_FAQ_BY_CAT } from "../queries/getFaqsbyCat";
+import { Faq, GetFaqByCatQuery, GetHomeQuery, HomePageData, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
 import { AboutPageQuery, GET_ABOUT } from "../queries/GetAbout";
-import { GET_SERVICE_BY_SLUG } from "../queries/getServiceBySlug";
-import { GET_SERVICES } from "../queries/gql-query";
+import { GET_FAQ_BY_CAT, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
 
 
 export async function getHomeData() {
-  const { data } = await client.query<GetHomeQuery>({ query: GET_HOME });
+  const { data } = await client.query<HomePageData>({ query: GET_HOME });
   return data?.page?.homeInfo || {};
 }
 
@@ -108,6 +104,21 @@ export async function getServicesData(): Promise<Service[]> {
     return data?.services?.nodes ?? [];
   } catch (error) {
     console.error("Error fetching blog posts:", error);
+    return [];
+  }
+}
+
+
+export async function getReviewsData(): Promise<Review[]> {
+  try {
+    const { data } = await client.query<ReviewsData>({
+      query: GET_REVIEWS,
+      variables: { first: 6 }, // ✅ fetch only 6 reviews
+    });
+
+    return data?.reviews?.nodes ?? [];
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
     return [];
   }
 }

@@ -4,8 +4,8 @@ import Banner from "@/components/SearchDetail/banner";
 import ServiceAbout from "@/components/SearchDetail/serviceAbout";
 import TabsSlider from "@/components/SearchDetail/tabsSlider";
 import client from "@/lib/apollo-client";
-import { GET_SERVICE_BY_SLUG } from "@/lib/queries/getServiceBySlug";
 import { GetServiceBySlugQuery } from "@/lib/gql-types";
+import { GET_SERVICE_BY_SLUG } from "@/lib/queries/gql-query";
 
 interface ServicePageProps {
   params: {

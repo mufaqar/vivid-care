@@ -219,7 +219,7 @@ export interface RegisterUserResponse {
     };
   };
 }
-
+// Services Type Interface
 export interface FeaturedImageNode {
   sourceUrl: string;
   altText?: string;
@@ -229,6 +229,11 @@ export interface FeaturedImage {
   node: FeaturedImageNode;
 }
 
+export interface ServiceInfo {
+  logo?: {
+    node?: {mediaItemUrl : string;}
+  };
+}
 export interface Service {
   id: string;
   title: string;
@@ -236,6 +241,7 @@ export interface Service {
   content: string;
   date: string;
   featuredImage?: FeaturedImage | null;
+  serviceInfo?: ServiceInfo | null;
 }
 
 export interface GetServiceBySlugQuery {
@@ -245,5 +251,36 @@ export interface GetServiceBySlugQuery {
 export interface ServicesTypes {
   services: {
     nodes: Service[];
+  };
+}
+export interface ReviewInfo {
+  rating?: number; // optional in case it's missing
+}
+
+export interface Review {
+  title: string;
+  content: string;
+  reviewInfo?: ReviewInfo; // nested inside each review
+}
+
+export interface ReviewsData {
+  reviews: {
+    nodes: Review[];
+  };
+}
+//  Home Page Type Interface
+
+export interface ServiceSection {
+  title?: string;
+  content?: string;
+}
+
+export interface HomeInfo {
+  serviceSection?: ServiceSection;
+}
+
+export interface HomePageData {
+  page?: {
+    homeInfo?: HomeInfo;
   };
 }
