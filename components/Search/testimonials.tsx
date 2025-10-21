@@ -6,8 +6,13 @@ import { testimonials } from '@/data/testimonialsData'
 import AnimateOnScroll, { useAutoDelay } from '../animation'
 import Link from 'next/link';
 import { FaArrowRightLong } from 'react-icons/fa6';
+import { Review } from '@/lib/gql-types';
 
-const Testimonials = () => {
+
+interface Props {
+    data: Review[],
+}
+const Testimonials = ({data}:Props) => {
     const getDelay = useAutoDelay();
     return (
         <section className='bg-background md:py-20 py-16'>
@@ -29,9 +34,9 @@ const Testimonials = () => {
                 </div>
             </div>
             <div className='container mx-auto md:px-0 px-4 grid md:grid-cols-3 grid-cols-1 gap-5 mt-14'>
-                {testimonials.map((item, idx) => (
+                {data?.map((item, idx) => (
                     <AnimateOnScroll key={idx} type="fade-up" delay={getDelay()}>
-                        <ReviewBox data={item} />
+                        <ReviewBox testimonial={item} />
                     </AnimateOnScroll>
                 ))}
             </div>

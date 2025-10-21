@@ -28,9 +28,9 @@ export default async function Supportedliving() {
       <GetInTouch />
       <StatsSection />
       <EmpowermentGrid />
-     <Testimonials data={Reviews} />
+      <Testimonials data={Reviews} />
       <SupportSection />
-       <ServicesSection content={ServiceSection} data={servcies} />
+      <ServicesSection content={ServiceSection} data={servcies} />
       <BlogSection />
     </main>
   );
