@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import ModalStepper from "./modalStepper";
+import Link from "next/link";
 
 interface TabItem {
   title: string;
+  slug: string;
   content: React.ReactNode;
 }
 
@@ -80,7 +82,9 @@ const TabsSlider = ({ data, activeServiceTitle }: TabsSliderProps) => {
                         : "bg-white text-desc border-gray-300 hover:bg-primary before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 hover:text-white"
                       }`}
                   >
+                    <Link href={`/services/${tab?.slug}`}>
                     {tab.title}
+                    </Link>
                   </button>
                 </div>
               ))}

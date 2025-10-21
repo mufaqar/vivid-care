@@ -1,40 +1,55 @@
 import React from "react";
 import { notFound } from "next/navigation";
+import client from "@/lib/apollo-client";
+import { GET_SERVICE_BY_SLUG, GET_SERVICES } from "@/lib/queries/gql-query";
+import { GetServiceBySlugQuery, ServicesTypes, Service } from "@/lib/gql-types";
 import Banner from "@/components/SearchDetail/banner";
 import ServiceAbout from "@/components/SearchDetail/serviceAbout";
 import TabsSlider from "@/components/SearchDetail/tabsSlider";
-import client from "@/lib/apollo-client";
-import { GetServiceBySlugQuery } from "@/lib/gql-types";
-import { GET_SERVICE_BY_SLUG } from "@/lib/queries/gql-query";
 
 interface ServicePageProps {
-  params: {
-    slug: string;
-  };
+  params: { slug: string };
 }
 
 export default async function ServicePage({ params }: ServicePageProps) {
-  // ✅ Fetch from GraphQL
-  const { data } = await client.query<GetServiceBySlugQuery>({
+  // ✅ Fetch current service
+  const { data: singleServiceData } = await client.query<GetServiceBySlugQuery>({
     query: GET_SERVICE_BY_SLUG,
     variables: { slug: params.slug },
     fetchPolicy: "no-cache",
   });
 
-  const service = data?.service;
+  // ✅ Fetch all services
+  const { data: allServicesData } = await client.query<ServicesTypes>({
+    query: GET_SERVICES,
+    fetchPolicy: "no-cache",
+  });
 
-  // ✅ If no service found, show 404
+  const service = singleServiceData?.service;
+  const allServices = allServicesData?.services?.nodes || [];
+
+  // ✅ If service not found → 404
   if (!service) return notFound();
 
-  // ✅ Build tabs (or you can map related services here)
+  // ✅ Filter out current service & remove duplicates safely
+  const relatedServices = allServices.filter(
+    (s) => s?.slug?.toLowerCase() !== service?.slug?.toLowerCase()
+  );
+
+  const uniqueServices = Array.from(
+    new Map(relatedServices.map((s) => [s.slug, s])).values()
+  );
+
+  // ✅ Build Tabs Data
   const serviceTabs = [
     {
       title: service.title,
+      slug: service.slug,
       content: (
         <div className="space-y-4">
           <div
             className="text-lg text-desc"
-            dangerouslySetInnerHTML={{ __html: service.content }}
+            dangerouslySetInnerHTML={{ __html: service.content || "" }}
           />
           {service.featuredImage?.node?.sourceUrl && (
             <img
@@ -46,8 +61,28 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       ),
     },
+    ...uniqueServices.map((related) => ({
+      title: related.title,
+      slug: related.slug,
+      content: (
+        <div className="space-y-4">
+          <div
+            className="text-lg text-desc"
+            dangerouslySetInnerHTML={{ __html: related.content || "" }}
+          />
+          {related.featuredImage?.node?.sourceUrl && (
+            <img
+              src={related.featuredImage.node.sourceUrl}
+              alt={related.featuredImage.node.altText || related.title}
+              className="rounded-lg w-full h-[400px] object-cover"
+            />
+          )}
+        </div>
+      ),
+    })),
   ];
 
+  // ✅ Render Page
   return (
     <main>
       <Banner />
