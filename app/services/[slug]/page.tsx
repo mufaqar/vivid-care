@@ -6,6 +6,7 @@ import { GetServiceBySlugQuery, ServicesTypes, Service } from "@/lib/gql-types";
 import Banner from "@/components/SearchDetail/banner";
 import ServiceAbout from "@/components/SearchDetail/serviceAbout";
 import TabsSlider from "@/components/SearchDetail/tabsSlider";
+import Image from "next/image";
 
 interface ServicePageProps {
   params: { slug: string };
@@ -48,12 +49,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
       content: (
         <div className="space-y-4">
           <div
-            className="text-lg text-desc"
+            className="service_Content"
             dangerouslySetInnerHTML={{ __html: service.content || "" }}
           />
-          {service.featuredImage?.node?.sourceUrl && (
-            <img
-              src={service.featuredImage.node.sourceUrl}
+          {service.featuredImage?.node?.mediaItemUrl && (
+            <Image
+              width={1320}
+              height={702}
+              src={service.featuredImage.node.mediaItemUrl}
               alt={service.featuredImage.node.altText || service.title}
               className="rounded-lg w-full h-[400px] object-cover"
             />
@@ -67,12 +70,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
       content: (
         <div className="space-y-4">
           <div
-            className="text-lg text-desc"
+            className="service_Content"
             dangerouslySetInnerHTML={{ __html: related.content || "" }}
           />
-          {related.featuredImage?.node?.sourceUrl && (
-            <img
-              src={related.featuredImage.node.sourceUrl}
+          {related.featuredImage?.node?.mediaItemUrl && (
+            <Image
+              width={1320}
+              height={702}
+              src={related.featuredImage.node.mediaItemUrl}
               alt={related.featuredImage.node.altText || related.title}
               className="rounded-lg w-full h-[400px] object-cover"
             />
@@ -87,7 +92,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     <main>
       <Banner />
       <TabsSlider data={serviceTabs} activeServiceTitle={service.title} />
-      <ServiceAbout />
+      <ServiceAbout data={service} />
     </main>
   );
 }

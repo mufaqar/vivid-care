@@ -165,15 +165,7 @@ export interface HomeInfoCustomersInnovate {
   customerFeeback?: string;
 }
 
-export interface HomeInfo {
-  sliderInfo?: HomeInfoSection;
-  whyChooseUs?: HomeWhyChooseUs;
-  productRange?: HomeInfoProductRange;
-  trendingProducts?: HomeInfoSection;
-  advantages?: HomeInfoAdvanteges;
-  customersInnovate?: HomeInfoCustomersInnovate;
-  dreamOutdoor?: HomeInfoSection;
-}
+
 
 export interface GetHomeQuery {
   page?: {
@@ -230,17 +222,19 @@ export interface FeaturedImage {
 }
 
 export interface ServiceInfo {
-  logo?: {
-    node?: {mediaItemUrl : string;}
+  logo?: MediaItem;
+  serviceAbout?: {
+   serviceDetail?: string;
   };
 }
 export interface Service {
   id: string;
   title: string;
   slug: string;
+  excerpt: string;
   content: string;
   date: string;
-  featuredImage?: FeaturedImage | null;
+  featuredImage?: MediaItem | null;
   serviceInfo?: ServiceInfo | null;
 }
 
@@ -253,6 +247,7 @@ export interface ServicesTypes {
     nodes: Service[];
   };
 }
+// ReviewInfo Type Interface
 export interface ReviewInfo {
   rating?: number; // optional in case it's missing
 }
@@ -268,17 +263,52 @@ export interface ReviewsData {
     nodes: Review[];
   };
 }
-//  Home Page Type Interface
+// Home Page Type Interfaces
 
+export interface MediaItem {
+  node?: {
+    mediaItemUrl?: string;
+    altText?: string;
+  };
+}
+
+// ✅ Slider Section
+export interface SlideInfo {
+  title?: string;
+  description?: string;
+  video?: string;
+}
+
+export interface SliderInfo {
+  slideInfo?: SlideInfo[];
+}
+
+// ✅ Why Choose Section
+export interface WhyChooseOption {
+  title?: string;
+  description?: string;
+  icon?: MediaItem;
+}
+
+export interface WhyChoose {
+  image?: MediaItem;
+  options?: WhyChooseOption[];
+}
+
+// ✅ Service Section
 export interface ServiceSection {
   title?: string;
   content?: string;
 }
 
+// ✅ Root Home Info slider
 export interface HomeInfo {
+  sliderInfo?: SliderInfo;
   serviceSection?: ServiceSection;
+  whyChoose?: WhyChoose;
 }
 
+// ✅ Final Home Page Data
 export interface HomePageData {
   page?: {
     homeInfo?: HomeInfo;

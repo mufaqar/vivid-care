@@ -74,16 +74,15 @@ const TabsSlider = ({ data, activeServiceTitle }: TabsSliderProps) => {
             <Slider {...settings}>
               {data.map((tab, index) => (
                 <div key={index} className="pb-5 px-2 w-fit">
-
                   <button
                     onClick={() => setActiveTab(index)}
                     className={`w-full border rounded-full py-4 text-xs md:text-base font-semibold transition-all duration-300 ${activeTab === index
-                        ? "bg-primary text-white before:flex"
-                        : "bg-white text-desc border-gray-300 hover:bg-primary before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 hover:text-white"
+                      ? "bg-primary text-white before:flex"
+                      : "bg-white text-desc border-gray-300 hover:bg-primary before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 hover:text-white"
                       }`}
                   >
                     <Link href={`/services/${tab?.slug}`}>
-                    {tab.title}
+                      {tab.title}
                     </Link>
                   </button>
                 </div>
@@ -93,10 +92,6 @@ const TabsSlider = ({ data, activeServiceTitle }: TabsSliderProps) => {
 
           {/* Tab Content */}
           <div className="mt-10">
-            <h2 className="md:text-5xl text-3xl font-semibold text-title mb-4">
-              We Offer Efficient {data[activeTab].title} Services for{" "}
-              {activeServiceTitle}
-            </h2>
             <div className="text-lg leading-relaxed">
               {data[activeTab].content}
             </div>

@@ -9,18 +9,18 @@ import { getFaqData, getHomeData, getReviewsData, getServicesData } from "@/lib/
 
 
 export default async function Home() {
-  const ServiceSection = await getHomeData()
+  const homeInfo = await getHomeData()
   const faqs = await getFaqData("home");
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
 
   return (
     <main>
-      <VideoSlider />
+      <VideoSlider data={homeInfo.sliderInfo} />
       <Partners />
-      <ServicesSection content={ServiceSection} data={servcies} />
+      <ServicesSection content={homeInfo.serviceSection} data={servcies} />
       <GetInTouch />
-      <OurFocus />
+      <OurFocus data={homeInfo.whyChoose} />
       <Testimonials data={Reviews} />
       <Faqs data={faqs}/>
     </main>

@@ -7,44 +7,24 @@ import Image from "next/image";
 import { ReactTyped } from "react-typed";
 import CircleRotating from "../circleRotating";
 import AnimateOnScroll, { useAutoDelay } from "../animation";
+import { SlideInfo, SliderInfo } from "@/lib/gql-types";
 
-interface Slide {
-  video: string;
-  title: string;
-  description: string;
-  button?: string;
+interface Props {
+  data?: SliderInfo
 }
 
-const slides: Slide[] = [
-  {
-    video: "/videos/video1.mp4",
-    title: "Supported Living Specialist",
-    description:
-      "Compassionate care tailored to your needs, in the comfort of your own home",
-  },
-  {
-    video: "/videos/video1.mp4",
-    title: "Supported Living Specialist",
-    description:
-      "Compassionate care tailored to your needs, in the comfort of your own home",
-  },
-  {
-    video: "/videos/video1.mp4",
-    title: "Supported Living Specialist",
-    description:
-      "Compassionate care tailored to your needs, in the comfort of your own home",
-  },
-];
 
-export default function VideoSlider() {
+export default function VideoSlider({ data }: Props) {
   const getDelay = useAutoDelay();
   const [current, setCurrent] = useState(0);
   const sliderRef = useRef<Slider | null>(null);
 
+  const slides = data?.slideInfo || []; // ✅ safely access array
+
   const settings = {
     dots: false, // 🔹 disable default dots
     infinite: true,
-    speed: 800,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -56,7 +36,7 @@ export default function VideoSlider() {
   return (
     <div className="relative w-full h-screen">
       <Slider ref={sliderRef} {...settings} className="w-full h-screen">
-        {slides.map((slide, idx) => (
+        {slides?.map((slide: SlideInfo, idx: number) => (
           <div key={idx} className="relative w-full h-screen rounded-b-[37.3px]">
             {/* Video Background */}
             <video
@@ -76,13 +56,16 @@ export default function VideoSlider() {
               <div className="max-w-[706px] space-y-4">
                 <AnimateOnScroll type="fade-up" delay={getDelay()}>
                   <h2 className="md:text-[86.41px] text-4xl leading-none font-bold tracking-[-0.6] text-white font-playfair mb-8 max-w-[679px] md:h-[175px] h-[72px]">
-                    <ReactTyped
-                      strings={[slide.title]}
-                      typeSpeed={100}
-                      backSpeed={100}
-                      backDelay={1000}
-                      loop={true} // ✅ only types once per slide
-                    />
+                    {slide.title && (
+                      <ReactTyped
+                        key={`typed-${current === idx ? idx : "idle"}`} // remounts when current changes to this idx
+                        strings={[slide.title || ""]}
+                        typeSpeed={100}
+                        backSpeed={100}
+                        backDelay={1000}
+                        loop={false}
+                      />
+                    )}
                   </h2>
                 </AnimateOnScroll>
                 <AnimateOnScroll type="fade-up" delay={getDelay()}>

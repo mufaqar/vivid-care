@@ -46,3 +46,21 @@
   position: absolute;
   bottom: -7px;
 }
+.service_Content h2{
+@apply md:text-5xl text-3xl font-semibold text-title mb-6;
+}
+.service_Content p, .service_Content span{
+  @apply md:text-lg text-sm font-normal text-desc mb-5;
+}
+.service_Content ul{
+  @apply space-y-4;
+}
+.service_Content ul li{
+@apply md:text-lg text-sm font-normal text-desc flex items-center gap-4;
+}
+.service_Content ul li::marker {
+  content: "✓";          /* checkmark glyph (can be another char) */
+  color: #10B981;        /* marker color */
+  font-size: 1rem;       /* marker size */
+  font-weight: 700;
+}

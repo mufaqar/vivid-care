@@ -4,7 +4,7 @@ export const GET_SERVICES = gql`
   query GetServices {
     services {
       nodes {
-      id
+        id
         slug
         title
         excerpt
@@ -31,15 +31,26 @@ export const GET_SERVICE_BY_SLUG = gql`
   query GetServiceBySlug($slug: ID!) {
     service(id: $slug, idType: SLUG) {
       id
-      title
-      content
-      date
-      featuredImage {
+    title
+    content
+    date
+    excerpt
+    featuredImage {
+      node {
+        altText
+        mediaItemUrl
+      }
+    }
+    serviceInfo {
+      logo {
         node {
-          sourceUrl
-          altText
+          mediaItemUrl
         }
       }
+      serviceAbout {
+        serviceDetail
+      }
+    }
     }
   }
 `;
