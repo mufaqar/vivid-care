@@ -30,14 +30,14 @@
 .tabs .slick-next:before, .tabs .slick-prev:before{
   display: none;
 }
-.tabs button{
+.tabs .btn{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.tabs button::before{
+.tabs .btn::before{
   content: '';
   width: 14px;
   height: 14px;

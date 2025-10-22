@@ -1,33 +1,47 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import ModalStepper from "./modalStepper";
 import Link from "next/link";
-
-interface TabItem {
-  title: string;
-  slug: string;
-  content: React.ReactNode;
-}
+import { Service } from "@/lib/gql-types";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
 interface TabsSliderProps {
-  data: TabItem[];
-  activeServiceTitle: string;
+  data: Service[]; // all services
+  activeService: Service; // currently active service
 }
 
-const TabsSlider = ({ data, activeServiceTitle }: TabsSliderProps) => {
-  const [activeTab, setActiveTab] = useState<number>(0);
+const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
+  const sliderRef = useRef<Slider | null>(null);
   const [open, setOpen] = useState(false);
+ const pathname = usePathname(); // Get current path
+  const [activeSlug, setActiveSlug] = useState<string>("");
 
-  // ✅ Automatically open the tab that matches activeServiceTitle
+  // ✅ Detect active slug from URL
   useEffect(() => {
-    const matchedIndex = data.findIndex(
-      (tab) => tab.title.toLowerCase() === activeServiceTitle.toLowerCase()
+    if (pathname) {
+      const slugFromPath = pathname.split("/").pop();
+      setActiveSlug(slugFromPath || activeService?.slug);
+    }
+  }, [pathname, activeService]);
+
+  // ✅ Move slider to current service when activeSlug changes
+  useEffect(() => {
+    if (!sliderRef.current || !activeSlug || data.length === 0) return;
+
+    const activeIndex = data.findIndex(
+      (service) => service.slug === activeSlug
     );
-    if (matchedIndex !== -1) setActiveTab(matchedIndex);
-  }, [activeServiceTitle, data]);
+
+    if (activeIndex !== -1) {
+      sliderRef.current.slickGoTo(activeIndex);
+    }
+  }, [activeSlug, data]);
+
 
   const settings = {
     dots: false,
@@ -57,6 +71,7 @@ const TabsSlider = ({ data, activeServiceTitle }: TabsSliderProps) => {
     ],
   };
 
+
   return (
     <>
       <section className="md:py-20 py-16 bg-white">
@@ -69,35 +84,43 @@ const TabsSlider = ({ data, activeServiceTitle }: TabsSliderProps) => {
             Find Carers <FaArrowRightLong />
           </button>
 
-          {/* Slider Tabs */}
+          {/* ✅ Slider (HTML unchanged, logic simplified) */}
           <div className="tabs">
-            <Slider {...settings}>
+            <Slider ref={sliderRef} {...settings}>
               {data.map((tab, index) => (
                 <div key={index} className="pb-5 px-2 w-fit">
-                  <button
-                    onClick={() => setActiveTab(index)}
-                    className={`w-full border rounded-full py-4 text-xs md:text-base font-semibold transition-all duration-300 ${activeTab === index
-                      ? "bg-primary text-white before:flex"
-                      : "bg-white text-desc border-gray-300 hover:bg-primary before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300 hover:text-white"
+                  <Link
+                    className={`btn w-full border rounded-full before:opacity-0 before:hover:opacity-100 py-4 text-xs md:text-base font-semibold transition-all duration-300 ${tab.slug === activeSlug
+                        ? "bg-primary text-white border-primary before:opacity-100"
+                        : "bg-white text-desc border-gray-300 hover:bg-primary hover:text-white"
                       }`}
-                  >
-                    <Link href={`/services/${tab?.slug}`}>
-                      {tab.title}
-                    </Link>
-                  </button>
+
+                    href={`/services/${tab?.slug}`}>{tab.title}</Link>
                 </div>
               ))}
             </Slider>
           </div>
 
-          {/* Tab Content */}
-          <div className="mt-10">
-            <div className="text-lg leading-relaxed">
-              {data[activeTab].content}
-            </div>
+          {/* ✅ All Content shown below (not hidden by tabs) */}
+          <div className="mt-10 space-y-10">
+            <div
+         className="service_Content"
+         dangerouslySetInnerHTML={{ __html: activeService.content || "" }}
+       />
+       {activeService.featuredImage?.node?.mediaItemUrl && (
+         <Image
+           width={1320}
+           height={702}
+           src={activeService.featuredImage.node.mediaItemUrl}
+           alt={activeService.featuredImage.node.altText || activeService.title}
+           className="rounded-lg w-full h-[400px] object-cover"
+         />
+       )}
           </div>
         </div>
       </section>
+
+      {/* Modal */}
       <ModalStepper open={open} onClose={() => setOpen(false)} />
     </>
   );
