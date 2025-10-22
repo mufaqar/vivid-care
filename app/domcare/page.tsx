@@ -17,7 +17,7 @@ import {
 } from "@/lib/api/getHomeData";
 
 export default async function DomeCare() {
-  const ServiceSection = await getHomeData();
+  const homeInfo = await getHomeData()
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
   const posts  = await getBlogData()
@@ -33,7 +33,7 @@ export default async function DomeCare() {
       <EmpowermentGrid />
       <Testimonials data={Reviews} />
       <SupportSection />
-      <ServicesSection content={ServiceSection} data={servcies} />
+      <ServicesSection content={homeInfo.serviceSection} data={servcies} />
       <BlogSection data={posts} />
     </main>
   );
