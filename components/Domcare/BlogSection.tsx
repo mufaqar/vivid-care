@@ -65,14 +65,14 @@ export default function BlogSection({data}:BlogSectionProps) {
             >
               {/* Icon box */}
               <div
-                className={`w-full h-40 rounded-xl flex items-center justify-center mb-4`}
+                className={`w-full h-40 rounded-xl flex items-center justify-center mb-4 bg-indigo-100`}
               >
                 <span className="text-4xl"> 😊</span>
               </div>
 
               {/* Category badge */}
               <div className={`inline-block mb-2 px-3 py-1 text-xs rounded-full font-medium font-poppins `}>
-                {/* {post?.category} */}
+                {/* {post?.category} */} Category
               </div>
 
               {/* Title */}
