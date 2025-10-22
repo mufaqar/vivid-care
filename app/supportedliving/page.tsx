@@ -10,15 +10,17 @@ import Partners from "@/components/HomePage/partners";
 import ServicesSection from "@/components/HomePage/servicesSection";
 import Testimonials from "@/components/HomePage/testimonials";
 import {
+  getBlogData,
   getHomeData,
   getReviewsData,
   getServicesData,
 } from "@/lib/api/getHomeData";
 
 export default async function Supportedliving() {
-  const ServiceSection = await getHomeData();
+  const homeInfo = await getHomeData();
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
+  const posts = await getBlogData();
   return (
     <main>
       <Main />
@@ -30,8 +32,8 @@ export default async function Supportedliving() {
       <EmpowermentGrid />
       <Testimonials data={Reviews} />
       <SupportSection />
-      <ServicesSection content={ServiceSection} data={servcies} />
-      <BlogSection />
+      <ServicesSection content={homeInfo.serviceSection} data={servcies} />
+      <BlogSection data={posts} />
     </main>
   );
 }
