@@ -1,8 +1,8 @@
 import client from "@/lib/apollo-client";
 import { GET_HOME } from "../queries/GetFrontPage";
-import { Faq, GetFaqByCatQuery, GetHomeQuery, HomePageData, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
+import { Faq, GetFaqByCatQuery, GetHomeQuery, GetPostsQuery, HomePageData, Post, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
 import { AboutPageQuery, GET_ABOUT } from "../queries/GetAbout";
-import { GET_FAQ_BY_CAT, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
+import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
 
 
 export async function getHomeData() {
@@ -11,20 +11,20 @@ export async function getHomeData() {
 }
 
 
-// export async function getBlogData(): Promise<Post[]> {
-//   try {
-//     const { data } = await client.query<GetPostsQuery>({
-//       query: GET_POSTS,
-//       variables: { first: 6 }, // optional
-//     });
+export async function getBlogData(): Promise<Post[]> {
+  try {
+    const { data } = await client.query<GetPostsQuery>({
+      query: GET_POSTS,
+      variables: { first: 6 }, // optional
+    });
 
-//     // Ensure only valid posts are returned
-//     return (data?.posts?.nodes ?? []).filter((p): p is Post => !!p);
-//   } catch (error) {
-//     console.error("Error fetching blog posts:", error);
-//     return [];
-//   }
-// }
+    // Ensure only valid posts are returned
+    return (data?.posts?.nodes ?? []).filter((p): p is Post => !!p);
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    return [];
+  }
+}
 
 /**
  * Fetch FAQs by category slug (e.g., "home")

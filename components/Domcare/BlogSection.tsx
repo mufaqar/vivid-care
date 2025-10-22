@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import AnimateOnScroll from '../animation';
+import { Post } from '@/lib/gql-types';
 
 const blogPosts = [
   {
@@ -41,7 +42,11 @@ const blogPosts = [
   },
 ];
 
-export default function BlogSection() {
+interface BlogSectionProps {
+  data: Post[];
+}
+
+export default function BlogSection({data}:BlogSectionProps) {
   return (
     <section className="py-16 px-4 bg-white">
      
@@ -53,22 +58,21 @@ export default function BlogSection() {
     
       <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
        
-          {blogPosts.map((post, index) => (
+          {data.map((post, index) => (
             <div
               key={index}
-              className={`rounded-2xl bg-white p-6 shadow-md transition-all duration-300 ${post.border ? '' : ''
-                }`}
+              className="rounded-2xl bg-white p-6 shadow-md transition-all duration-300 "
             >
               {/* Icon box */}
               <div
-                className={`w-full h-40 rounded-xl flex items-center justify-center mb-4 ${post.iconBg}`}
+                className={`w-full h-40 rounded-xl flex items-center justify-center mb-4`}
               >
-                <span className="text-4xl">{post.icon}</span>
+                <span className="text-4xl"> 😊</span>
               </div>
 
               {/* Category badge */}
-              <div className={`inline-block mb-2 px-3 py-1 text-xs rounded-full font-medium font-poppins ${post.categoryColor}`}>
-                {post.category}
+              <div className={`inline-block mb-2 px-3 py-1 text-xs rounded-full font-medium font-poppins `}>
+                {/* {post?.category} */}
               </div>
 
               {/* Title */}
@@ -77,13 +81,13 @@ export default function BlogSection() {
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 text-md font-poppins mb-4">{post.description}</p>
+              <p className="text-gray-600 text-md font-poppins mb-4">{post.content}</p>
 
               {/* Author + Date */}
               <div className="flex items-center justify-between text-sm text-gray-500 font-poppins">
                 <div className="flex items-center gap-2">
                   <FaUserCircle className="text-xl" />
-                  <span>{post.author}</span>
+                  <span>{post?.author?.node.name}</span>
                 </div>
                 <span>{post.date}</span>
               </div>

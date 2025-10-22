@@ -10,6 +10,7 @@ import Partners from "@/components/HomePage/partners";
 import ServicesSection from "@/components/HomePage/servicesSection";
 import Testimonials from "@/components/HomePage/testimonials";
 import {
+  getBlogData,
   getHomeData,
   getReviewsData,
   getServicesData,
@@ -19,6 +20,7 @@ export default async function DomeCare() {
   const ServiceSection = await getHomeData();
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
+  const posts  = await getBlogData()
 
   return (
     <main>
@@ -32,7 +34,7 @@ export default async function DomeCare() {
       <Testimonials data={Reviews} />
       <SupportSection />
       <ServicesSection content={ServiceSection} data={servcies} />
-      <BlogSection />
+      <BlogSection data={posts} />
     </main>
   );
 }
