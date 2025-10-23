@@ -88,7 +88,7 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
           <div className="tabs">
             <Slider ref={sliderRef} {...settings}>
               {data.map((tab, index) => (
-                <div key={index} className="pb-5 px-2 w-fit">
+                <div key={index} className="pb-5 px-2 w-full">
                   <Link
                     className={`btn w-full border rounded-full before:opacity-0 before:hover:opacity-100 py-4 text-xs md:text-base font-semibold transition-all duration-300 ${tab.slug === activeSlug
                         ? "bg-primary text-white border-primary before:opacity-100"
