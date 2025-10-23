@@ -1,29 +1,33 @@
 import React from 'react'
 import SearchForm from '../HomePage/searchForm'
 import AnimateOnScroll from '../animation'
+import { Banner } from '@/lib/queries/GetAbout';
+import Image from 'next/image';
 
-function Main() {
+
+interface Props{
+    data: Banner;
+}
+function Main({data} : Props) {
     return (
         <section className="min-h-screen bg-gradient-to-r from-[#EAF4FC] to-[#FDEAF3] flex items-center justify-center px-4">
             <div className="container mx-auto md:px-0 px-4 grid md:grid-cols-2 gap-10 items-center mt-20">
-
                 {/* Left Content */}
-              
                     <div>
                         <h1 className="text-4xl md:text-6xl font-bold text-[#111827] mb-6 font-poppins">
-                            Domestic Care Services
+                          {data?.title}
                         </h1>
                         <p className="text-[#374151] mb-6 text-xl font-poppins">
-                            Empowering individuals with disabilities to live independently while receiving personalized care and support in their own homes and communities.          </p>
+                           {data?.description} </p>
                         <SearchForm />
                     </div>
-               
                 {/* Right Content - Video Section */}
-        
                 <div className="relative border-7 border-white rounded-xl">
-                    <img
-                        src="/images/domcare-main.png"
-                        alt="Elderly care"
+                    <Image
+                        src={data?.videoPoster?.node?.mediaItemUrl || "/images/domcare-main.png"}
+                        alt={data?.videoPoster?.node?.altText || "Elderly care"}
+                        width={400}
+                        height={400}
                         className="rounded-xl shadow-lg h-96 w-full object-cover "
                     />
 

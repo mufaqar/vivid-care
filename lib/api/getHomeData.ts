@@ -1,8 +1,8 @@
 import client from "@/lib/apollo-client";
 import { GET_HOME } from "../queries/GetFrontPage";
 import { Faq, GetFaqByCatQuery, GetHomeQuery, GetPostsQuery, HomePageData, Post, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
-import { AboutPageQuery, GET_ABOUT } from "../queries/GetAbout";
 import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
+import { GET_DOMICILIARY, GetDomiciliaryQuery } from "../queries/GetAbout";
 
 
 export async function getHomeData() {
@@ -51,45 +51,20 @@ export async function getFaqData(categorySlug: string = "home"): Promise<Faq[]> 
 }
 
 
-export async function getAboutPageData() {
-  try {
-    const { data } = await client.query<AboutPageQuery>({
-      query: GET_ABOUT,
-    });
+export async function getDomiciliaryPageData() {
+  const { data } = await client.query<GetDomiciliaryQuery>({ query: GET_DOMICILIARY });
 
-    const page = data?.page;
-    const aboutUs = page?.aboutInfo?.aboutUs;
-    const shopOnline = page?.aboutInfo?.shopOnline;
-
-    return {
-      title: page?.title ?? "",
-      aboutUs: aboutUs
-        ? {
-            title: aboutUs.title ?? "",
-            description: aboutUs.description ?? "",
-            image: aboutUs.aboutImage?.node?.mediaItemUrl ?? "",
-          }
-        : null,
-      shopOnline: shopOnline
-        ? {
-            title: shopOnline.title ?? "",
-            subTitle: shopOnline.subTitle ?? "",
-            description: shopOnline.description ?? "",
-            whyCards:
-              shopOnline.whyCards?.map((card) => ({
-                title: card?.title ?? "",
-                description: card?.description ?? "",
-                icon: card?.icon?.node?.mediaItemUrl ?? "",
-              })) ?? [],
-          }
-        : null,
-    };
-  } catch (error) {
-    console.error("Error fetching About Page:", error);
-    return null;
-  }
+  return (
+    data?.page?.domiciliaryInfo ?? {
+      banner: {
+        title: "",
+        description: "",
+        video: { url: "" },
+        videoPoster: { node: { altText: "", mediaItemUrl: "" } },
+      },
+    }
+  );
 }
-
 
 
 export async function getServicesData(): Promise<Service[]> {

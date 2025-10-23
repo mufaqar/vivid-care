@@ -11,20 +11,23 @@ import ServicesSection from "@/components/HomePage/servicesSection";
 import Testimonials from "@/components/HomePage/testimonials";
 import {
   getBlogData,
+  getDomiciliaryPageData,
   getHomeData,
   getReviewsData,
   getServicesData,
 } from "@/lib/api/getHomeData";
 
 export default async function DomeCare() {
+  const BannerInfo = await getDomiciliaryPageData()
   const homeInfo = await getHomeData()
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
   const posts  = await getBlogData()
 
+  console.log("DomCare Page", BannerInfo)
   return (
     <main>
-      <Main />
+      <Main data={BannerInfo?.banner} />
       <Partners />
       <Domesticsection />
       <CareForSection />

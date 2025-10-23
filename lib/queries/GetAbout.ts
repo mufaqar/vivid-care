@@ -1,80 +1,61 @@
 import { gql } from "@apollo/client";
 
-export const GET_ABOUT = gql`
-query AboutPage {
-  page(id: "16700", idType: DATABASE_ID) {
+export const GET_DOMICILIARY = gql`
+query GET_domiciliary {
+  page(id: "domcare", idType: URI) {
+    id
     title
-    aboutInfo {
-      aboutUs {
-        ...AboutInfoAboutUsFragment
+    domiciliaryInfo {
+      banner {
+        title
+        description
+        video {
+          url
+        }
+        videoPoster {
+          node {
+            altText
+            mediaItemUrl
+          }
+        }
       }
-      shopOnline {
-        ...AboutInfoShopOnlineFragment
-      }
-    }
-  }
-}
-
-fragment MediaItemFragment on MediaItem {
-  mediaItemUrl
-}
-
-fragment AcfMediaItemConnectionEdgeFragment on AcfMediaItemConnectionEdge {
-  node {
-    ...MediaItemFragment
-  }
-}
-
-fragment AboutInfoAboutUsFragment on AboutInfoAboutUs {
-  title
-  description
-  aboutImage {
-    ...AcfMediaItemConnectionEdgeFragment
-  }
-}
-
-fragment AboutInfoShopOnlineFragment on AboutInfoShopOnline {
-  description
-  subTitle
-  title
-  whyCards {
-    description
-    title
-    icon {
-      ...AcfMediaItemConnectionEdgeFragment
     }
   }
 }
 `;
 
+export interface MediaNode {
+  altText: string;
+  mediaItemUrl: string;
+}
 
-export type AboutPageQuery = {
-  page?: {
-    title?: string | null;
-    aboutInfo?: {
-      aboutUs?: {
-        title?: string | null;
-        description?: string | null;
-        aboutImage?: {
-          node?: {
-            mediaItemUrl?: string | null;
-          } | null;
-        } | null;
-      } | null;
-      shopOnline?: {
-        title?: string | null;
-        subTitle?: string | null;
-        description?: string | null;
-        whyCards?: Array<{
-          title?: string | null;
-          description?: string | null;
-          icon?: {
-            node?: {
-              mediaItemUrl?: string | null;
-            } | null;
-          } | null;
-        }> | null;
-      } | null;
-    } | null;
-  } | null;
-};
+export interface VideoPoster {
+  node: MediaNode;
+}
+
+export interface Video {
+  url: string;
+}
+
+export interface Banner {
+  title: string;
+  description: string;
+  video: Video;
+  videoPoster: VideoPoster;
+}
+
+export interface DomiciliaryInfo {
+  banner: Banner;
+}
+
+export interface DomiciliaryPage {
+  id: string;
+  title: string;
+  domiciliaryInfo: DomiciliaryInfo;
+}
+
+export interface GetDomiciliaryQuery {
+  page: DomiciliaryPage;
+}
+
+
