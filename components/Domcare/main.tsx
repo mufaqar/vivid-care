@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 
 interface Props{
-    data: Banner;
+    data?: Banner;
 }
 function Main({data} : Props) {
     return (

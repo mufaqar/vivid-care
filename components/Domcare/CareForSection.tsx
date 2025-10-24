@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { FaCheckCircle, FaChevronDown } from 'react-icons/fa';
 import AnimateOnScroll from '../animation';
+import { CareFor } from '@/lib/queries/GetAbout';
+import Image from 'next/image';
 
 const careNeeds = [
   {
@@ -17,28 +19,32 @@ const careNeeds = [
   { title: 'ADHD' },
 ];
 
-export default function CareForSection() {
+interface Props {
+  data?: CareFor;
+}
+
+export default function CareForSection({ data }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const toggleAccordion = (index:any) => {
+  const toggleAccordion = (index: any) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
 
   return (
-    <section className="bg-[#151A4D] py-16 px-6 text-white">
-      
+    <section className="bg-footer py-16 px-6 text-white">
+
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left: Accordion */}
         <div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4 font-playfair">
-            Who is <span className="text-white">Domestic Care</span> for?
+            {data?.title}
           </h2>
           <p className="text-gray-300 mb-8 font-normal">
-            At Vivid Care Services, we offer a variety of supported living homes, each designed to provide comfort, accessibility, and a sense of community.
+            {data?.description}
           </p>
 
           <div className="space-y-4">
-            {careNeeds.map((item, index) => (
+            {data?.options.map((item, index) => (
               <div
                 key={index}
                 onClick={() => toggleAccordion(index)}
@@ -50,9 +56,8 @@ export default function CareForSection() {
                     <h4 className="text-2xl font-semibold font-playfair">{item.title}</h4>
                   </div>
                   <FaChevronDown
-                    className={`transition-transform duration-300 ${
-                      activeIndex === index ? 'rotate-180' : ''
-                    }`}
+                    className={`transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''
+                      }`}
                   />
                 </div>
                 {activeIndex === index && item.description && (
@@ -65,14 +70,16 @@ export default function CareForSection() {
 
         {/* Right: Image */}
         <div className="w-full">
-          <img
-            src="/images/CareForSection.png" // Replace with your image path
+          <Image
+            src={data?.image?.node?.mediaItemUrl || "/images/CareForSection.png"} // Replace with your image path
             alt="Group care"
             className="rounded-xl w-full shadow-lg object-cover"
+            width={1024}
+            height={1024}
           />
         </div>
       </div>
-     
+
     </section>
   );
 }
