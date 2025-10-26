@@ -83,7 +83,6 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
           >
             Find Carers <FaArrowRightLong />
           </button>
-
           {/* ✅ Slider (HTML unchanged, logic simplified) */}
           <div className="tabs">
             <Slider ref={sliderRef} {...settings}>
@@ -100,23 +99,20 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
               ))}
             </Slider>
           </div>
-
-          {/* ✅ All Content shown below (not hidden by tabs) */}
           <div className="mt-10 space-y-10">
             <div
-         className="service_Content"
-         dangerouslySetInnerHTML={{ __html: activeService.content || "" }}
-       />
-       {activeService.featuredImage?.node?.mediaItemUrl && (
-         <Image
-           width={1320}
-           height={702}
-           src={activeService.featuredImage.node.mediaItemUrl}
-           alt={activeService.featuredImage.node.altText || activeService.title}
-           className="rounded-lg w-full h-[400px] object-cover"
-         />
-       )}
-          </div>
+                className="service_Content"
+                dangerouslySetInnerHTML={{ __html: activeService.content || "" }}  />
+                {activeService.featuredImage?.node?.mediaItemUrl && (
+                  <Image
+                    width={1320}
+                    height={702}
+                    src={activeService.featuredImage.node.mediaItemUrl}
+                    alt={activeService.featuredImage.node.altText || activeService.title}
+                    className="rounded-lg w-full h-[400px] object-cover"
+                  />
+                )}
+             </div>
         </div>
       </section>
 
