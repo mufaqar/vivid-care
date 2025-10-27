@@ -46,6 +46,9 @@
   position: absolute;
   bottom: -7px;
 }
+.tabs .btn:hover .tabs .btn::before{
+opacity: 1;
+}
 .service_Content h2{
 @apply md:text-5xl text-3xl font-semibold text-title mb-6;
 }

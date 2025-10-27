@@ -91,7 +91,7 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
                   <Link
                     className={`btn w-full border rounded-full before:opacity-0 before:hover:opacity-100 py-4 text-xs md:text-base font-semibold transition-all duration-300 ${tab.slug === activeSlug
                         ? "bg-primary text-white border-primary before:opacity-100"
-                        : "bg-white text-desc border-gray-300 hover:bg-primary hover:text-white"
+                        : "bg-white text-desc border-gray-300 hover:bg-primary hover:text-white "
                       }`}
 
                     href={`/services/${tab?.slug}`}>{tab.title}</Link>
