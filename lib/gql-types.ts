@@ -41,13 +41,12 @@ export interface CategoriesConnection {
 export interface Post {
   id: string;
   title: string;
-  slug: string;
+  slug?: string;
   excerpt?: string;
   content?: string;
   date?: string;
   featuredImage?: FeaturedImage;
   author?: Author;
-  postInfo?: PostInfo;
   categories?: CategoriesConnection;
 }
 
@@ -62,25 +61,6 @@ export interface Author {
   node: {
     name: string;
   };
-}
-
-// For postInfo
-export interface PostInfoUpperContent {
-  data?: string;
-  dataImage?: {
-    node?: {
-      mediaItemUrl: string;
-    };
-  };
-}
-
-export interface PostInfoLowerContent {
-  data?: string;
-}
-
-export interface PostInfo {
-  upperContent?: PostInfoUpperContent;
-  lowerContent?: PostInfoLowerContent;
 }
 
 // --------------------

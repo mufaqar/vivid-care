@@ -18,24 +18,24 @@ import {
 } from "@/lib/api/getHomeData";
 
 export default async function DomeCare() {
-  const BannerInfo = await getDomiciliaryPageData()
+  const DomcareInfo = await getDomiciliaryPageData()
   const homeInfo = await getHomeData()
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
   const posts  = await getBlogData()
 
-  // console.log("DomCare Page", BannerInfo)
+  // console.log("DomCare Page", DomcareInfo)
   return (
     <main>
-      <Main data={BannerInfo?.banner} />
+      <Main data={DomcareInfo?.banner} />
       <Partners />
-      <Domesticsection data={BannerInfo?.aboutDomcare} />
-      <CareForSection data={BannerInfo?.careFor} />
+      <Domesticsection data={DomcareInfo?.aboutDomcare} />
+      <CareForSection data={DomcareInfo?.careFor} />
       <GetInTouch />
       <StatsSection />
-      <EmpowermentGrid />
+      <EmpowermentGrid data={DomcareInfo?.activities} />
       <Testimonials data={Reviews} />
-      <SupportSection />
+      <SupportSection data={DomcareInfo?.cta} />
       <ServicesSection content={homeInfo.serviceSection} data={servcies} />
       <BlogSection data={posts} />
     </main>

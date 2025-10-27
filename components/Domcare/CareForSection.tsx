@@ -5,19 +5,6 @@ import AnimateOnScroll from '../animation';
 import { CareFor } from '@/lib/queries/GetAbout';
 import Image from 'next/image';
 
-const careNeeds = [
-  {
-    title: 'Down Syndrome',
-    description: 'Fostering growth and community for fulfilling lives.',
-  },
-  { title: 'Physical Disabilities' },
-  { title: 'Learning Differences' },
-  { title: 'Visual Impairments' },
-  { title: 'Hearing Impairments' },
-  { title: 'Mental Health' },
-  { title: 'Cerebral Palsy (CP)' },
-  { title: 'ADHD' },
-];
 
 interface Props {
   data?: CareFor;
