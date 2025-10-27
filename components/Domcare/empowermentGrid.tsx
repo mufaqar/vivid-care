@@ -67,8 +67,8 @@ export default function EmpowermentGrid() {
                 <div className="grid grid-cols-1 gap-6 ">
 
                     {cards.slice(1).map((card, index) => (
-                        <AnimateOnScroll type="fade-up">
-                            <div key={index} className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden group">
+                        <AnimateOnScroll type="fade-up" key={index}>
+                            <div  className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden group">
                                 <img
                                     src={card.image}
                                     alt={card.title}
