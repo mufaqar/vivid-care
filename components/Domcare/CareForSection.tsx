@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { FaCheckCircle, FaChevronDown } from 'react-icons/fa';
-import AnimateOnScroll from '../animation';
+import AnimateOnScroll, { useAutoDelay } from '../animation';
 import { CareFor } from '@/lib/queries/GetAbout';
 import Image from 'next/image';
 
@@ -12,7 +12,7 @@ interface Props {
 
 export default function CareForSection({ data }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const getDelay = useAutoDelay();
   const toggleAccordion = (index: any) => {
     setActiveIndex(index === activeIndex ? null : index);
   };

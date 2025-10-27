@@ -31,15 +31,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 )}
 
                 <h1 className="text-4xl md:text-6xl font-bold text-[#111827] mb-6 font-poppins">{post.title}</h1>
+                <div
+                    className="service_Content mt-6"
+                    dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
+                />
                 <p className="md:text-lg text-sm font-normal text-desc text-left mb-2">
                     By {post.author?.node?.name} —{" "}
                     {post.date ? new Date(post.date).toLocaleDateString() : ""}
                 </p>
 
-                <div
-                    className="service_Content mt-6"
-                    dangerouslySetInnerHTML={{ __html: post.content ?? "" }}
-                />
+
             </div>
         </section>
     );

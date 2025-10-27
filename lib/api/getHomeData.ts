@@ -3,6 +3,7 @@ import { GET_HOME } from "../queries/GetFrontPage";
 import { Faq, GetFaqByCatQuery, GetPostsQuery, HomePageData, Post, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
 import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
 import { GET_DOMICILIARY, GetDomiciliaryQuery } from "../queries/GetAbout";
+import { GET_SUPPORTED, GetSupportedQuery } from "../queries/GetSupported";
 
 
 export async function getHomeData() {
@@ -91,3 +92,11 @@ export async function getReviewsData(): Promise<Review[]> {
   }
 }
 
+
+export async function getSupportedLivingData() {
+  const { data } = await client.query<GetSupportedQuery>({
+    query: GET_SUPPORTED,
+  });
+
+  return data?.page?.supportedInfo || {};
+}

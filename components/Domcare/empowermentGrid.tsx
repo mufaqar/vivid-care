@@ -3,15 +3,17 @@ import { FaUsers } from 'react-icons/fa';
 import AnimateOnScroll from '../animation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Activities, ActivityOption } from '@/lib/queries/GetAbout';
+import { SupportedActivities } from '@/lib/queries/GetSupported';
+import { Activities } from '@/lib/queries/GetAbout';
+
 
 
 interface Props {
-    data?: Activities;
+    data?: SupportedActivities | Activities;
 }
 
 export default function EmpowermentGrid({ data }: Props) {
-   const cards = data?.options ?? [];
+    const cards = data?.options ?? [];
     return (
         <section className="bg-[#FAFAFD] py-16 px-4">
             <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2">
@@ -19,7 +21,7 @@ export default function EmpowermentGrid({ data }: Props) {
                 <AnimateOnScroll type="fade-up">
                     <div className="relative h-[400px] md:h-[630px] rounded-xl overflow-hidden group transition-all ease-in-out duration-300">
                         <Image
-                            src={cards[0].image?.node?.mediaItemUrl}
+                            src={cards[0].image?.node?.mediaItemUrl || "/images/domcare-main.png"}
                             alt={cards[0].title}
                             width={600}
                             height={684}
@@ -52,7 +54,7 @@ export default function EmpowermentGrid({ data }: Props) {
                         <AnimateOnScroll type="fade-up" key={index}>
                             <div className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden group">
                                 <Image
-                                    src={card.image?.node?.mediaItemUrl}
+                                    src={card.image?.node?.mediaItemUrl || "/images/CareForSection.png"}
                                     alt={card.title}
                                     width={600}
                                     height={684}
@@ -64,7 +66,7 @@ export default function EmpowermentGrid({ data }: Props) {
                                         <h3 className="text-xl md:text-3xl font-semibold font-playfair">{card.title}</h3>
                                     </div>
                                     <p className="text-sm md:text-base translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-in-out">{card?.description}</p>
-                                    <Link href="/search-detail" className="mt-6 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-6 py-2 rounded w-fit opacity-0 translate-y-3 
+                                    <Link href={`${card?.link}`} className="mt-6 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-6 py-2 rounded w-fit opacity-0 translate-y-3 
                                                 group-hover:opacity-100 group-hover:translate-y-0 
                                                 transition-all duration-500 ease-in-out">
                                         Enquire Now →

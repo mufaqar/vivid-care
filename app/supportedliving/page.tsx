@@ -14,6 +14,7 @@ import {
   getHomeData,
   getReviewsData,
   getServicesData,
+  getSupportedLivingData,
 } from "@/lib/api/getHomeData";
 
 export default async function Supportedliving() {
@@ -21,17 +22,20 @@ export default async function Supportedliving() {
   const servcies = await getServicesData();
   const Reviews = await getReviewsData();
   const posts = await getBlogData();
+  const pageData = await getSupportedLivingData();
+
+  // console.log("Supportedliving Page", pageData)
   return (
     <main>
-      <Main />
+      <Main data={pageData?.banner} />
       <Partners />
-      <Domesticsection />
+      <Domesticsection data={pageData?.aboutSupported} />
       <CareForSection />
       <GetInTouch />
       <StatsSection />
-      <EmpowermentGrid />
+     <EmpowermentGrid data={pageData?.activities} />
       <Testimonials data={Reviews} />
-      <SupportSection />
+     <SupportSection data={pageData?.cta} />
       <ServicesSection content={homeInfo.serviceSection} data={servcies} />
       <BlogSection data={posts} />
     </main>

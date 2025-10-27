@@ -24,7 +24,6 @@ export default async function DomeCare() {
   const Reviews = await getReviewsData();
   const posts  = await getBlogData()
 
-  // console.log("DomCare Page", DomcareInfo)
   return (
     <main>
       <Main data={DomcareInfo?.banner} />

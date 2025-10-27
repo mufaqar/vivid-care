@@ -42,7 +42,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
           return (
             <div
               key={index}
-              className="rounded-2xl bg-white p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+              className={`rounded-2xl ${bgColors[index % bgColors.length]} p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100`}
             >
               {/* Featured Image */}
               {imageUrl ? (
@@ -55,7 +55,7 @@ export default function BlogSection({ data }: BlogSectionProps) {
                   />
                 </div>
               ) : (
-                <div className={`w-full h-48 mb-4 ${bgColors[index % bgColors.length]} flex items-center justify-center rounded-xl`}>
+                <div className={`w-full h-48 mb-4 ${iconBg[index % iconBg.length]} flex items-center justify-center rounded-xl`}>
                   <span className="text-4xl">😊</span>
                 </div>
               )}

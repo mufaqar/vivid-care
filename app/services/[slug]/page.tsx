@@ -6,7 +6,6 @@ import { GetServiceBySlugQuery, ServicesTypes, Service } from "@/lib/gql-types";
 import Banner from "@/components/SearchDetail/banner";
 import ServiceAbout from "@/components/SearchDetail/serviceAbout";
 import TabsSlider from "@/components/SearchDetail/tabsSlider";
-import Image from "next/image";
 
 interface ServicePageProps {
   params: { slug: string };
@@ -31,16 +30,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   // ✅ If service not found → 404
   if (!service) return notFound();
-
-  // ✅ Filter out current service & remove duplicates safely
-  const relatedServices = allServices.filter(
-    (s) => s?.slug?.toLowerCase() !== service?.slug?.toLowerCase()
-  );
-
-  const uniqueServices = Array.from(
-    new Map(relatedServices.map((s) => [s.slug, s])).values()
-  );
-
 
   return (
     <main>

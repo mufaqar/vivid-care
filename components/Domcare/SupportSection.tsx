@@ -1,13 +1,18 @@
 import React from 'react';
 import { FaPlay } from 'react-icons/fa';
 import AnimateOnScroll from '../animation';
-import { CTA } from '@/lib/queries/GetAbout';
+import { CTA as SupportedCTA } from "@/lib/queries/GetSupported";
+import { CTA as AboutCTA } from "@/lib/queries/GetAbout";
 import Link from 'next/link';
 import Image from 'next/image';
 
+
+    
+
 interface Props {
-    data?: CTA;
+  data?: SupportedCTA | AboutCTA; // ✅ accept either
 }
+
 
 export default function SupportSection({ data }: Props) {
     return (
