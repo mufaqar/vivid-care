@@ -24,13 +24,13 @@ export default async function DomeCare() {
   const Reviews = await getReviewsData();
   const posts  = await getBlogData()
 
-  console.log("DomCare Page", BannerInfo)
+  // console.log("DomCare Page", BannerInfo)
   return (
     <main>
       <Main data={BannerInfo?.banner} />
       <Partners />
-      <Domesticsection />
-      <CareForSection />
+      <Domesticsection data={BannerInfo?.aboutDomcare} />
+      <CareForSection data={BannerInfo?.careFor} />
       <GetInTouch />
       <StatsSection />
       <EmpowermentGrid />

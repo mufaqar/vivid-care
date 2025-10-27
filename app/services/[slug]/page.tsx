@@ -41,53 +41,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     new Map(relatedServices.map((s) => [s.slug, s])).values()
   );
 
-  // ✅ Build Tabs Data
-  // const serviceTabs = [
-  //   {
-  //     title: service.title,
-  //     slug: service.slug,
-  //     content: (
-  //       <div className="space-y-4">
-  //         <div
-  //           className="service_Content"
-  //           dangerouslySetInnerHTML={{ __html: service.content || "" }}
-  //         />
-  //         {service.featuredImage?.node?.mediaItemUrl && (
-  //           <Image
-  //             width={1320}
-  //             height={702}
-  //             src={service.featuredImage.node.mediaItemUrl}
-  //             alt={service.featuredImage.node.altText || service.title}
-  //             className="rounded-lg w-full h-[400px] object-cover"
-  //           />
-  //         )}
-  //       </div>
-  //     ),
-  //   },
-  //   ...uniqueServices.map((related) => ({
-  //     title: related.title,
-  //     slug: related.slug,
-  //     content: (
-  //       <div className="space-y-4">
-  //         <div
-  //           className="service_Content"
-  //           dangerouslySetInnerHTML={{ __html: related.content || "" }}
-  //         />
-  //         {related.featuredImage?.node?.mediaItemUrl && (
-  //           <Image
-  //             width={1320}
-  //             height={702}
-  //             src={related.featuredImage.node.mediaItemUrl}
-  //             alt={related.featuredImage.node.altText || related.title}
-  //             className="rounded-lg w-full h-[400px] object-cover"
-  //           />
-  //         )}
-  //       </div>
-  //     ),
-  //   })),
-  // ];
 
-  // ✅ Render Page
   return (
     <main>
       <Banner />

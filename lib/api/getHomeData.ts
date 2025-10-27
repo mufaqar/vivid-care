@@ -52,18 +52,11 @@ export async function getFaqData(categorySlug: string = "home"): Promise<Faq[]> 
 
 
 export async function getDomiciliaryPageData() {
-  const { data } = await client.query<GetDomiciliaryQuery>({ query: GET_DOMICILIARY });
+  const { data } = await client.query<GetDomiciliaryQuery>({
+    query: GET_DOMICILIARY,
+  });
 
-  return (
-    data?.page?.domiciliaryInfo ?? {
-      banner: {
-        title: "",
-        description: "",
-        video: { url: "" },
-        videoPoster: { node: { altText: "", mediaItemUrl: "" } },
-      },
-    }
-  );
+  return data?.page?.domiciliaryInfo || {};
 }
 
 
