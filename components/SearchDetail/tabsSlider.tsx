@@ -77,12 +77,12 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
         <div className="container mx-auto px-4">
           {/* Button */}
           <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <button
-              onClick={() => setOpen(true)}
+            <Link
+              href="https://vivid-care-jobs.vercel.app/?open=lead"
               className="bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary mx-auto md:mb-20 mb-10"
             >
               Find Carers <FaArrowRightLong />
-            </button>
+            </Link>
           </AnimateOnScroll>
           {/* ✅ Slider (HTML unchanged, logic simplified) */}
           <AnimateOnScroll type="fade-up" delay={getDelay()}>

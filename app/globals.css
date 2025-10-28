@@ -46,7 +46,7 @@
   position: absolute;
   bottom: -7px;
 }
-.tabs .btn:hover .tabs .btn::before{
+.tabs .btn:hover.tabs .btn::before{
 opacity: 1;
 }
 .service_Content h1, .service_Content h2{
@@ -63,6 +63,9 @@ opacity: 1;
 }
 .service_Content ul{
   @apply space-y-4;
+}
+.service_Content a{
+@apply text-primary hover:text-secondary;
 }
 .service_Content ul li{
 @apply md:text-lg text-sm font-normal text-desc flex items-center gap-4;
