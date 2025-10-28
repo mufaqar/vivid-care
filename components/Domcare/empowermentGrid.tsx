@@ -1,6 +1,8 @@
+"use client";
+
 import React from 'react';
 import { FaUsers } from 'react-icons/fa';
-import AnimateOnScroll from '../animation';
+import AnimateOnScroll, { useAutoDelay } from '../animation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { SupportedActivities } from '@/lib/queries/GetSupported';
@@ -14,11 +16,12 @@ interface Props {
 
 export default function EmpowermentGrid({ data }: Props) {
     const cards = data?.options ?? [];
+     const getDelay = useAutoDelay();
     return (
         <section className="bg-[#FAFAFD] py-16 px-4">
             <div className="max-w-7xl mx-auto grid gap-6 md:grid-cols-2">
                 {/* Left Card (big) */}
-                <AnimateOnScroll type="fade-up">
+                  <AnimateOnScroll type="fade-up" delay={getDelay()}>
                     <div className="relative h-[400px] md:h-[630px] rounded-xl overflow-hidden group transition-all ease-in-out duration-300">
                         <Image
                             src={cards[0].image?.node?.mediaItemUrl || "/images/domcare-main.png"}
@@ -51,7 +54,7 @@ export default function EmpowermentGrid({ data }: Props) {
                 {/* Right 2 Cards */}
                 <div className="grid grid-cols-1 gap-6 ">
                     {cards.slice(1).map((card, index) => (
-                        <AnimateOnScroll type="fade-up" key={index}>
+                              <AnimateOnScroll key={index} type="fade-up" delay={getDelay()}>
                             <div className="relative h-[250px] md:h-[300px] rounded-xl overflow-hidden group">
                                 <Image
                                     src={card.image?.node?.mediaItemUrl || "/images/CareForSection.png"}

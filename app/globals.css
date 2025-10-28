@@ -49,8 +49,14 @@
 .tabs .btn:hover .tabs .btn::before{
 opacity: 1;
 }
-.service_Content h2{
+.service_Content h1, .service_Content h2{
 @apply md:text-5xl text-3xl font-semibold text-title mb-6;
+}
+.service_Content h3, .service_Content h4{
+@apply md:text-3xl text-xl font-semibold text-title mb-6;
+}
+.service_Content h5, .service_Content h6{
+@apply md:text-xl text-lg font-semibold text-title mb-6;
 }
 .service_Content p, .service_Content span{
   @apply md:text-lg text-sm font-normal text-desc mb-5;

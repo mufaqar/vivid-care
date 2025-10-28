@@ -30,7 +30,7 @@ export default async function Supportedliving() {
       <Main data={pageData?.banner} />
       <Partners />
       <Domesticsection data={pageData?.aboutSupported} />
-      <CareForSection />
+      <CareForSection data={pageData?.careFor} />
       <GetInTouch />
       <StatsSection />
      <EmpowermentGrid data={pageData?.activities} />

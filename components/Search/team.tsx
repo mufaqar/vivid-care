@@ -4,9 +4,11 @@ import Image from 'next/image'
 import React, { useRef } from 'react'
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import Slider from 'react-slick'
+import AnimateOnScroll, { useAutoDelay } from '../animation';
 
 const Team = () => {
     const sliderRef = useRef<Slider | null>(null);
+    const getDelay = useAutoDelay();
     const settings = {
         dots: false,
         infinite: true,
@@ -29,9 +31,11 @@ const Team = () => {
         <section className="py-16">
             <div className="container mx-auto md:px-0 px-4 flex md:flex-row flex-col md:items-center justify-between gap-10 md:mb-16 mb-8">
                 <div className='md:w-1/2 w-full'>
-                    <h2 className="md:text-5xl text-3xl font-semibold text-title max-w-[506px]">
-                        Meet The Team
-                    </h2>
+                    <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                        <h2 className="md:text-5xl text-3xl font-semibold text-title max-w-[506px]">
+                            Meet The Team
+                        </h2>
+                    </AnimateOnScroll>
                 </div>
                 <div className='md:w-1/2 w-full flex items-center justify-end gap-5'>
                     <button
@@ -51,23 +55,25 @@ const Team = () => {
             <div className='container mx-auto md:px-0 px-4'>
                 <Slider ref={sliderRef} {...settings}>
                     {teamData.map((member) => (
-                        <div key={member.id} className="px-3">
-                            <div className="bg-white shadow-[10px_10px_60px_0px_rgba(0,0,0,0.04),_inset_0px_-4px_0px_0px_rgba(18,154,206,1)]  rounded-2xl text-center p-6 transition">
-                                <div className="w-[320px] h-[320px] mx-auto mb-4 rounded-full overflow-hidden">
-                                    <Image
-                                        src={member.image}
-                                        alt={member.name}
-                                        width={320}
-                                        height={320}
-                                        className="object-cover w-full h-full"
-                                    />
+                        <AnimateOnScroll key={member.id} type="fade-up" delay={getDelay()}>
+                            <div className="px-3">
+                                <div className="bg-white shadow-[10px_10px_60px_0px_rgba(0,0,0,0.04),_inset_0px_-4px_0px_0px_rgba(18,154,206,1)]  rounded-2xl text-center p-6 transition">
+                                    <div className="w-[320px] h-[320px] mx-auto mb-4 rounded-full overflow-hidden">
+                                        <Image
+                                            src={member.image}
+                                            alt={member.name}
+                                            width={320}
+                                            height={320}
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                    <h3 className="md:text-[28px] text-2xl font-semibold text-title text-center mb-5 mt-10">
+                                        {member.name}
+                                    </h3>
+                                    <p className="md:text-lg text-sm font-normal text-desc text-center">{member.position}</p>
                                 </div>
-                                <h3 className="md:text-[28px] text-2xl font-semibold text-title text-center mb-5 mt-10">
-                                    {member.name}
-                                </h3>
-                                <p className="md:text-lg text-sm font-normal text-desc text-center">{member.position}</p>
                             </div>
-                        </div>
+                        </AnimateOnScroll>
                     ))}
                 </Slider>
             </div>

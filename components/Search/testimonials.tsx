@@ -41,6 +41,7 @@ const Testimonials = ({data}:Props) => {
                 ))}
             </div>
             <div className='container mx-auto md:px-0 px-4 md:mt-16 mt-10'>
+                <AnimateOnScroll type="fade-up" delay={getDelay()}>
                 <h3 className='md:text-[28px] md:leading-normal text-2xl font-medium text-title text-center mb-2.5'>
                     Average Customer Rating of <span className='text-[#F6A20A]'> 8.5 out of 10! </span>
                 </h3>
@@ -50,6 +51,7 @@ const Testimonials = ({data}:Props) => {
                         From <span className='text-[#F6A20A]'> 1,500+ </span> Customer Reviews
                     </p>
                 </div>
+                </AnimateOnScroll>
             </div>
         </section>
     )

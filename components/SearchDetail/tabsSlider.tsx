@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Service } from "@/lib/gql-types";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import AnimateOnScroll, { useAutoDelay } from "../animation";
 
 interface TabsSliderProps {
   data: Service[]; // all services
@@ -18,9 +18,9 @@ interface TabsSliderProps {
 const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
   const sliderRef = useRef<Slider | null>(null);
   const [open, setOpen] = useState(false);
- const pathname = usePathname(); // Get current path
+  const pathname = usePathname(); // Get current path
   const [activeSlug, setActiveSlug] = useState<string>("");
-
+  const getDelay = useAutoDelay();
   // ✅ Detect active slug from URL
   useEffect(() => {
     if (pathname) {
@@ -41,7 +41,6 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
       sliderRef.current.slickGoTo(activeIndex);
     }
   }, [activeSlug, data]);
-
 
   const settings = {
     dots: false,
@@ -77,47 +76,55 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
       <section className="md:py-20 py-16 bg-white">
         <div className="container mx-auto px-4">
           {/* Button */}
-          <button
-            onClick={() => setOpen(true)}
-            className="bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary mx-auto md:mb-20 mb-10"
-          >
-            Find Carers <FaArrowRightLong />
-          </button>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <button
+              onClick={() => setOpen(true)}
+              className="bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary mx-auto md:mb-20 mb-10"
+            >
+              Find Carers <FaArrowRightLong />
+            </button>
+          </AnimateOnScroll>
           {/* ✅ Slider (HTML unchanged, logic simplified) */}
-          <div className="tabs">
-            <Slider ref={sliderRef} {...settings}>
-              {data.map((tab, index) => (
-                <div key={index} className="pb-5 px-2 w-full">
-                  <Link
-                    className={`btn w-full border rounded-full before:opacity-0 before:hover:opacity-100 py-4 text-xs md:text-base font-semibold transition-all duration-300 ${tab.slug === activeSlug
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <div className="tabs">
+              <Slider ref={sliderRef} {...settings}>
+                {data.map((tab, index) => (
+                  <div key={index} className="pb-5 px-2 w-full">
+                    <Link
+                      className={`btn w-full border rounded-full before:opacity-0 before:hover:opacity-100 py-4 text-xs md:text-base font-semibold transition-all duration-300 ${tab.slug === activeSlug
                         ? "bg-primary text-white border-primary before:opacity-100"
                         : "bg-white text-desc border-gray-300 hover:bg-primary hover:text-white "
-                      }`}
+                        }`}
 
-                    href={`/services/${tab?.slug}`}>{tab.title}</Link>
-                </div>
-              ))}
-            </Slider>
-          </div>
+                      href={`/services/${tab?.slug}`}>{tab.title}</Link>
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </AnimateOnScroll>
           <div className="mt-10 space-y-10">
-            <div
+            <AnimateOnScroll type="fade-up" delay={getDelay()}>
+              <div
                 className="service_Content"
-                dangerouslySetInnerHTML={{ __html: activeService.content || "" }}  />
-                {activeService.featuredImage?.node?.mediaItemUrl && (
-                  <Image
-                    width={1320}
-                    height={702}
-                    src={activeService.featuredImage.node.mediaItemUrl}
-                    alt={activeService.featuredImage.node.altText || activeService.title}
-                    className="rounded-lg w-full h-[400px] object-cover"
-                  />
-                )}
-             </div>
+                dangerouslySetInnerHTML={{ __html: activeService.content || "" }} />
+            </AnimateOnScroll>
+            <AnimateOnScroll type="fade-up" delay={getDelay()}>
+              {activeService.featuredImage?.node?.mediaItemUrl && (
+                <Image
+                  width={1320}
+                  height={702}
+                  src={activeService.featuredImage.node.mediaItemUrl}
+                  alt={activeService.featuredImage.node.altText || activeService.title}
+                  className="rounded-lg w-full h-[400px] object-cover"
+                />
+              )}
+            </AnimateOnScroll>
+          </div>
         </div>
       </section>
 
       {/* Modal */}
-      <ModalStepper open={open} onClose={() => setOpen(false)} />
+        <ModalStepper open={open} onClose={() => setOpen(false)} />
     </>
   );
 };

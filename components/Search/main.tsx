@@ -1,17 +1,22 @@
+"use client";
+
 import React from 'react'
 import Link from 'next/link'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import Image from 'next/image'
 import { FaEnvelope, FaStar } from 'react-icons/fa'
 import { MdPhoneInTalk } from 'react-icons/md'
+import AnimateOnScroll, { useAutoDelay } from '../animation'
 
 function Main() {
+    const getDelay = useAutoDelay();
     return (
         <section className="min-h-screen md:py-20 py-16 flex items-stretch justify-center bg-right bg-contain bg-no-repeat relative" style={{ backgroundImage: "url('/images/support-main.png')" }}>
             <div className='bg-gradient-to-r from-background to-transparent absolute h-full w-full top-0'></div>
             <div className="container mx-auto md:px-0 px-4 flex md:flex-row flex-col gap-10 items-stretch justify-between mt-20 relative z-10">
                 {/* Left Content */}
                 <div className='max-w-[653px]'>
+                    <AnimateOnScroll type="fade-up" delay={getDelay()}>
                     <h1 className="text-4xl md:text-6xl font-semibold text-title mb-6 font-playfair">
                         Trusted Carers for Your Loved Ones
                     </h1>
@@ -46,9 +51,11 @@ function Main() {
                             </p>
                         </div>
                     </div>
+                    </AnimateOnScroll>
                 </div>
                 {/* Right Content - Video Section */}
                 <div className="h-full flex items-end">
+                    <AnimateOnScroll type="fade-up" delay={getDelay()}>
                     <ul className='bg-white rounded-2xl border-l-4 border-secondary md:p-[30px] p-5 w-fit space-y-6'>
                         <li className='flex md:flex-row flex-col gap-5 items-center'>
                             <span className='md:text-3xl text-xl flex md:w-[70px] md:h-[70px] w-[32px] h-[32px] justify-center items-center text-secondary bg-background rounded-full'>
@@ -75,6 +82,7 @@ function Main() {
                             </span>
                         </li>
                     </ul>
+                    </AnimateOnScroll>
                 </div>
             </div>
         </section>

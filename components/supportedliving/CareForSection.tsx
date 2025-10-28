@@ -1,28 +1,21 @@
 "use client"
 import React, { useState } from 'react';
 import { FaCheckCircle, FaChevronDown } from 'react-icons/fa';
-import AnimateOnScroll from '../animation';
+import AnimateOnScroll, { useAutoDelay } from '../animation';
+import { CareFor } from '@/lib/queries/GetSupported';
+import Image from 'next/image';
 
-const careNeeds = [
-  {
-    title: 'Down Syndrome',
-    description: 'Fostering growth and community for fulfilling lives.',
-  },
-  { title: 'Physical Disabilities' },
-  { title: 'Learning Differences' },
-  { title: 'Visual Impairments' },
-  { title: 'Hearing Impairments' },
-  { title: 'Mental Health' },
-  { title: 'Cerebral Palsy (CP)' },
-  { title: 'ADHD' },
-];
+interface Props {
+  data?: CareFor;
+}
 
-export default function CareForSection() {
+export default function CareForSection({ data }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleAccordion = (index: any) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
+  const getDelay = useAutoDelay();
 
   return (
     <section className="bg-[#151A4D] py-16 px-6 text-white">
@@ -30,45 +23,53 @@ export default function CareForSection() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* Left: Accordion */}
         <div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 font-playfair">
-            Who is <span className="text-white">Supported Living </span> for?
-          </h2>
-          <p className="text-gray-300 mb-8 font-normal">
-            At Vivid Care Services, we offer a variety of supported living homes, each designed to provide comfort, accessibility, and a sense of community.
-          </p>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-playfair">
+              {data?.title}
+            </h2>
+            <p className="text-gray-300 mb-8 font-normal">
+              At Vivid Care Services, we offer a variety of supported living homes, each designed to provide comfort, accessibility, and a sense of community.
+            </p>
+          </AnimateOnScroll>
 
           <div className="space-y-4">
-            {careNeeds.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => toggleAccordion(index)}
-                className=" rounded-lg px-5 py-4 cursor-pointer transition"
-              >
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-3">
-                    <FaCheckCircle className="text-xl" />
-                    <h4 className="text-2xl font-semibold font-playfair">{item.title}</h4>
+            <AnimateOnScroll type="fade-up" delay={getDelay()}>
+              {data?.options?.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => toggleAccordion(index)}
+                  className=" rounded-lg px-5 py-4 cursor-pointer transition"
+                >
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-3">
+                      <FaCheckCircle className="text-xl" />
+                      <h4 className="text-2xl font-semibold font-playfair">{item.title}</h4>
+                    </div>
+                    <FaChevronDown
+                      className={`transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''
+                        }`}
+                    />
                   </div>
-                  <FaChevronDown
-                    className={`transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''
-                      }`}
-                  />
+                  {activeIndex === index && item.description && (
+                    <p className="text-md text-gray-300 mt-2 font-normal">{item.description}</p>
+                  )}
                 </div>
-                {activeIndex === index && item.description && (
-                  <p className="text-md text-gray-300 mt-2 font-normal">{item.description}</p>
-                )}
-              </div>
-            ))}
+              ))}
+            </AnimateOnScroll>
           </div>
         </div>
 
         {/* Right: Image */}
         <div className="w-full">
-          <img
-            src="/images/CareForSection.png" // Replace with your image path
-            alt="Group care"
-            className="rounded-xl w-full shadow-lg object-cover"
-          />
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <Image
+              src={data?.image?.node?.mediaItemUrl || "/images/CareForSection.png"} // Replace with your image path
+              alt="Group care"
+              className="rounded-xl w-full shadow-lg object-cover"
+              width={1024}
+              height={1024}
+            />
+          </AnimateOnScroll>
         </div>
       </div>
 

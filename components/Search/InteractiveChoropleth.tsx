@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FaArrowRightLong } from "react-icons/fa6";
 import Image from "next/image";
+import AnimateOnScroll, { useAutoDelay } from "../animation";
 
 // ✅ Updated sample GeoJSON for 6 UK regions (simplified rectangular polygons)
 const sampleGeoJSON = {
@@ -109,8 +110,6 @@ const sampleGeoJSON = {
   ],
 };
 
-
-
 // ✅ Updated sample cities list with zipcodes (matching above regions)
 const sampleCities = [
   {
@@ -171,6 +170,7 @@ export default function InteractiveMapExample() {
   const geoLayerRef = useRef<any>(null);
   const layerIndex = useRef<Map<string, any>>(new Map());
   const [highlighted, setHighlighted] = useState<string | null>(null);
+  const getDelay = useAutoDelay();
 
   // ✅ Read query params from URL
   const searchParams = useSearchParams();
@@ -256,18 +256,18 @@ export default function InteractiveMapExample() {
 
   const handleHover = (regionId: string) => applyHighlight(regionId);
   const handleLeave = () => applyHighlight(null);
- const handleClick = (regionId: string) => {
-  const map = mapRef.current;
-  const layer = layerIndex.current.get(regionId);
-  const bounds = layer?.getBounds?.();
+  const handleClick = (regionId: string) => {
+    const map = mapRef.current;
+    const layer = layerIndex.current.get(regionId);
+    const bounds = layer?.getBounds?.();
 
-  if (map && bounds) {
-    map.flyToBounds(bounds, { padding: [20, 20] });
-    setTimeout(() => {
-      map.setZoom(map.getZoom() - 1);
-    }, 700);
-  }
-};
+    if (map && bounds) {
+      map.flyToBounds(bounds, { padding: [20, 20] });
+      setTimeout(() => {
+        map.setZoom(map.getZoom() - 1);
+      }, 700);
+    }
+  };
 
   // ✅ Automatically highlight from postcode param
   useEffect(() => {
@@ -291,41 +291,47 @@ export default function InteractiveMapExample() {
       <div className="container mx-auto px-4 flex flex-col md:flex-row gap-10 mb-14">
         {/* Left: Cities List */}
         <div className="md:w-1/2 w-full space-y-4">
-          <h2 className="md:text-5xl text-3xl font-semibold text-title ">
-            Delivering Quality Care in Your Area
-          </h2>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <h2 className="md:text-5xl text-3xl font-semibold text-title ">
+              Delivering Quality Care in Your Area
+            </h2>
+          </AnimateOnScroll>
         </div>
         <div className="md:w-1/2 w-full flex flex-col md:items-end items-center justify-center">
-          <Link href="#" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit'>
-            Enquire Now <FaArrowRightLong />
-          </Link>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <Link href="#" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit'>
+              Enquire Now <FaArrowRightLong />
+            </Link>
+          </AnimateOnScroll>
         </div>
       </div>
       <div className="container mx-auto px-4 flex flex-col md:flex-row gap-10">
         {/* Left: Cities List */}
         <div className="md:w-1/2 w-full space-y-4">
           {sampleCities.map((city) => (
-            <button
-              key={city.id}
-              onMouseEnter={() => handleHover(city.regionId)}
-              onMouseLeave={handleLeave}
-              onClick={() => handleClick(city.regionId)}
-              className={`flex md:flex-row flex-row items-center gap-3 bg-white py-2 px-5 rounded-[10px] w-full border shadow-[10px_10px_60px_0_rgba(0,0,0,0.04)]
+            <AnimateOnScroll key={city.id} type="fade-up" delay={getDelay()}>
+              <button
+                onMouseEnter={() => handleHover(city.regionId)}
+                onMouseLeave={handleLeave}
+                onClick={() => handleClick(city.regionId)}
+                className={`flex md:flex-row flex-row items-center gap-3 bg-white py-2 px-5 rounded-[10px] w-full border shadow-[10px_10px_60px_0_rgba(0,0,0,0.04)]
                ${highlighted === city.regionId
-                  ? "border-primary"
-                  : "border-[#ECF1FF]"
-                }`}>
-              <div className="w-1/6">
-                <Image src={city?.image} alt={city?.image} width={90} height={60} className="w-full rounded-lg" />
-              </div>
-              <div className="w-5/6">
-                <h3 className="md:text-2xl text-xl font-semibold text-title text-left mb-2">{city.name}</h3>
-                <p className="md:text-lg text-sm font-normal text-desc text-left">{city.content}</p>
-              </div>
-            </button>
+                    ? "border-primary"
+                    : "border-[#ECF1FF]"
+                  }`}>
+                <div className="w-1/6">
+                  <Image src={city?.image} alt={city?.image} width={90} height={60} className="w-full rounded-lg" />
+                </div>
+                <div className="w-5/6">
+                  <h3 className="md:text-2xl text-xl font-semibold text-title text-left mb-2">{city.name}</h3>
+                  <p className="md:text-lg text-sm font-normal text-desc text-left">{city.content}</p>
+                </div>
+              </button>
+            </AnimateOnScroll>
           ))}
         </div>
         {/* Right: Map */}
+        
         <div className="md:w-1/2 w-full rounded-[20px] overflow-hidden">
           <div ref={mapRef} className="w-full h-full" />
         </div>

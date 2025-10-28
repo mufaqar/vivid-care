@@ -1,6 +1,7 @@
+"use client";
+
 import React from 'react'
-import { FaHome, FaUser, FaUsers } from 'react-icons/fa'
-import AnimateOnScroll from '../animation';
+import AnimateOnScroll, { useAutoDelay } from '../animation';
 import { AboutDomcare } from '@/lib/queries/GetAbout';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ interface Props {
 }
 
 function Domesticsection({ data }: Props) {
- 
+ const getDelay = useAutoDelay();
   const bgColors = [
     "bg-[#DCFCE7]",
     "bg-[#F3E8FF]",
@@ -24,7 +25,7 @@ function Domesticsection({ data }: Props) {
   ]
   return (
     <section className="py-16 px-4 bg-white">
-      <AnimateOnScroll type="fade-up">
+      <AnimateOnScroll type="fade-up" delay={getDelay()}>
         <div className="max-w-5xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold font-playfair">
             {data?.title} <span className="text-[#F28AA9]">{data?.subTitle}</span>

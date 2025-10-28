@@ -4,6 +4,7 @@ import { Faq, GetFaqByCatQuery, GetPostsQuery, HomePageData, Post, Review, Revie
 import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
 import { GET_DOMICILIARY, GetDomiciliaryQuery } from "../queries/GetAbout";
 import { GET_SUPPORTED, GetSupportedQuery } from "../queries/GetSupported";
+import { GET_POST_BY_SLUG } from "../queries/getPostBySlug";
 
 
 export async function getHomeData() {
@@ -24,6 +25,21 @@ export async function getBlogData(): Promise<Post[]> {
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     return [];
+  }
+}
+
+export async function getBlogPostBySlug(slug: string): Promise<Post | null> {
+  try {
+    const { data } = await client.query<{ post: Post }>({
+      query: GET_POST_BY_SLUG,
+      variables: { slug },
+    });
+
+    // Return the post if it exists, otherwise null
+    return data?.post ?? null;
+  } catch (error) {
+    console.error(`Error fetching blog post for slug "${slug}":`, error);
+    return null;
   }
 }
 

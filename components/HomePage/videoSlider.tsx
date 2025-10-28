@@ -13,7 +13,6 @@ interface Props {
   data?: SliderInfo
 }
 
-
 export default function VideoSlider({ data }: Props) {
   const getDelay = useAutoDelay();
   const [current, setCurrent] = useState(0);
