@@ -1,3 +1,4 @@
+import Banner from "@/components/Blog/banner";
 import SinglePost from "@/components/Blog/SinglePost";
 import { getBlogPostBySlug } from "@/lib/api/getHomeData";
 
@@ -7,6 +8,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   if (!post) return <div className="text-center py-20">Post not found</div>;
 
     return (
-        <SinglePost post={post} />
+        <main>
+          <Banner data={post} />
+          <SinglePost post={post} />
+        </main>
     );
 }

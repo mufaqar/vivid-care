@@ -15,6 +15,12 @@ const SinglePost: React.FC<SinglePostProps> = ({ post }) => {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
+        <AnimateOnScroll type="fade-up" delay={getDelay()}>
+          <h1 className="text-4xl md:text-6xl font-bold text-[#111827] mb-6 font-poppins">
+            {post.title}
+          </h1>
+        </AnimateOnScroll>
+
         {post.featuredImage?.node?.sourceUrl && (
           <Image
             src={post.featuredImage.node.sourceUrl}
@@ -24,12 +30,6 @@ const SinglePost: React.FC<SinglePostProps> = ({ post }) => {
             className="w-full rounded-lg mb-6"
           />
         )}
-
-        <AnimateOnScroll type="fade-up" delay={getDelay()}>
-          <h1 className="text-4xl md:text-6xl font-bold text-[#111827] mb-6 font-poppins">
-            {post.title}
-          </h1>
-        </AnimateOnScroll>
 
         <AnimateOnScroll type="fade-up" delay={getDelay()}>
           <div
