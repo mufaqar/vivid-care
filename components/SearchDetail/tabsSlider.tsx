@@ -73,7 +73,7 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
 
   return (
     <>
-      <section className="md:py-20 py-16 bg-white">
+      <section className="md:pt-20 pt-16 bg-white">
         <div className="container mx-auto px-4">
           {/* Button */}
           <AnimateOnScroll type="fade-up" delay={getDelay()}>
@@ -85,11 +85,13 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
             </Link>
           </AnimateOnScroll>
           {/* ✅ Slider (HTML unchanged, logic simplified) */}
-          <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <div className="tabs">
-              <Slider ref={sliderRef} {...settings}>
+
+          <div className="flex md:flex-row flex-col gap-6">
+            <div className="tabs md:w-1/4 w-full ">
+             <div className="sticky top-5">
+               <AnimateOnScroll type="fade-up" delay={getDelay()}>
                 {data.map((tab, index) => (
-                  <div key={index} className="pb-5 px-2 w-full">
+                  <div key={index} className="pb-3 w-full">
                     <Link
                       className={`btn w-full border rounded-full before:opacity-0 before:hover:opacity-100 py-4 text-xs md:text-base font-semibold transition-all duration-300 ${tab.slug === activeSlug
                         ? "bg-primary text-white border-primary before:opacity-100"
@@ -99,32 +101,33 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
                       href={`/services/${tab?.slug}`}>{tab.title}</Link>
                   </div>
                 ))}
-              </Slider>
+              </AnimateOnScroll>
+             </div>
             </div>
-          </AnimateOnScroll>
-          <div className="mt-10 space-y-10">
-            <AnimateOnScroll type="fade-up" delay={getDelay()}>
-              <div
-                className="service_Content"
-                dangerouslySetInnerHTML={{ __html: activeService.content || "" }} />
-            </AnimateOnScroll>
-            <AnimateOnScroll type="fade-up" delay={getDelay()}>
-              {activeService.featuredImage?.node?.mediaItemUrl && (
-                <Image
-                  width={1320}
-                  height={702}
-                  src={activeService.featuredImage.node.mediaItemUrl}
-                  alt={activeService.featuredImage.node.altText || activeService.title}
-                  className="rounded-lg w-full h-[400px] object-cover"
-                />
-              )}
-            </AnimateOnScroll>
+            <div className="md:w-3/4 w-full space-y-10">
+              <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                <div
+                  className="service_Content"
+                  dangerouslySetInnerHTML={{ __html: activeService.content || "" }} />
+              </AnimateOnScroll>
+              <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                {activeService.featuredImage?.node?.mediaItemUrl && (
+                  <Image
+                    width={1320}
+                    height={702}
+                    src={activeService.featuredImage.node.mediaItemUrl}
+                    alt={activeService.featuredImage.node.altText || activeService.title}
+                    className="rounded-lg w-full h-[400px] object-cover"
+                  />
+                )}
+              </AnimateOnScroll>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Modal */}
-        <ModalStepper open={open} onClose={() => setOpen(false)} />
+      <ModalStepper open={open} onClose={() => setOpen(false)} />
     </>
   );
 };
