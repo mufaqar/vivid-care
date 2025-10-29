@@ -1,6 +1,4 @@
 import AllPosts from "@/components/Blog/AllPosts";
-import Banner from "@/components/Blog/banner";
-import BlogSection from "@/components/Domcare/BlogSection";
 import { getBlogData } from "@/lib/api/getHomeData";
 
 export default async function DomeCare() {
