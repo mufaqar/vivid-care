@@ -3,7 +3,7 @@
 import React from 'react'
 import SearchForm from '../HomePage/searchForm'
 import AnimateOnScroll, { useAutoDelay } from '../animation'
-import { url } from 'inspector';
+import Image from 'next/image';
 
 interface Props {
     data?: any;
@@ -12,27 +12,43 @@ interface Props {
 const Banner = ({ data }: Props) => {
     const getDelay = useAutoDelay();
     return (
-        <section className='min-h-screen pt-16 flex justify-center items-end  bg-cover bg-center'
-        style={{
-        backgroundImage: `url(${data?.featuredImage?.node?.sourceUrl || '/images/CareForSection.png'})`,
-      }}>
-            <div className='container mx-auto md:px-0 px-4'>
-                <div className='bg-white rounded-t-[20px] md:p-10 p-7 flex md:flex-row flex-col gap-8 shadow-[0px_20px_60px_0px_rgba(229,233,237,0.4)]'>
-                    <div className='md:w-1/2 w-full'>
-                        <AnimateOnScroll type="fade-up" delay={getDelay()}>
-                            <h1 className='md:text-[38px] md:leading-none text-2xl font-semibold text-title mb-5'>
-                                {data?.title}
-                            </h1>
-                            <div className='text-lg font-normal text-desc'
-                                dangerouslySetInnerHTML={{ __html: data?.excerpt || "" }} />
-                        </AnimateOnScroll>
-                    </div>
-                    <div className='md:w-1/2 w-full'>
-                        <AnimateOnScroll type="fade-up" delay={getDelay()}>
-                            <SearchForm />
-                        </AnimateOnScroll>
-                    </div>
+        <section className="min-h-screen bg-gradient-to-r from-[#EAF4FC] to-[#FDEAF3] flex items-center justify-center px-4">
+            <div className="container mx-auto md:px-0 px-4 grid md:grid-cols-2 gap-10 items-center mt-20">
+                <div>
+                    <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                        <h1 className="text-4xl md:text-6xl font-bold text-title mb-6 font-poppins">
+                            {data?.title}
+                        </h1>
+                        <div className='text-lg font-normal text-desc mb-7'
+                            dangerouslySetInnerHTML={{ __html: data?.excerpt || "" }} />
+                        <SearchForm />
+                    </AnimateOnScroll>
                 </div>
+                {/* Right Content - Video Section */}
+                <AnimateOnScroll type="fade-up" delay={getDelay()}>
+                    <div className="relative border-7 border-white rounded-xl">
+                        <Image
+                            src={data?.featuredImage?.node?.sourceUrl || '/images/CareForSection.png'}
+                            alt={data?.featuredImage?.node?.altText || "Elderly care"}
+                            width={400}
+                            height={400}
+                            className="rounded-xl shadow-lg h-96 w-full object-cover "
+                        />
+                        {/* Overlay button */}
+                        <button className="absolute inset-0 rounded-xl bg-black/50 flex flex-col items-center justify-center text-white">
+                            <div className="bg-white bg-opacity-80 hover:bg-opacity-100 transition rounded-full p-3 cursor-pointer">
+                                <svg
+                                    className="w-10 h-10 text-blue-500"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path d="M6 4l10 6-10 6V4z" />
+                                </svg>
+                            </div>
+                            <p className="mt-2 text-md  font-semibold font-poppins">Watch our story ·<br /> 2:30</p>
+                        </button>
+                    </div>
+                </AnimateOnScroll>
             </div>
         </section>
     )

@@ -1,3 +1,4 @@
+import PageContent from "@/components/PageContent";
 import client from "@/lib/apollo-client";
 import { GET_PAGE_BY_SLUG } from "@/lib/queries/getPageBySlug";
 import { notFound } from "next/navigation";
@@ -22,16 +23,9 @@ export default async function Page({ params }: PageProps) {
     if (!page) return notFound();
 
     return (
-      <main>
-        <section className="py-16">
-          <div className="container mx-auto md:px-0 px-4">
-            <div
-              className="service_Content"
-              dangerouslySetInnerHTML={{ __html: page.content || "" }}
-            />
-          </div>
-        </section>
-      </main>
+      <>
+        <PageContent page={page} />
+      </>
     );
   } catch (error) {
     console.error("Error fetching page:", error);
