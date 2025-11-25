@@ -33,7 +33,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <main>
-      <Banner />
+     <Banner />
       <TabsSlider data={allServices} activeService={service} />
       <ServiceAbout data={service} />
     </main>

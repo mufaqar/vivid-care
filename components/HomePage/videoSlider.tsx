@@ -8,6 +8,7 @@ import { ReactTyped } from "react-typed";
 import CircleRotating from "../circleRotating";
 import AnimateOnScroll, { useAutoDelay } from "../animation";
 import { SlideInfo, SliderInfo } from "@/lib/gql-types";
+import Link from "next/link";
 
 interface Props {
   data?: SliderInfo
@@ -74,6 +75,11 @@ export default function VideoSlider({ data }: Props) {
                 </AnimateOnScroll>
                 <AnimateOnScroll type="fade-up" delay={getDelay()}>
                   <SearchForm />
+                  <Link href="https://vivid-care-jobs.vercel.app/?open=lead"
+                    className="bg-primary hover:bg-secondary text-lg font-bold font-poppins text-white py-4 flex items-center gap-2 justify-center rounded-[50px] md:w-1/3 w-full cursor-pointer mt-10"
+                  >
+                    Find Career
+                  </Link>
                 </AnimateOnScroll>
               </div>
 
