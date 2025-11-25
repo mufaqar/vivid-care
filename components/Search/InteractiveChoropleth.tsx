@@ -7,7 +7,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import Image from "next/image";
 import AnimateOnScroll, { useAutoDelay } from "../animation";
 
-// ✅ Updated sample GeoJSON for 6 UK regions (simplified rectangular polygons)
+// ✅ Updated sample GeoJSON for 6 UK regions with circle geometries
 const sampleGeoJSON = {
   type: "FeatureCollection",
   features: [
@@ -15,102 +15,54 @@ const sampleGeoJSON = {
       type: "Feature",
       properties: { id: "manchester", name: "Manchester", value: 80 },
       geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-2.35, 53.55],
-            [-2.15, 53.55],
-            [-2.15, 53.4],
-            [-2.35, 53.4],
-            [-2.35, 53.55],
-          ],
-        ],
+        type: "Point",
+        coordinates: [-2.25, 53.48] // Center point for Manchester
       },
     },
     {
       type: "Feature",
       properties: { id: "warrington", name: "Warrington", value: 50 },
       geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-2.65, 53.45],
-            [-2.45, 53.45],
-            [-2.45, 53.3],
-            [-2.65, 53.3],
-            [-2.65, 53.45],
-          ],
-        ],
+        type: "Point",
+        coordinates: [-2.55, 53.38] // Center point for Warrington
       },
     },
     {
       type: "Feature",
       properties: { id: "warwickshire", name: "Warwickshire", value: 100 },
       geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-1.7, 52.45],
-            [-1.3, 52.45],
-            [-1.3, 52.1],
-            [-1.7, 52.1],
-            [-1.7, 52.45],
-          ],
-        ],
+        type: "Point",
+        coordinates: [-1.5, 52.28] // Center point for Warwickshire
       },
     },
     {
       type: "Feature",
       properties: { id: "birmingham", name: "Birmingham", value: 90 },
       geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-1.98, 52.55],
-            [-1.75, 52.55],
-            [-1.75, 52.35],
-            [-1.98, 52.35],
-            [-1.98, 52.55],
-          ],
-        ],
+        type: "Point",
+        coordinates: [-1.87, 52.45] // Center point for Birmingham
       },
     },
     {
       type: "Feature",
       properties: { id: "london", name: "London", value: 120 },
       geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-0.3, 51.6],
-            [0.1, 51.6],
-            [0.1, 51.4],
-            [-0.3, 51.4],
-            [-0.3, 51.6],
-          ],
-        ],
+        type: "Point",
+        coordinates: [-0.1, 51.5] // Center point for London
       },
     },
     {
       type: "Feature",
       properties: { id: "oxfordshire", name: "Oxfordshire", value: 70 },
       geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [-1.4, 51.9],
-            [-1.0, 51.9],
-            [-1.0, 51.6],
-            [-1.4, 51.6],
-            [-1.4, 51.9],
-          ],
-        ],
+        type: "Point",
+        coordinates: [-1.2, 51.75] // Center point for Oxfordshire
       },
     },
   ],
 };
 
-// ✅ Updated sample cities list with zipcodes (matching above regions)
+// ✅ Sample cities list remains the same
 const sampleCities = [
   {
     id: "waterhouse",
@@ -162,7 +114,6 @@ const sampleCities = [
   },
 ];
 
-
 export default function InteractiveMapExample() {
   const mapRef = useRef<any>(null);
   const [leafletReady, setLeafletReady] = useState(false);
@@ -172,23 +123,32 @@ export default function InteractiveMapExample() {
   const [highlighted, setHighlighted] = useState<string | null>(null);
   const getDelay = useAutoDelay();
 
-  // ✅ Read query params from URL
   const searchParams = useSearchParams();
   const postcode = searchParams.get("postcode") || "";
 
   const getColor = (v: number) =>
     v > 90 ? "#08519c" : v > 60 ? "#3182bd" : v > 30 ? "#6baed6" : "#bdd7e7";
 
-  const style = (feature: any) => ({
-    fillColor: getColor(feature.properties.value || 1),
-    weight: 1.5,
-    opacity: 1,
-    color: "#fff",
-    dashArray: "3",
-    fillOpacity: 0.7,
-  });
+  // ✅ Circle style function
+  const getCircleStyle = (feature: any) => {
+    const value = feature.properties.value || 1;
+    const radius = Math.max(15, value / 2); // Adjust radius based on value
+    
+    return {
+      radius: radius,
+      fillColor: getColor(value),
+      weight: 1.5,
+      opacity: 1,
+      color: "#fff",
+      fillOpacity: 0.7,
+    };
+  };
 
-  const highlightStyle = { weight: 3, color: "#08306b", fillOpacity: 0.9 };
+  const highlightStyle = { 
+    weight: 3, 
+    color: "#08306b", 
+    fillOpacity: 0.9 
+  };
 
   // Load Leaflet dynamically
   useEffect(() => {
@@ -223,18 +183,26 @@ export default function InteractiveMapExample() {
         mouseout: () => applyHighlight(null),
         click: () => {
           const bounds = layer.getBounds?.();
-          if (bounds) map.fitBounds(bounds, { padding: [20, 20], maxzoom: 3 });
+          if (bounds) map.fitBounds(bounds, { padding: [20, 20] });
         },
       });
     };
 
+    // ✅ Create circle markers instead of polygons
     const geoLayer = L.geoJSON(sampleGeoJSON as any, {
-      style,
+      pointToLayer: (feature:any, latlng:any) => {
+        const style = getCircleStyle(feature);
+        return L.circleMarker(latlng, style);
+      },
       onEachFeature,
     }).addTo(map);
 
     geoLayerRef.current = geoLayer;
-    map.fitBounds(geoLayer.getBounds(), { padding: [30, 30] });
+    
+    // Fit map to show all circles with some padding
+    if (geoLayer.getBounds && geoLayer.getBounds().isValid()) {
+      map.fitBounds(geoLayer.getBounds(), { padding: [30, 30] });
+    }
   }, [leafletReady]);
 
   // ✅ Highlight handler
@@ -244,8 +212,11 @@ export default function InteractiveMapExample() {
 
     if (highlighted && layerIndex.current.has(highlighted)) {
       const prev = layerIndex.current.get(highlighted);
-      geoLayerRef.current.resetStyle(prev);
+      // Reset to original style
+      const originalStyle = getCircleStyle(prev.feature);
+      prev.setStyle(originalStyle);
     }
+    
     if (id && layerIndex.current.has(id)) {
       const layer = layerIndex.current.get(id);
       layer.setStyle(highlightStyle);
@@ -256,16 +227,23 @@ export default function InteractiveMapExample() {
 
   const handleHover = (regionId: string) => applyHighlight(regionId);
   const handleLeave = () => applyHighlight(null);
+  
   const handleClick = (regionId: string) => {
     const map = mapRef.current;
     const layer = layerIndex.current.get(regionId);
-    const bounds = layer?.getBounds?.();
-
-    if (map && bounds) {
-      map.flyToBounds(bounds, { padding: [20, 20] });
-      setTimeout(() => {
-        map.setZoom(map.getZoom() - 1);
-      }, 700);
+    
+    if (map && layer) {
+      // For circles, we can zoom to the circle's bounds or set view to its center
+      const bounds = layer.getBounds?.();
+      if (bounds && bounds.isValid()) {
+        map.flyToBounds(bounds, { padding: [20, 20] });
+      } else {
+        // Fallback: zoom to the circle's center point
+        const latlng = layer.getLatLng?.();
+        if (latlng) {
+          map.flyTo(latlng, 9); // Zoom to level 9 centered on the circle
+        }
+      }
     }
   };
 
@@ -331,9 +309,8 @@ export default function InteractiveMapExample() {
           ))}
         </div>
         {/* Right: Map */}
-        
         <div className="md:w-1/2 w-full rounded-[20px] overflow-hidden">
-          <div ref={mapRef} className="w-full h-full" />
+          <div ref={mapRef} className="w-full h-[500px]" />
         </div>
       </div>
     </section>
