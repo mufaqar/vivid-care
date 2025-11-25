@@ -5,6 +5,7 @@ import SearchForm from '../HomePage/searchForm'
 import AnimateOnScroll, { useAutoDelay } from '../animation'
 import { Banner } from '@/lib/queries/GetAbout';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 interface Props {
@@ -24,6 +25,11 @@ function Main({ data }: Props) {
                         <p className="text-[#374151] mb-6 text-xl font-poppins">
                             {data?.description} </p>
                         <SearchForm />
+                        <Link href="https://vivid-care-jobs.vercel.app/?open=lead"
+                            className="bg-primary hover:bg-secondary text-lg font-bold font-poppins text-white py-4 flex items-center gap-2 justify-center rounded-[50px] md:w-1/3 w-full cursor-pointer mt-10"
+                        >
+                            Find Career
+                        </Link>
                     </AnimateOnScroll>
                 </div>
                 {/* Right Content - Video Section */}

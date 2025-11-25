@@ -57,7 +57,7 @@ const ServiceAbout = ({ data }: Props) => {
                                 </span>
                             </li>
                         </ul>
-                        <Link href="#" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit relative z-10'>
+                        <Link href="/contact-us" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit relative z-10'>
                             Request a Call Back <FaArrowRightLong />
                         </Link>
                     </AnimateOnScroll>

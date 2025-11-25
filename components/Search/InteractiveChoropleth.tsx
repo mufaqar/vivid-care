@@ -127,7 +127,7 @@ export default function InteractiveMapExample() {
   const postcode = searchParams.get("postcode") || "";
 
   const getColor = (v: number) =>
-    v > 90 ? "#08519c" : v > 60 ? "#3182bd" : v > 30 ? "#6baed6" : "#bdd7e7";
+    v > 90 ? "#fef1f7" : v > 60 ? "#fef1f7" : v > 30 ? "#fef1f7" : "#fef1f7";
 
   // ✅ Circle style function
   const getCircleStyle = (feature: any) => {
@@ -139,14 +139,14 @@ export default function InteractiveMapExample() {
       fillColor: getColor(value),
       weight: 1.5,
       opacity: 1,
-      color: "#fff",
+      color: "#fef1f7",
       fillOpacity: 0.7,
     };
   };
 
   const highlightStyle = { 
     weight: 3, 
-    color: "#08306b", 
+    color: "#fef1f7", 
     fillOpacity: 0.9 
   };
 

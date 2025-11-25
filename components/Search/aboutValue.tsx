@@ -47,7 +47,7 @@ const AboutValue = () => {
                     {/* ACCORDION ITEMS */}
                     <div className="space-y-6">
                         {items.map((item, index) => (
-                            <AnimateOnScroll  key={item.id} type="fade-up" delay={getDelay()}>
+                            <AnimateOnScroll key={item.id} type="fade-up" delay={getDelay()}>
                                 <div className="relative bg-white rounded-[10px] shadow-[0px_10px_10px_10px_rgba(1,72,112,0.1)] md:px-9 px-5 py-4 transition-all duration-300 ease-in-out"
                                 >
                                     <div className="absolute left-0 top-1/2 -translate-y-1/2 h-[85%] w-[6px] bg-primary rounded-r-lg rounded-br-lg"></div>
@@ -70,8 +70,10 @@ const AboutValue = () => {
                                 <Link href="/contact-us" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary hover:border-primary'>
                                     Request a Call Back <FaArrowRightLong />
                                 </Link>
-                                <Link href="/contact-us" className='bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary'>
-                                    Learn More <FaArrowRightLong />
+                                <Link href="https://vivid-care-jobs.vercel.app/?open=lead"
+                                    className="bg-primary hover:bg-secondary text-lg font-bold font-poppins text-white py-4 flex items-center gap-2 justify-center rounded-[50px] md:w-1/3 w-full cursor-pointer"
+                                >
+                                    Find Career <FaArrowRightLong />
                                 </Link>
                             </div>
                         </AnimateOnScroll>

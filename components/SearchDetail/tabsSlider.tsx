@@ -86,8 +86,8 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
           </AnimateOnScroll>
           {/* ✅ Slider (HTML unchanged, logic simplified) */}
 
-          <div className="flex md:flex-row flex-col gap-6 divide-x divide-black/20">
-            <div className="tabs md:w-[30%] w-full md:pr-6">
+          <div className="flex md:flex-row flex-col gap-6">
+            <div className="tabs md:w-1/5 w-full md:pt-10">
              <div className="sticky top-5">
                <AnimateOnScroll type="fade-up" delay={getDelay()}>
                 {data.map((tab, index) => (
@@ -104,7 +104,7 @@ const TabsSlider = ({ data, activeService }: TabsSliderProps) => {
               </AnimateOnScroll>
              </div>
             </div>
-            <div className="md:w-[70%] w-full space-y-10">
+            <div className="md:w-4/5 w-full space-y-10 md:px-10 md:py-10 p-8 bg-background">
               <AnimateOnScroll type="fade-up" delay={getDelay()}>
                 <div
                   className="service_Content"
