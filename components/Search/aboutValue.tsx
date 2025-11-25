@@ -67,10 +67,10 @@ const AboutValue = () => {
                         ))}
                         <AnimateOnScroll type="fade-up" delay={getDelay()}>
                             <div className="flex md:flex-row flex-col gap-6 items-center mt-10">
-                                <Link href="#" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary hover:border-primary'>
+                                <Link href="/contact-us" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary hover:border-primary'>
                                     Request a Call Back <FaArrowRightLong />
                                 </Link>
-                                <Link href="#" className='bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary'>
+                                <Link href="/contact-us" className='bg-transparent hover:bg-secondary md:text-lg text-sm font-semibold font-poppins text-secondary hover:text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary'>
                                     Learn More <FaArrowRightLong />
                                 </Link>
                             </div>

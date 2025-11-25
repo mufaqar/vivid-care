@@ -28,7 +28,7 @@ export default function SupportSection({ data }: Props) {
                         <p className="text-[#374151] mb-6 text-base md:text-lg">
                             {data?.description}
                         </p>
-                        <Link href={`${data?.link}`} className="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-md text-sm md:text-base transition">
+                        <Link href={`/contact-us`} className="bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-md text-sm md:text-base transition">
                             Enquire Now
                         </Link>
                     </div>

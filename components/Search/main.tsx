@@ -23,7 +23,7 @@ function Main() {
                     <p className="md:text-[22px] md:leading-normal text-lg font-poppins md:mb-10 mb-6">
                         We provide compassionate and reliable home care services tailored to your individual needs.
                     </p>
-                    <Link href="#" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit'>
+                    <Link href="/contact-us" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-5 py-3 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit'>
                         Request a Call Back <FaArrowRightLong />
                     </Link>
                     <div className='md:mt-[130px] mt-10 flex md:flex-row flex-col items-center gap-8 max-w-[506px]'>

@@ -37,7 +37,7 @@ export default function EmpowermentGrid({ data }: Props) {
                                 <h3 className="text-2xl md:text-4xl font-semibold font-playfair">{cards[0].title}</h3>
                             </div>
                             <p className="text-lg md:text-xl translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-in-out">{cards[0]?.description}</p>
-                            <Link href={`${cards[0].link}`}
+                            <Link href={`/contact-us`}
                                 className="
                                             mt-6 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-6 py-2 rounded 
                                             opacity-0 translate-y-3 
@@ -69,7 +69,7 @@ export default function EmpowermentGrid({ data }: Props) {
                                         <h3 className="text-xl md:text-3xl font-semibold font-playfair">{card.title}</h3>
                                     </div>
                                     <p className="text-sm md:text-base translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-in-out">{card?.description}</p>
-                                    <Link href={`${card?.link}`} className="mt-6 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-6 py-2 rounded w-fit opacity-0 translate-y-3 
+                                    <Link href={`/contact-us`} className="mt-6 bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-6 py-2 rounded w-fit opacity-0 translate-y-3 
                                                 group-hover:opacity-100 group-hover:translate-y-0 
                                                 transition-all duration-500 ease-in-out">
                                         Enquire Now →
