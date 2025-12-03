@@ -10,20 +10,15 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const posts = await getPostByCateSlug(slug);
-
-    const categories = await getPostCategories();
-
-
- 
+  const categories = await getPostCategories();
 
   return (
     <main>
       <section className="min-h-[60vh] bg-gradient-to-r from-[#EAF4FC] to-[#FDEAF3] flex items-center justify-center px-4">
         <div className="container mx-auto md:px-0 px-4">
           <h1 className="text-4xl md:text-6xl font-bold text-title text-center mb-6 font-poppins capi capitalize">
-           {slug.replace(/-/g, " ")}
+            {slug.replace(/-/g, " ")}
           </h1>
         </div>
       </section>
