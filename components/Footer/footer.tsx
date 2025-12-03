@@ -78,6 +78,11 @@ const Footer = () => {
                     Blogs
                   </Link>
                 </li>
+                <li>
+                  <Link href="/contact-us" className='text-sm font-medium text-white font-poppins hover:text-secondary'>
+                    Contact Us
+                  </Link>
+                </li>
               </ul>
             </div>
           </AnimateOnScroll>
