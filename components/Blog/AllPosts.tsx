@@ -106,25 +106,19 @@ const AllPosts = ({ data, cat }: AllPostsProps) => {
                           {post.categories.edges[0].node.name}
                         </span>
                       </div>
-                    )}
-
-                    {/* Title */}
+                    )}                  
                     <Link
                       href={`/blog/${post.slug}`}
                       className="block text-xl font-semibold leading-snug mb-3 hover:text-secondary/60 transition-colors font-poppins"
                     >
                       {post.title}
-                    </Link>
-
-                    {/* Excerpt */}
+                    </Link>                  
                     {post.excerpt && (
                       <p
                         className="text-desc text-sm mb-4 line-clamp-3 font-poppins"
                         dangerouslySetInnerHTML={{ __html: post.excerpt }}
                       />
-                    )}
-
-                    {/* Author + Date */}
+                    )}             
                     <div className="flex items-center justify-between text-sm text-desc font-poppins mt-auto">
                       <div className="flex items-center gap-2">
                         <FaUserCircle className="text-xl text-desc" />
