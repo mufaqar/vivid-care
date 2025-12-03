@@ -25,17 +25,16 @@ export default async function CategoryPage({
   const categories =
     catData?.categories?.edges?.map((edge) => edge.node) || [];
 
-  if (!posts.length) {
-    return (
-      <div className="p-10 text-center text-gray-600">
-        No posts found in this category.
-      </div>
-    );
-  }
-
   return (
     <main>
-      <AllPosts data={posts} cat={categories}  />
+      <section className="min-h-[60vh] bg-gradient-to-r from-[#EAF4FC] to-[#FDEAF3] flex items-center justify-center px-4">
+        <div className="container mx-auto md:px-0 px-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-title text-center mb-6 font-poppins capi">
+           {slug.replace(/-/g, " ")}
+          </h1>
+        </div>
+      </section>
+      <AllPosts data={posts} cat={categories} />
     </main>
   );
 }

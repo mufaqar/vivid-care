@@ -50,10 +50,10 @@
 opacity: 1;
 }
 .service_Content h1, .service_Content h2{
-@apply md:text-5xl text-3xl font-semibold text-title mb-6;
+@apply text-2xl md:text-4xl font-semibold text-title font-poppins mb-6;
 }
 .service_Content h3, .service_Content h4{
-@apply md:text-3xl text-xl font-semibold text-title mb-6;
+@apply md:text-2xl text-xl font-semibold text-title mb-6;
 }
 .service_Content h5, .service_Content h6{
 @apply md:text-xl text-lg font-semibold text-title mb-6;
@@ -61,18 +61,18 @@ opacity: 1;
 .service_Content p, .service_Content span{
   @apply md:text-lg text-sm font-normal text-desc mb-5;
 }
-.service_Content ul{
-  @apply space-y-4;
+.service_Content ul, .service_Content ol{
+  @apply space-y-4 mb-5;
 }
 .service_Content a{
 @apply text-primary hover:text-secondary;
 }
-.service_Content ul li{
+.service_Content ul li, .service_Content ol li{
 @apply md:text-lg text-sm font-normal text-desc flex items-center gap-4;
 }
-.service_Content ul li::marker {
-  content: "✓";          /* checkmark glyph (can be another char) */
-  color: #10B981;        /* marker color */
-  font-size: 1rem;       /* marker size */
+.service_Content ul li::marker, .service_Content ol li::marker {
+  content: "✓";       
+  color: #10B981;      
+  font-size: 1rem;     
   font-weight: 700;
 }

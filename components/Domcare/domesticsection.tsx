@@ -30,7 +30,7 @@ function Domesticsection({ data }: Props) {
           <h2 className="text-4xl md:text-6xl font-bold font-playfair">
             {data?.title} <span className="text-[#F28AA9]">{data?.subTitle}</span>
           </h2>
-          <p className="mt-8 text-gray-700 max-w-2xl mx-auto text-xl font-normal">
+          <p className="mt-8 text-title max-w-2xl mx-auto text-xl font-normal">
             {data?.description}
             <Link href="#" className="text-sky-500 underline">
               Read More...

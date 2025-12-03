@@ -40,7 +40,7 @@ function Domesticsection() {
           <h2 className="text-4xl md:text-6xl font-bold font-playfair">
             What Is <span className="text-[#F28AA9]">Supported Living?</span>
           </h2>
-          <p className="mt-8 text-gray-700 max-w-2xl mx-auto text-xl font-normal">
+          <p className="mt-8 text-title max-w-2xl mx-auto text-xl font-normal">
             At Vivid Care Services, we offer a variety of supported living homes,
             each designed to provide comfort, accessibility, and a sense of{' '}
             <a href="#" className="text-sky-500 underline">

@@ -23,7 +23,7 @@ export default function Domesticsection({ data }: Props) {
             </h2>
           )}
           {data?.description && (
-            <p className="mt-8 text-gray-700 max-w-2xl mx-auto text-xl font-normal">
+            <p className="mt-8 text-title max-w-2xl mx-auto text-xl font-normal">
               {data.description}
               <a href="#" className="text-sky-500 underline ml-2">
                 Read More...

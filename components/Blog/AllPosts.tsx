@@ -25,65 +25,49 @@ const AllPosts = ({ data, cat }: AllPostsProps) => {
   const iconBg = ["bg-[#16A34A]", "bg-[#9333EA]", "bg-[#EA580C]"];
   const pathname = usePathname(); // ⭐ Current URL path
 
-  console.log("Current cat:", cat); // ⭐ Log the current pathname
 
   if (!data?.length) {
-    return <p className="text-center text-gray-500">No blog posts found.</p>;
+    return <section className="py-16"><div className="container mx-auto md:px-0 px-4">
+      <p className="text-center text-title">No blog posts found.</p></div></section>;
   }
   return (
     <main>
-      <section className="min-h-[60vh] bg-gradient-to-r from-[#EAF4FC] to-[#FDEAF3] flex items-center justify-center px-4">
-        <div className="container mx-auto md:px-0 px-4">
-          <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <h1 className="text-4xl md:text-6xl font-bold text-title text-center mb-6 font-poppins">
-              Our Blog
-            </h1>
-          </AnimateOnScroll>
-        </div>
-      </section>
       <section className="py-16 px-4 bg-white">
-
-         {/* 🏷️ Categories */}
-        {cat?.length ? (
+        {/* 🏷️ Categories */}
+        
           <ul className="flex flex-wrap justify-center mb-10">
-
             {/* ALL link */}
             <li>
               <Link
                 href={`/blog`}
                 className={`inline-block text-sm px-5 py-2 rounded-sm mr-2 mb-2 transition-all duration-300
-                  ${
-                    pathname === "/blog"
-                      ? "bg-secondary text-white" // ⭐ Active state
-                      : "bg-primary/20 text-gray-800 hover:bg-secondary hover:text-white"
+                  ${pathname === "/blog"
+                    ? "bg-secondary text-white" // ⭐ Active state
+                    : "bg-primary/20 text-title hover:bg-secondary hover:text-white"
                   }
                 `}
               >
                 All
               </Link>
             </li>
-
             {/* Category List */}
-                {cat.map((category: ICategoryNode) => (
-              <li key={category.slug}>
-                <Link
-                  href={`/category/${category.slug}`}
-                  className={`inline-block text-sm px-5 py-2 rounded-sm mr-2 mb-2 transition-all duration-300
-                    ${
-                      pathname === `/category/${category.slug}`
-                        ? "bg-secondary text-white" // ⭐ Active link style
-                        : "bg-primary/20 text-gray-800 hover:bg-secondary hover:text-white"
-                    }
-                  `}
-                >
-                  {category.name}
-                </Link>
-              </li>
-            ))}
+           {cat.map((category: ICategoryNode) => (
+  <li key={category.slug}>
+    <Link
+      href={`/category/${category.slug}`}
+      className={`inline-block text-sm px-5 py-2 rounded-sm mr-2 mb-2 transition-all duration-300
+        ${pathname === `/category/${category.slug}`
+          ? "bg-secondary text-white"
+          : "bg-primary/20 text-title hover:bg-secondary hover:text-white"
+        }
+      `}
+    >
+      {category.name}
+    </Link>
+  </li>
+))}
 
           </ul>
-        ) : null}
-   
         <div className="container mx-auto md:px-0 px-4 grid md:grid-cols-3 gap-8">
           {data?.map((post, index) => {
             const imageUrl = post.featuredImage?.node?.sourceUrl;
@@ -95,9 +79,8 @@ const AllPosts = ({ data, cat }: AllPostsProps) => {
             return (
               <AnimateOnScroll key={index} type="fade-up" delay={getDelay()}>
                 <div
-                  className={`rounded-2xl ${
-                    bgColors[index % bgColors.length]
-                  } p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100`}
+                  className={`rounded-2xl ${bgColors[index % bgColors.length]
+                    } p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100`}
                 >
                   {/* Featured Image */}
                   {imageUrl ? (
@@ -111,9 +94,8 @@ const AllPosts = ({ data, cat }: AllPostsProps) => {
                     </div>
                   ) : (
                     <div
-                      className={`w-full h-48 mb-4 ${
-                        iconBg[index % iconBg.length]
-                      } flex items-center justify-center rounded-xl`}
+                      className={`w-full h-48 mb-4 ${iconBg[index % iconBg.length]
+                        } flex items-center justify-center rounded-xl`}
                     >
                       <span className="text-4xl">😊</span>
                     </div>

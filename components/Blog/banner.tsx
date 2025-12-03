@@ -16,7 +16,7 @@ const Banner = ({ data }: Props) => {
             <div className="container mx-auto md:px-0 px-4 grid md:grid-cols-2 gap-10 items-center mt-20">
                 <div>
                     <AnimateOnScroll type="fade-up" delay={getDelay()}>
-                        <h1 className="text-4xl md:text-6xl font-bold text-title mb-6 font-poppins">
+                        <h1 className="text-2xl md:text-4xl font-bold text-title mb-6 font-poppins">
                             {data?.title}
                         </h1>
                         <div className='text-lg font-normal text-desc mb-7'
