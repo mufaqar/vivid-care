@@ -35,6 +35,49 @@ export interface CategoryEdge {
 export interface CategoriesConnection {
   edges: CategoryEdge[];
 }
+
+export interface ICategoryNode {
+  slug: string;
+  name: string;
+}
+
+export interface ICategoriesResponse {
+  categories: {
+    nodes: ICategoryNode[];
+  };
+}
+
+export interface GetPostsByCategorySlugQuery {
+  category?: {
+    id: string;
+    name: string;
+    slug: string;
+    posts?: {
+      nodes?: Post[] | null;
+    } | null;
+  } | null;
+}
+
+
+export interface PostByCategory {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt?: string;
+  date?: string;
+  featuredImage?: MediaItem | null;
+}
+
+export interface GetPostByCategoryResponse {
+  category?: {
+    name: string;
+
+    posts?: {
+      nodes?: PostByCategory[];
+    } | null;
+  } | null;
+}
+
 // --------------------
 // Main Post Interface
 // --------------------

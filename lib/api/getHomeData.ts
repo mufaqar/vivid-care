@@ -1,10 +1,10 @@
 import client from "@/lib/apollo-client";
 import { GET_HOME } from "../queries/GetFrontPage";
-import { Faq, GetFaqByCatQuery, GetPostsQuery, HomePageData, Post, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
-import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES } from "../queries/gql-query";
+import { CategoriesConnection, CategoryNode, Faq, GetFaqByCatQuery, GetPostByCategoryResponse, GetPostsByCategorySlugQuery, GetPostsQuery, HomePageData, ICategoriesResponse, ICategoryNode, Post, PostByCategory, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
+import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES, Query_Post_Categories } from "../queries/gql-query";
 import { GET_DOMICILIARY, GetDomiciliaryQuery } from "../queries/GetAbout";
 import { GET_SUPPORTED, GetSupportedQuery } from "../queries/GetSupported";
-import { GET_POST_BY_SLUG } from "../queries/getPostBySlug";
+import { GET_POST_BY_CAT, GET_POST_BY_SLUG } from "../queries/getPostBySlug";
 
 
 export async function getHomeData() {
@@ -17,7 +17,7 @@ export async function getBlogData(): Promise<Post[]> {
   try {
     const { data } = await client.query<GetPostsQuery>({
       query: GET_POSTS,
-      variables: { first: 6 }, // optional
+      variables: { first: 30 }, // optional
     });
 
     // Ensure only valid posts are returned
@@ -116,3 +116,28 @@ export async function getSupportedLivingData() {
 
   return data?.page?.supportedInfo || {};
 }
+
+
+export async function getPostCategories(): Promise<ICategoryNode[]> {
+  const { data } = await client.query<ICategoriesResponse>({
+    query: Query_Post_Categories,
+  });
+
+  return data?.categories?.nodes || [];
+}
+
+
+export async function getPostByCateSlug(
+  slug: string
+): Promise<PostByCategory[]> {
+  const { data } = await client.query<GetPostByCategoryResponse>({
+    query: GET_POST_BY_CAT,
+    variables: { id: slug },
+  });
+
+  return data?.category?.posts?.nodes || [];
+}
+
+
+
+

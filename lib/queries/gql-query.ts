@@ -128,3 +128,15 @@ export const GET_REVIEWS = gql`
   }
 `;
 
+
+export const Query_Post_Categories = gql`
+  query PostCategories {
+    categories {
+      nodes {
+        slug
+        name
+      }
+    }
+  }
+`;
+

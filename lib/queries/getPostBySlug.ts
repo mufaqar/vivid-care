@@ -23,3 +23,26 @@ export const GET_POST_BY_SLUG = gql`
   }
 }
 `;
+
+export const GET_POST_BY_CAT = gql`
+  query getpostbycat($id: ID!) {
+    category(id: $id, idType: SLUG) {
+      name
+      posts {
+        nodes {
+          id
+          title
+          slug
+          excerpt
+          date
+          featuredImage {
+            node {
+              mediaItemUrl
+              altText
+            }
+          }
+        }
+      }
+    }
+  }
+`;

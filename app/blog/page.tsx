@@ -1,11 +1,12 @@
 import AllPosts from "@/components/Blog/AllPosts";
-import { getBlogData } from "@/lib/api/getHomeData";
+import { getBlogData, getPostCategories } from "@/lib/api/getHomeData";
 
 export default async function DomeCare() {
   const posts = await getBlogData()
+  const categories = await getPostCategories();
   return (
     <>
-      <AllPosts data={posts} />
+      <AllPosts data={posts} cat={categories}/>
     </>
   );
 }
