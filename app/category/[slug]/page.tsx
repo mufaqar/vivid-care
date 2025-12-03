@@ -1,8 +1,5 @@
 import AllPosts from "@/components/Blog/AllPosts";
 import { getPostByCateSlug, getPostCategories } from "@/lib/api/getHomeData";
-import client from "@/lib/apollo-client";
-import { CategoriesConnection } from "@/lib/gql-types";
-import { Query_Post_Categories } from "@/lib/queries/gql-query";
 
 export default async function CategoryPage({
   params,

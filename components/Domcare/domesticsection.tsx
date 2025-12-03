@@ -5,6 +5,7 @@ import AnimateOnScroll, { useAutoDelay } from '../animation';
 import { AboutDomcare } from '@/lib/queries/GetAbout';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaHome, FaUser, FaUsers } from 'react-icons/fa';
 
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 }
 
 function Domesticsection({ data }: Props) {
- const getDelay = useAutoDelay();
+  const getDelay = useAutoDelay();
   const bgColors = [
     "bg-[#DCFCE7]",
     "bg-[#F3E8FF]",
@@ -23,6 +24,7 @@ function Domesticsection({ data }: Props) {
     "bg-[#9333EA]",
     "bg-[#EA580C]",
   ]
+  const icons = [FaUser, FaUsers, FaHome];
   return (
     <section className="py-16 px-4 bg-white">
       <AnimateOnScroll type="fade-up" delay={getDelay()}>
@@ -40,25 +42,50 @@ function Domesticsection({ data }: Props) {
       </AnimateOnScroll>
       <AnimateOnScroll type="fade-up">
         <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3 ">
-          {data?.options.map((service, index) => {
-            return (
-
-              <div
-                key={index}
-                className={`${bgColors[index % bgColors.length]} rounded-lg p-6 shadow-sm transition hover:shadow-md`}
-              >
-
+            {data?.options?.length ? (
+            data.options.map((service, index) => {
+              const IconComponent = icons[index % icons.length];
+              return (
                 <div
-                  className={`${iconBg[index % iconBg.length]} text-white w-10 h-10 flex items-center justify-center rounded-full mb-4`}
+                  key={index}
+                  className={`${bgColors[index % bgColors.length]} rounded-lg p-6 shadow-sm transition hover:shadow-md`}
                 >
-                  <Image src={service?.icon?.node?.mediaItemUrl || "/images/quality.png"} alt='icon' width={40} height={40} />
-                </div>
-                <h3 className="text-2xl font-semibold mb-4 font-playfair">{service.title}</h3>
-                <p className="text-gray-600 text-md font-normal">{service.description}</p>
+                  {/* Icon Box */}
+                  <div
+                    className={`${iconBg[index % iconBg.length]} text-white w-12 h-12 flex items-center justify-center rounded-full mb-4`}
+                  >
+                    {/* Default React Icon */}
+                    <IconComponent className="w-6 h-6" />
 
-              </div>
-            );
-          })}
+                    {/* If WordPress image icon exists, enable below */}
+                    {/* {service?.icon?.node?.mediaItemUrl && (
+                      <Image
+                        src={service.icon.node.mediaItemUrl}
+                        alt={service.icon.node.altText || "Icon"}
+                        width={40}
+                        height={40}
+                        className="object-contain"
+                      />
+                    )} */}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-semibold mb-4 font-playfair">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-600 text-md font-normal">
+                    {service.description}
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            <p className="text-center text-gray-500 col-span-3">
+              No options available.
+            </p>
+          )}
         </div>
       </AnimateOnScroll>
     </section>
