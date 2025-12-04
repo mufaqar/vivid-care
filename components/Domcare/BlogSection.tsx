@@ -37,16 +37,16 @@ export default function BlogSection({ data }: BlogSectionProps) {
       {/* Blog Cards Grid */}
       <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
 
-        {data?.map((post, index) => {
+        {data?.slice(0, 3).map((post, index) => {
           const imageUrl = post.featuredImage?.node?.sourceUrl;
-          const author = post.author?.node?.name || "Unknown Author";
+          const author = post.author?.node?.name || "Dennis";
           const formattedDate = post.date
             ? new Date(post.date).toLocaleDateString()
             : "No date";
 
           return (
             <AnimateOnScroll key={index} type="fade-up" delay={getDelay()}>
-              <div className={`rounded-2xl ${bgColors[index % bgColors.length]} p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100`}
+              <div className={`rounded-2xl ${bgColors[index % bgColors.length]} p-6 h-full shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100`}
               >
                 {/* Featured Image */}
                 {imageUrl ? (
@@ -102,6 +102,11 @@ export default function BlogSection({ data }: BlogSectionProps) {
           );
         })}
 
+      </div>
+      <div className="max-w-7xl mx-auto mt-10">
+        <Link href="/blog" className="bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-3 py-3 md:px-16 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit mx-auto">
+          See More
+        </Link>
       </div>
     </section>
   );

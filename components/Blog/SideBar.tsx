@@ -72,9 +72,9 @@ const SideBar = ({
                                 <p className="text-xs text-description flex items-center mb-1">
                                     <FaRegClock className="mr-1" /> {post.date}
                                 </p>
-                                <p className="text-sm font-semibold text-title hover:text-description cursor-pointer">
+                                <Link href={`/blog/${post.slug}`} className="text-sm font-semibold text-title hover:text-description cursor-pointer">
                                     {post.title}
-                                </p>
+                                </Link>
                             </div>
                         </div>
                     ))}
