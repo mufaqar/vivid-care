@@ -122,7 +122,7 @@ const LocContent = ({ reviews }: any) => {
                     <div className='md:w-1/2 w-full'>
                         <AnimateOnScroll type="fade-up" delay={getDelay()}>
                             <div className="flex md:flex-row flex-col gap-6 items-center md:justify-end mt-10">
-                                <Link href="/contact-us" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary hover:border-primary'>
+                                <Link href="/contact-us" className='bg-secondary hover:bg-primary md:text-lg text-sm font-semibold font-poppins text-white md:py-4 py-2 md:px-7 px-5 flex items-center gap-2 justify-center rounded-[50px] w-fit border-2 border-secondary hover:border-white'>
                                     Enquire Now <FaArrowRightLong />
                                 </Link>
                                 <Link href="/contact-us"
@@ -196,8 +196,8 @@ const LocContent = ({ reviews }: any) => {
                     </div>
                 </div>
             </section>
-            <section className="md:py-20 py-16">
-                <div className="container mx-auto md:px-0 px-4 flex md:flex-row flex-col md:gap-10 gap-6 items-center justify-between">
+            <section id='enquire' className="md:py-20 py-16 md:px-0 px-4">
+                <div className="container mx-auto md:p-[50px] p-8 flex md:flex-row flex-col md:gap-10 gap-6 items-center justify-between border border-[#E7EBF5] rounded-[20px] shadow-[0px_-5px_10px_0px_rgba(0,0,0,0.22)] ">
                     {/* LEFT SECTION */}
                     <div className="md:w-1/2 w-full">
                         <AnimateOnScroll type="fade-up" delay={getDelay()}>
@@ -212,7 +212,7 @@ const LocContent = ({ reviews }: any) => {
                                     <span className='md:text-3xl text-xl flex md:w-[70px] md:h-[70px] w-[32px] h-[32px] justify-center items-center text-primary bg-primary/10 rounded-full'>
                                         <MdPhoneInTalk />
                                     </span>
-                                    <span className='flex flex-col'>
+                                    <span className='flex flex-col md:items-start items-center'>
                                         <span className='text-base font-normal text-desc'>Phone Number</span>
                                         <Link href="tel:03333399946" className='md:text-xl text-base font-medium text-title'>
                                             0333 339 9946
@@ -223,7 +223,7 @@ const LocContent = ({ reviews }: any) => {
                                     <span className='md:text-3xl text-xl flex md:w-[70px] md:h-[70px] w-[32px] h-[32px] justify-center items-center text-primary bg-primary/10 rounded-full'>
                                         <FaEnvelope />
                                     </span>
-                                    <span className='flex flex-col'>
+                                    <span className='flex flex-col md:items-start items-center'>
                                         <Link href="mailto:info@vividcareservices.co.uk" target='_blank' className='md:text-xl text-base font-medium text-title'>
                                             info@vividcareservices.co.uk
                                         </Link>
@@ -236,7 +236,7 @@ const LocContent = ({ reviews }: any) => {
                                     <span className='md:text-3xl text-xl flex md:w-[70px] md:h-[70px] w-[32px] h-[32px] justify-center items-center text-primary bg-primary/10 rounded-full'>
                                         <FaClock />
                                     </span>
-                                    <span className='flex flex-col'>
+                                    <span className='flex flex-col md:items-start items-center'>
                                         <span className='md:text-xl text-base font-medium text-title'>
                                             Mon-Fri: 9:00am – 5:00pm
                                         </span>
