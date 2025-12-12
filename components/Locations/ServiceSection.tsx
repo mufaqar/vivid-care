@@ -58,7 +58,7 @@ export default function ServiceSection({ data }: any) {
             {/* Left Arrow */}
             <button
                 onClick={() => slider.current?.slickPrev()}
-                className="absolute md:-left-4 left-0 top-1/2 transform -translate-y-1/2 bg-secondary shadow-lg rounded-full p-3 z-20"
+                className="absolute md:-left-2 left-0 top-1/2 transform -translate-y-1/2 bg-secondary shadow-lg rounded-full p-3 z-20"
             >
                 <FaArrowLeft className="text-white" />
             </button>
@@ -106,7 +106,7 @@ export default function ServiceSection({ data }: any) {
             {/* Right Arrow */}
             <button
                 onClick={() => slider.current?.slickNext()}
-                className="absolute md:-right-4 right-0 top-1/2 transform -translate-y-1/2 bg-secondary shadow-lg rounded-full p-3 z-20"
+                className="absolute md:-right-2 right-0 top-1/2 transform -translate-y-1/2 bg-secondary shadow-lg rounded-full p-3 z-20"
             >
                 <FaArrowRight className="text-white" />
             </button>

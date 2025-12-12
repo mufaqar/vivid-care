@@ -26,7 +26,13 @@
   --font-poppins: var(--font-poppins);
   --animate-spin-slow: spin 3s linear infinite;
 }
-
+@layer utilities {
+  @media (min-width: 768px) and (max-width: 1350px) {
+    .container {
+      max-width: 92vw !important; /* 👈 your custom width */
+    }
+  }
+}
 .tabs .slick-next:before,
 .tabs .slick-prev:before {
   display: none;
