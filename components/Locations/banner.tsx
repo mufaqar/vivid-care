@@ -4,7 +4,7 @@ import React from 'react'
 import SearchForm from '../HomePage/searchForm'
 import AnimateOnScroll, { useAutoDelay } from '../animation'
 
-const Banner = () => {
+const Banner = ({ data }: any) => {
     const getDelay = useAutoDelay();
     return (
         <section className='pt-16 bg-[url("/images/searchbg.png")] bg-cover bg-center relative'>
@@ -14,11 +14,12 @@ const Banner = () => {
                     <div className='md:w-2/3 w-full'>
                         <AnimateOnScroll type="fade-up" delay={getDelay()}>
                             <h1 className='text-4xl md:text-6xl font-semibold text-title mb-6 font-playfair'>
-                                Local Domiciliary Care Agency in Manchester
+                                {data?.title}
                             </h1>
-                            <p className='md:text-[22px] md:leading-normal text-lg font-poppins md:mb-10 mb-6 max-w-[678px]'>
-                                Vivid Care has been serving residents of Manchester with high-quality domiciliary care services at the convenience of their homes since 2005.
-                            </p>
+                            <div
+                                className="md:text-[22px] md:leading-normal text-lg font-poppins md:mb-10 mb-6 max-w-[678px]"
+                                dangerouslySetInnerHTML={{ __html: data?.excerpt || "" }}
+                            />
                         </AnimateOnScroll>
                     </div>
                     <div className='md:w-1/3 w-full'></div>

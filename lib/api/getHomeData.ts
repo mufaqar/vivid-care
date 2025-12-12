@@ -1,10 +1,11 @@
 import client from "@/lib/apollo-client";
 import { GET_HOME } from "../queries/GetFrontPage";
-import { CategoriesConnection, CategoryNode, Faq, GetFaqByCatQuery, GetPostByCategoryResponse, GetPostsByCategorySlugQuery, GetPostsQuery, HomePageData, ICategoriesResponse, ICategoryNode, Post, PostByCategory, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
+import { Faq, GetFaqByCatQuery, GetPostByCategoryResponse, GetPostsQuery, HomePageData, ICategoriesResponse, ICategoryNode, Post, PostByCategory, Review, ReviewsData, Service, ServicesTypes } from "../gql-types";
 import { GET_FAQ_BY_CAT, GET_POSTS, GET_REVIEWS, GET_SERVICES, Query_Post_Categories } from "../queries/gql-query";
 import { GET_DOMICILIARY, GetDomiciliaryQuery } from "../queries/GetAbout";
 import { GET_SUPPORTED, GetSupportedQuery } from "../queries/GetSupported";
 import { GET_POST_BY_CAT, GET_POST_BY_SLUG } from "../queries/getPostBySlug";
+import { GET_LOCATION_BY_SLUG, GetLocationBySlugData, GetLocationBySlugVars, LocationData } from "../queries/getLocation";
 
 
 export async function getHomeData() {
@@ -138,6 +139,16 @@ export async function getPostByCateSlug(
   return data?.category?.posts?.nodes || [];
 }
 
+export async function getLocationBySlug(slug: string): Promise<LocationData | null> {
+  try {
+    const { data } = await client.query<GetLocationBySlugData, GetLocationBySlugVars>({
+      query: GET_LOCATION_BY_SLUG,
+      variables: { slug },
+    });
 
-
-
+    return data?.location ?? null;
+  } catch (error) {
+    console.error(`Error fetching location for slug "${slug}":`, error);
+    return null;
+  }
+}

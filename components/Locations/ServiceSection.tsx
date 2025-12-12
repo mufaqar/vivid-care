@@ -37,7 +37,7 @@ const services: ServiceItem[] = [
     },
 ];
 
-export default function ServiceSection() {
+export default function ServiceSection({ data }: any) {
     const slider = useRef<Slider | null>(null);
 
     const settings: Settings = {
@@ -65,10 +65,10 @@ export default function ServiceSection() {
 
             {/* Slider */}
             <Slider ref={slider} {...settings} className="px-8">
-                {services.map((item, index) => (
-                    <div key={index} className="p-3">
+                {data.map((item: any, idx: number) => (
+                    <div key={idx} className="p-3">
                         <div className="relative rounded-2xl overflow-hidden shadow-md group md:h-[510px] h-[350px] bg-center bg-no-repeat bg-cover"
-                            style={{ backgroundImage: `url(${item.img})` }}
+                            style={{ backgroundImage: `url(${item?.image.node?.mediaItemUrl || "/images/service1.png"})` }}
                         >
                             <div className="absolute bottom-0 w-full p-5 h-fit rounded-2xl flex flex-col justify-end
                                     bg-gradient-to-t from-[#071542E5] from-[80%] to-transparent to-[100%]
@@ -83,12 +83,12 @@ export default function ServiceSection() {
 
                                     {/* Short Description */}
                                     <p className="mt-2 md:text-base text-sm text-white group-hover:hidden block transition-all duration-300 ease-in-out">
-                                        {item.desc.split(" ").slice(0, 11).join(" ")}...
+                                        {item?.description.split(" ").slice(0, 11).join(" ")}...
                                     </p>
 
                                     {/* Full Description */}
                                     <p className="mt-2 md:text-base text-sm text-white group-hover:block hidden transition-all duration-300 ease-in-out">
-                                        {item.desc}
+                                        {item?.description}
                                     </p>
                                 </div>
 

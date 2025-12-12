@@ -24,7 +24,6 @@ export default async function Supportedliving() {
   const posts = await getBlogData();
   const pageData = await getSupportedLivingData();
 
-  // console.log("Supportedliving Page", pageData)
   return (
     <main>
       <Main data={pageData?.banner} />
