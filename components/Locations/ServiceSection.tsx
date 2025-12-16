@@ -65,7 +65,7 @@ export default function ServiceSection({ data }: any) {
 
             {/* Slider */}
             <Slider ref={slider} {...settings} className="px-8">
-                {data.map((item: any, idx: number) => (
+                {data?.map((item: any, idx: number) => (
                     <div key={idx} className="p-3">
                         <div className="relative rounded-2xl overflow-hidden shadow-md group md:h-[510px] h-[350px] bg-center bg-no-repeat bg-cover"
                             style={{ backgroundImage: `url(${item?.image.node?.mediaItemUrl || "/images/service1.png"})` }}
