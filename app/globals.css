@@ -102,7 +102,7 @@
 }
 
 .serviceBenefit ul {
-  @apply space-y-4 list-disc;
+  @apply space-y-4 list-disc mt-5;
 }
 
 .serviceBenefit ul li {
@@ -116,5 +116,5 @@
   font-weight: 700;
 }
 .serviceBenefit p {
-  @apply text-lg font-normal text-desc mt-6;
+  @apply text-lg font-normal text-desc mt-5;
 }
