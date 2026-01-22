@@ -211,8 +211,7 @@ const Footer = () => {
               Copyright 2022 © Vivid Care Services Ltd, Registered in England & Wales, Company Reg: 13759238
             </p>
             <p className='md:text-base font-normal text-white font-poppins text-center'>
-              Website Designed by Advertmetrics Ltd <Link href="/anti-slavery-policy" className='hover:text-secondary'>
-                Anti Slavery Policy</Link>  | <Link href="access-webmail" className='hover:text-secondary'>Access Webmail </Link>   | <Link href="staff-login" className='hover:text-secondary'> Staff Login</Link>
+              Website Designed by Advertmetrics Ltd Anti Slavery Policy  |  Access Webmail   |  Staff Login 
             </p>
           </div>
         </AnimateOnScroll>
