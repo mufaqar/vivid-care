@@ -32,7 +32,7 @@ const Footer = () => {
               <p className='text-[15px] font-light text-white font-poppins mt-5'>
                 2 December 2024
               </p>
-              <Link href="#" className='text-[15px] font-bold text-[#6C276A] font-poppins mt-5 flex items-center gap-2 bg-white pl-2.5 pr-6 py-2 rounded-sm w-fit'>
+              <Link href="https://www.cqc.org.uk/location/1-13833105413?referer=widget3" target='_blank' className='text-[15px] font-bold text-[#6C276A] font-poppins mt-5 flex items-center gap-2 bg-white pl-2.5 pr-6 py-2 rounded-sm w-fit'>
                 See the report <FaChevronRight />
               </Link>
             </AnimateOnScroll>
@@ -68,7 +68,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className='mt-12'>
+            <div className='mt-8'>
               <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3 flex items-center gap-2'>
                 Quick Links <FiExternalLink className='text-secondary' />
               </h6>
@@ -85,65 +85,8 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-          </AnimateOnScroll>
-
-        </div>
-        <div className='flex gap-2.5 items-start md:w-[25%] w-full'>
-          <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-              <CircleRotating bgColor="#151a4d" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
-              <FaMapMarkerAlt className='relative z-10' />
-            </div>
-          </AnimateOnScroll>
-          <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <div>
-              <h6 className='md:text-[26px] md:leading-none text-xl font-bold text-white font-playfair tracking-[-0.6] mb-3'>
-                Head Office Address
-              </h6>
-              <ul className='flex flex-col gap-2'>
-                <li>
-                  <span className='text-sm font-medium text-white font-poppins'>
-                    Warren Bruce Court 1st floor Warren Bruce Rd, Trafford Park, Stretford, Manchester M17 1LB
-                  </span>
-                </li>
-              </ul>
-              <div className='mt-12'>
-                <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3 flex items-center gap-2'>
-                  Warrington Address <FiExternalLink className='text-secondary' />
-                </h6>
-                <ul className='flex flex-col gap-2'>
-                  <li>
-                    <span className='text-sm font-medium text-white font-poppins'>
-                      The Heath Business Park Heath Rd S, Weston, Runcorn WA7 4QX
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div className='mt-12'>
-                <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3'>
-                  Warwickshire Address
-                </h6>
-                <ul className='flex flex-col gap-2'>
-                  <li>
-                    <span className='text-sm font-medium text-white font-poppins'>
-                      Forward house 17 High Street, Henley-In-Arden B95 5AA,
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </AnimateOnScroll>
-        </div>
-        <div className='flex gap-2.5 items-start md:w-1/5 w-full'>
-          <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
-              <CircleRotating bgColor="#151a4d" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
-              <FaClock className='relative z-10' />
-            </div>
-          </AnimateOnScroll>
-          <AnimateOnScroll type="fade-up" delay={getDelay()}>
-            <div>
-              <h6 className='md:text-[26px] md:leading-none text-xl font-bold text-white font-playfair tracking-[-0.6] mb-3'>
+            <div className='mt-8'>
+              <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3'>
                 Opening Hours
               </h6>
               <ul className='flex flex-col gap-2'>
@@ -166,27 +109,95 @@ const Footer = () => {
             </div>
           </AnimateOnScroll>
         </div>
+        <div className='flex gap-2.5 items-start md:w-[25%] w-full'>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+              <CircleRotating bgColor="#151a4d" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
+              <FaMapMarkerAlt className='relative z-10' />
+            </div>
+          </AnimateOnScroll>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <div>
+              <h6 className='md:text-[26px] md:leading-none text-xl font-bold text-white font-playfair tracking-[-0.6] mb-3'>
+                Head Office Address
+              </h6>
+              <ul className='flex flex-col gap-2'>
+                <li>
+                  <span className='text-sm font-medium text-white font-poppins'>
+                    Warren Bruce Court 1st Floor, Warren Bruce Road Trafford Park, Stretford Manchester M17 1LB
+                  </span>
+                </li>
+              </ul>
+              <div className='mt-8'>
+                <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3 flex items-center gap-2'>
+                  Warrington Address <FiExternalLink className='text-secondary' />
+                </h6>
+                <ul className='flex flex-col gap-2'>
+                  <li>
+                    <span className='text-sm font-medium text-white font-poppins'>
+                      The Heath Business Park Heath Road South, Weston Runcorn WA7 4QX
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+        <div className='flex gap-2.5 items-start md:w-[25%] w-full'>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <div className='md:text-2xl text-lg flex md:min-w-[40px] md:h-[40px] min-w-[28px] h-[28px] justify-center items-center text-secondary border-2 border-secondary rounded-full group relative'>
+              <CircleRotating bgColor="#151a4d" size="h-[calc(100%+5px)] w-[calc(100%+5px)]" />
+              <FaMapMarkerAlt className='relative z-10' />
+            </div>
+          </AnimateOnScroll>
+          <AnimateOnScroll type="fade-up" delay={getDelay()}>
+            <div className=''>
+              <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3'>
+                Warwickshire Address
+              </h6>
+              <ul className='flex flex-col gap-2'>
+                <li>
+                  <span className='text-sm font-medium text-white font-poppins'>
+                    Forward House 17 High Street Henley-in-Arden B95 5AA
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div className='mt-8'>
+              <h6 className='md:text-xl md:leading-none text-lg font-bold text-white font-playfair tracking-[-0.6] mb-3'>
+                Lancashire Address
+              </h6>
+              <ul className='flex flex-col gap-2'>
+                <li>
+                  <span className='text-sm font-medium text-white font-poppins'>
+                    Blackpool Enterprise Centr Lytham Road Blackpool FY4 1EW
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </AnimateOnScroll>
+        </div>
       </div>
       <div className='container mx-auto md:px-0 px-4 mt-20 pb-5'>
         <AnimateOnScroll type="fade-up" delay={getDelay()}>
           <ul className='flex gap-3 items-center justify-center'>
             <li>
-              <Link href="#" className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
+              <Link href="https://www.facebook.com/profile.php?id=100089447035592" target='_blank' className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
                 <FaFacebookF />
               </Link>
             </li>
             <li>
-              <Link href="#" className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
+              <Link href="https://x.com/VividCareServUK" target='_blank' className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
                 <FaXTwitter />
               </Link>
             </li>
             <li>
-              <Link href="#" className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
+              <Link href="https://www.instagram.com/vividcareservice/" target='_blank' className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
                 <FaInstagram />
               </Link>
             </li>
             <li>
-              <Link href="#" className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
+              <Link href="https://www.youtube.com/@vividcareservices" target='_blank' className='text-xl font-bold text-white hover:text-secondary w-10 h-10 bg-transparent hover:bg-white flex items-center justify-center rounded-md transition-all duration-500 ease-in-out'>
                 <FaYoutube />
               </Link>
             </li>
